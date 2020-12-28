@@ -1,5 +1,12 @@
 # Mac files
 .DS_Store
+.iml
+.idea
+
+modules.xml
+vcx.xml
+workspace.xml
+Project_Default.xml
 
 # Dependency directories
 /node_modules
