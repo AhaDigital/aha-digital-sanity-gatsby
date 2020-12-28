@@ -1,11 +1,12 @@
 import React from 'react'
 import Header from './header'
-
+import { ThemeProvider } from 'styled-components'
+import theme from '../components/themes'
 import '../styles/layout.css'
 import styles from './layout.module.css'
 
 const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
-  <>
+  <ThemeProvider theme={theme}>
     <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
     <div className={styles.content}>{children}</div>
     <footer className={styles.footer}>
@@ -18,7 +19,7 @@ const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
         </div>
       </div>
     </footer>
-  </>
+  </ThemeProvider>
 )
 
 export default Layout
