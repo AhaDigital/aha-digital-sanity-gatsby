@@ -5,11 +5,10 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
-import BlogPostPreviewList from '../components/blog-post-preview-list'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import Grid from '../components/molecules/Grid'
+import GraphQLErrorList from '../components/atoms/graphql-error-list'
+import SEO from '../components/atoms/seo'
+import App from '../app'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -69,9 +68,9 @@ const IndexPage = props => {
 
   if (errors) {
     return (
-      <Layout>
+      <App>
         <GraphQLErrorList errors={errors} />
-      </Layout>
+      </App>
     )
   }
 
@@ -89,23 +88,15 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout>
+    <App>
       <SEO
         title={site.title}
         description={site.description}
         keywords={site.keywords}
       />
-      <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {postNodes && (
-          <BlogPostPreviewList
-            title='Latest blog posts'
-            nodes={postNodes}
-            browseMoreHref='/archive/'
-          />
-        )}
-      </Container>
-    </Layout>
+      /* hide this */
+      <h1>Welcome to {site.title}</h1>
+    </App>
   )
 }
 

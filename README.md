@@ -1,13 +1,14 @@
 # Aha digital
 
-_Fully customizable blog template with a React.js front-end._
+_Sanity/Gatsby blog theme re-developed to suite our needs._
 
-Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-gatsby-blog).
+_Read more here: [sanity.io/create](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-gatsby-blog)._
 
-## What you have
+## Under the hood
 
-- A blazing fast blog with [Gatsby.js](https://gatsbyjs.org)
-- Structured content using [Sanity.io](https://www.sanity.io)
+- [Gatsby.js](https://gatsbyjs.org)
+- Content using [Sanity.io](https://www.sanity.io)
+- Styled components
 - Global deployment on [Netlify](https://netlify.com)
 
 ## Quick start
@@ -31,8 +32,8 @@ If you want to turn off preview you can set `watchMode: false` in gatsby-config
 
 Netlify automatically deploys new changes commited to master on GitHub. If you want to change deployment branch, do so in [build & deploy settings on Netlify](https://www.netlify.com/docs/continuous-deployment/#branches-deploys).
 
-## Stuck? Get help
+## In "Sanity"?
 
 [![Slack Community Button](https://slack.sanity.io/badge.svg)](https://slack.sanity.io/)
 
-Join [Sanity’s developer community](https://slack.sanity.io) or ping us [on twitter](https://twitter.com/sanity_io).
+Join [Sanity’s developer community](https://slack.sanity.io).

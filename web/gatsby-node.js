@@ -1,11 +1,11 @@
-const {isFuture} = require('date-fns')
+// const {isFuture} = require('date-fns')
 /**
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const {format} = require('date-fns')
+/* const {format} = require('date-fns')
 
 async function createBlogPostPages (graphql, actions) {
   const {createPage} = actions
@@ -48,4 +48,4 @@ async function createBlogPostPages (graphql, actions) {
 
 exports.createPages = async ({graphql, actions}) => {
   await createBlogPostPages(graphql, actions)
-}
+} */
