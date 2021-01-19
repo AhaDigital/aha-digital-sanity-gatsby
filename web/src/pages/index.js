@@ -10,59 +10,68 @@ import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import SEO from '../components/atoms/seo'
 import App from '../app'
 
+/*fragment SanityImage on SanityMainImage {
+ crop {
+ _key
+ _type
+ top
+ bottom
+ left
+ right
+ }
+ hotspot {
+ _key
+ _type
+ x
+ y
+ height
+ width
+ }
+ asset {
+ _id
+ }
+ }*/
+
 export const query = graphql`
-  fragment SanityImage on SanityMainImage {
-    crop {
-      _key
-      _type
-      top
-      bottom
-      left
-      right
-    }
-    hotspot {
-      _key
-      _type
-      x
-      y
-      height
-      width
-    }
-    asset {
-      _id
-    }
-  }
 
   query IndexPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
-    posts: allSanityPost(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
+    site: sanitySiteSettings {
+      mainMenu {
+        mainMenuPages {
+          page {
+            title
+            slug {
+              current
+            }
           }
         }
       }
     }
   }
 `
-
+/*
+* posts: allSanityPost(
+ limit: 6
+ sort: { fields: [publishedAt], order: DESC }
+ filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+ ) {
+ edges {
+ node {
+ id
+ publishedAt
+ mainImage {
+ ...SanityImage
+ alt
+ }
+ title
+ _rawExcerpt
+ slug {
+ current
+ }
+ }
+ }
+ }
+* */
 const IndexPage = props => {
   const {data, errors} = props
 
@@ -75,6 +84,7 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
+  console.log('SITE', site)
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
       .filter(filterOutDocsWithoutSlugs)
@@ -90,12 +100,12 @@ const IndexPage = props => {
   return (
     <App>
       <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
+        title=""
+        description=""
+        keywords=""
       />
       /* hide this */
-      <h1>Welcome to {site.title}</h1>
+      <h1>Welcome to ...</h1>
     </App>
   )
 }

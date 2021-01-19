@@ -5,15 +5,12 @@ export default {
   __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      title: 'Title'
+      name: 'fallbackSEO',
+      type: 'seo',
     },
     {
-      name: 'description',
-      type: 'text',
-      title: 'Description',
-      description: 'Describe your blog for search engines and social media.'
-    },
-  ]
+      name: 'mainMenu',
+      type: 'mainMenu'
+    }
+  ],
 }

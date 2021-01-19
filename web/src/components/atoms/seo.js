@@ -5,33 +5,33 @@ import {StaticQuery, graphql} from 'gatsby'
 import {imageUrlFor} from '../../lib/image-url'
 import {buildImageObj} from '../../lib/helpers'
 
-function SEO ({description, lang, meta, keywords, title, image}) {
+function SEO ({description, title, image}) {
   return (
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription = description || (data.site && data.site.description) || ''
-        const siteTitle = (data.site && data.site.title) || ''
-        const siteAuthor = (data.site && data.site.author && data.site.author.name) || ''
-        const metaImage = (image && image.asset) ? imageUrlFor(buildImageObj(image)).width(1200).url() : ''
+        const { fallback: { fallbackSEO: fb = {}} = {}} = data
+        const { ogTitle: fallbackTitle, ogDescription: fallbackDescription, ogImage: fallbackImage } = fb
+        const metaImage = (image && image.asset) ? imageUrlFor(buildImageObj(image)).width(1200).url() : null
+        const fbImage = (fallbackImage && fallbackImage.asset) ? imageUrlFor(buildImageObj(fallbackImage)).width(1200).url() : null
 
         return (
           <Helmet
-            htmlAttributes={{lang}}
-            title={title}
-            titleTemplate={title === siteTitle ? '%s' : `%s | ${siteTitle}`}
+            htmlAttributes={{lang: 'sv'}}
+            title={`${title || fallbackTitle} - Aha Digital`}
+            titleTemplate={`${title || fallbackTitle} - Aha Digital`}
             meta={[
               {
                 name: 'description',
-                content: metaDescription
+                content: description || fallbackDescription
               },
               {
                 property: 'og:title',
-                content: title
+                content: `${title || fallbackTitle} - Aha Digital`
               },
               {
                 property: 'og:description',
-                content: metaDescription
+                content: description || fallbackDescription
               },
               {
                 property: 'og:type',
@@ -39,34 +39,9 @@ function SEO ({description, lang, meta, keywords, title, image}) {
               },
               {
                 property: 'og:image',
-                content: metaImage
+                content: metaImage || fbImage
               },
-              {
-                name: 'twitter:card',
-                content: 'summary'
-              },
-              {
-                name: 'twitter:creator',
-                content: siteAuthor
-              },
-              {
-                name: 'twitter:title',
-                content: title
-              },
-              {
-                name: 'twitter:description',
-                content: metaDescription
-              }
-            ]
-              .concat(
-                keywords && keywords.length > 0
-                  ? {
-                    name: 'keywords',
-                    content: keywords.join(', ')
-                  }
-                  : []
-              )
-              .concat(meta)}
+            ]}
           />
         )
       }}
@@ -75,29 +50,28 @@ function SEO ({description, lang, meta, keywords, title, image}) {
 }
 
 SEO.defaultProps = {
-  lang: 'en',
-  meta: [],
-  keywords: []
+  description: null,
+  title: null,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
+  title: PropTypes.string
 }
 
 export default SEO
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
-    site: sanitySiteSettings(_id: {eq: "siteSettings"}) {
-      title
-      description
-      keywords
-      author {
-        name
+    fallback: sanitySiteSettings {
+      fallbackSEO {
+        ogDescription
+        ogTitle
+        ogImage {
+          asset {
+            _id
+          }
+        }
       }
     }
   }

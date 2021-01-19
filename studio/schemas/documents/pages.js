@@ -1,14 +1,13 @@
 export default {
-  name: 'services',
+  name: 'pages',
   type: 'document',
-  title: 'Tjänster',
-  __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
+  title: 'Sidor',
   fields: [
     {
       name: 'title',
       type: 'string',
       title: 'Title',
-      description: 'Titles should be catchy, descriptive, and not too long'
+      description: 'Title should be catchy, descriptive, and not too long'
     },
     {
       name: 'intro',
@@ -20,10 +19,8 @@ export default {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
-      description: 'Some frontends will require a slug to be set to be able to show the post',
       options: {
         source: 'title',
-        maxLength: 96
       }
     },
     {
@@ -32,9 +29,15 @@ export default {
       title: 'Main image'
     },
     {
-      name: 'body',
-      type: 'bodyPortableText',
-      title: 'Body'
+      name: 'seo',
+      type: 'seo'
     }
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'mainImage',
+      slug: 'slug'
+    }
+  }
 }
