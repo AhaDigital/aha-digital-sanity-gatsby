@@ -84,7 +84,6 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
-  console.log('SITE', site)
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
       .filter(filterOutDocsWithoutSlugs)
@@ -96,14 +95,9 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-
+  const pageSEO = { ogTitle: 'YOLO', ogDescription: 'hej'}
   return (
-    <App>
-      <SEO
-        title=""
-        description=""
-        keywords=""
-      />
+    <App pageSEO={pageSEO}>
       /* hide this */
       <h1>Welcome to ...</h1>
     </App>

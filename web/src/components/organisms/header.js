@@ -1,8 +1,9 @@
-import { Link } from 'gatsby'
 import React from 'react'
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 import Icon from '../atoms/icon'
 
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
+const Header = ({menu, onHideNav, onShowNav, showNav, siteTitle}) => (
   <div>
     <Link to='/'>{siteTitle}</Link>
 
@@ -12,12 +13,27 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
 
     <nav>
       <ul>
-        <li>
-          <Link to='/archive/'>Archive</Link>
-        </li>
+        {
+          menu.map(item => {
+            const { page: { title = null, slug: { current: linkTo = null }} } = item
+            return linkTo && title && (
+              <li>
+                <Link to={`/${linkTo}/`}>{title}</Link>
+              </li>
+            )
+          })
+        }
       </ul>
     </nav>
   </div>
 )
 
 export default Header
+
+Header.defaultProps = {
+  menu: {},
+}
+/*
+Header.propTypes = {
+  menu: PropTypes.shape({})
+}*/
