@@ -7,10 +7,16 @@ export default {
       title: 'Blocktyp',
       name: 'contentBlockType',
       type: 'array',
-      of:[{
-        name: 'textBlock',
-        type: 'textBlock'
-      }]
+      of:[
+        {
+          name: 'textBlock',
+          type: 'textBlock'
+        },
+        {
+          name: 'textImageBlock',
+          type: 'textImageBlock'
+        }
+      ]
     }
   ]
 }
