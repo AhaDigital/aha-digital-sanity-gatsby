@@ -14,6 +14,8 @@ import mainImage from './objects/mainImage'
 import seo from './objects/seo'
 import mainMenu from './objects/mainMenu'
 import mainMenuPage from './objects/mainMenuPage'
+import content from './objects/content'
+import textBlock from './objects/textBlock'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -31,6 +33,8 @@ export default createSchema({
     seo,
     mainMenu,
     mainMenuPage,
+    content,
+    textBlock,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

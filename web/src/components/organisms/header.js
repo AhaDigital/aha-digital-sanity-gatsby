@@ -15,9 +15,10 @@ const Header = ({menu, onHideNav, onShowNav, showNav, siteTitle}) => (
       <ul>
         {
           menu.map(item => {
-            const { page: { title = null, slug: { current: linkTo = null }} } = item
+            const { page: { title = null, id, slug: { current: linkTo = null }} } = item
+
             return linkTo && title && (
-              <li>
+              <li key={id}>
                 <Link to={`/${linkTo}/`}>{title}</Link>
               </li>
             )

@@ -29,8 +29,14 @@ export default {
       title: 'Main image'
     },
     {
+      title: 'SEO',
       name: 'seo',
       type: 'seo'
+    },
+    {
+      title: 'Innehåll',
+      name: 'content',
+      type: 'content',
     }
   ],
   preview: {

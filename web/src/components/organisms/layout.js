@@ -24,6 +24,7 @@ const menuQuery = graphql`
       mainMenu {
         mainMenuPages {
           page {
+            id
             title
             slug {
               current
