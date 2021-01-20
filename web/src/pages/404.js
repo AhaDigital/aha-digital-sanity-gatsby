@@ -1,14 +1,13 @@
 import React from 'react'
+import App from '../app'
 
-import Layout from '../components/organisms/layout'
-import SEO from '../components/atoms/seo'
+const pageSEO = { ogTitle: '404: Not found', ogDescription: 'hej'}
 
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title='404: Not found' />
+  <App pageSEO={pageSEO}>
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+  </App>
 )
 
 export default NotFoundPage
