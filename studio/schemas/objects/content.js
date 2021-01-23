@@ -9,13 +9,20 @@ export default {
       type: 'array',
       of:[
         {
+          title: 'Textblock',
           name: 'textBlock',
           type: 'textBlock'
         },
         {
+          title: 'Text och bildblock',
           name: 'textImageBlock',
           type: 'textImageBlock'
-        }
+        },
+        {
+          title: 'Lista',
+          name: 'listBlock',
+          type: 'listBlock'
+        },
       ]
     }
   ]

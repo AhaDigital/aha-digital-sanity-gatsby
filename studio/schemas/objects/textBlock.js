@@ -14,5 +14,15 @@ export default {
       name: 'bodyPortableText',
       type: 'bodyPortableText'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'bodyPortableText',
+    },
+    prepare() {
+      return {
+        title: 'TextBlock',
+      }
+    }
+  }
 }

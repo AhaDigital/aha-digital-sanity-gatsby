@@ -19,5 +19,15 @@ export default {
       name: 'mainImage',
       type: 'mainImage'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'bodyPortableText',
+    },
+    prepare() {
+      return {
+        title: 'Text och bild',
+      }
+    }
+  }
 }
