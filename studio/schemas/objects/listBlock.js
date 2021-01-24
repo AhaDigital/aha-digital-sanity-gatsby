@@ -4,6 +4,11 @@ export default {
   title: 'Lista',
   fields: [
     {
+      title: 'Titel',
+      name: 'listBlockTitle',
+      type: 'string',
+    },
+    {
       title: 'Listrad',
       name: 'listBlockList',
       type: 'array',
