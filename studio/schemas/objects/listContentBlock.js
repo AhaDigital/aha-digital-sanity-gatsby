@@ -1,13 +1,13 @@
 export default {
-  name: 'textImageBlock',
+  name: 'listContentBlock',
   type: 'object',
-  title: 'Text och bild',
+  title: 'Text och lista',
   fields: [
     {
-      title: 'Bild till vänster',
-      name: 'blockImageDirectionLeft',
+      title: 'lista till vänster',
+      name: 'listContentDirectionLeft',
       type: 'boolean',
-      description: 'Bild till höger om inga val görs.',
+      description: 'lista till höger om inga val görs.',
     },
     {
       title: 'Textblock',
@@ -15,9 +15,9 @@ export default {
       type: 'bodyPortableText'
     },
     {
-      title: 'Bild',
-      name: 'mainImage',
-      type: 'mainImage'
+      title: 'Lista',
+      name: 'listBlock',
+      type: 'listBlock'
     }
   ],
   preview: {
@@ -26,7 +26,7 @@ export default {
     },
     prepare() {
       return {
-        title: 'Text och bild',
+        title: 'Text och lista',
       }
     }
   }

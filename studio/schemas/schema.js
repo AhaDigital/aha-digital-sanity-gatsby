@@ -19,6 +19,7 @@ import textBlock from './objects/textBlock'
 import textImageBlock from './objects/textImageBlock'
 import listBlock from './objects/listBlock'
 import listBlockItem from './objects/listBlockItem'
+import listContentBlock from './objects/listContentBlock'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -41,6 +42,7 @@ export default createSchema({
     textImageBlock,
     listBlock,
     listBlockItem,
+    listContentBlock,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
   ])

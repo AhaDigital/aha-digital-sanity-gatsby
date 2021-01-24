@@ -23,6 +23,11 @@ export default {
           name: 'listBlock',
           type: 'listBlock'
         },
+        {
+          title: 'Text och lista',
+          name: 'listContentBlock',
+          type: 'listContentBlock'
+        },
       ]
     }
   ]
