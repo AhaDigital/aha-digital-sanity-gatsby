@@ -47,6 +47,14 @@ export default {
     {
       type: 'mainImage',
       options: {hotspot: true}
+    },
+    {
+      name: 'bodyPortableRollingText',
+      type: 'bodyPortableRollingText',
+    },
+    {
+      name: 'bodyPortableFeaturedLink',
+      type: 'bodyPortableFeaturedLink',
     }
   ]
 }

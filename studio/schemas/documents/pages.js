@@ -7,13 +7,13 @@ export default {
       name: 'title',
       type: 'string',
       title: 'Title',
-      description: 'Title should be catchy, descriptive, and not too long'
+      description: 'Title should be catchy, descriptive, and not too long',
     },
     {
       name: 'intro',
       type: 'string',
       title: 'Intro',
-      description: 'Short description as h2 and open graph description.'
+      description: 'Short description as h2 and open graph description.',
     },
     {
       name: 'slug',
@@ -31,19 +31,24 @@ export default {
     {
       title: 'SEO',
       name: 'seo',
-      type: 'seo'
+      type: 'seo',
     },
     {
       title: 'Innehåll',
       name: 'content',
       type: 'content',
+    },
+    {
+      title: 'Säljpitch',
+      name: 'salesPitchBlock',
+      type: 'salesPitch',
     }
   ],
   preview: {
     select: {
       title: 'title',
       media: 'mainImage',
-      slug: 'slug'
+      slug: 'slug',
     }
   }
 }

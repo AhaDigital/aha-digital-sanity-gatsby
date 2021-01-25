@@ -23,6 +23,12 @@ export default {
       name: 'columnBlockImage',
       type: 'simpleImage',
     },
+    {
+      title: 'Länk',
+      name: 'columnBlockLink',
+      type: 'url',
+      relativeOnly: true
+    },
   ],
   preview: {
     select: {
