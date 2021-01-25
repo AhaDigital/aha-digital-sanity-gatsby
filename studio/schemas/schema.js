@@ -11,6 +11,7 @@ import siteSettings from './documents/siteSettings'
 // Object types
 import bodyPortableText from './objects/bodyPortableText'
 import mainImage from './objects/mainImage'
+import simpleImage from './objects/simpleImage'
 import seo from './objects/seo'
 import mainMenu from './objects/mainMenu'
 import mainMenuPage from './objects/mainMenuPage'
@@ -20,6 +21,9 @@ import textImageBlock from './objects/textImageBlock'
 import listBlock from './objects/listBlock'
 import listBlockItem from './objects/listBlockItem'
 import listContentBlock from './objects/listContentBlock'
+import columnsBlock from './objects/columnsBlock'
+import columnsBlockItem from './objects/columnsBlockItem'
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -33,6 +37,7 @@ export default createSchema({
     siteSettings,
     pages,
     mainImage,
+    simpleImage,
     bodyPortableText,
     seo,
     mainMenu,
@@ -43,6 +48,8 @@ export default createSchema({
     listBlock,
     listBlockItem,
     listContentBlock,
+    columnsBlock,
+    columnsBlockItem,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
   ])

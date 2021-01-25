@@ -28,6 +28,11 @@ export default {
           name: 'listContentBlock',
           type: 'listContentBlock'
         },
+        {
+          title: 'Kolumner',
+          name: 'columnsBlock',
+          type: 'columnsBlock'
+        },
       ]
     }
   ]
