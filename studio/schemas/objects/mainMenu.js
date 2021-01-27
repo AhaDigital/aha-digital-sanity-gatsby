@@ -1,13 +1,14 @@
 export default {
   name: 'mainMenu',
   type: 'object',
-  title: 'Main menu',
+  title: 'Meny',
   options: {
     collapsible: true,
     collapsed: true,
   },
   fields: [
     {
+      title: 'Meny',
       name: 'mainMenuPages',
       type: 'array',
       of:[{

@@ -1,7 +1,7 @@
 export default {
   name: 'siteSettings',
   type: 'document',
-  title: 'Site Settings',
+  title: 'Inställningar',
   __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
   fields: [
     {
@@ -13,4 +13,11 @@ export default {
       type: 'mainMenu'
     }
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Inställningar',
+      }
+    }
+  }
 }

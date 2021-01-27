@@ -9,5 +9,10 @@ export default {
       type: 'reference',
       to: [{type: 'pages'}]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'page.title',
+    }
+  }
 }
