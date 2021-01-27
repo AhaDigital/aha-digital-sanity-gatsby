@@ -10,30 +10,29 @@ import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import SEO from '../components/atoms/seo'
 import App from '../app'
 
-/*fragment SanityImage on SanityMainImage {
- crop {
- _key
- _type
- top
- bottom
- left
- right
- }
- hotspot {
- _key
- _type
- x
- y
- height
- width
- }
- asset {
- _id
- }
- }*/
 
 export const query = graphql`
-
+  fragment SanityImage on SanityMainImage {
+    crop {
+      _key
+      _type
+      top
+      bottom
+      left
+      right
+    }
+    hotspot {
+      _key
+      _type
+      x
+      y
+      height
+      width
+    }
+    asset {
+      _id
+    }
+  }
   query IndexPageQuery {
     site: sanitySiteSettings {
       mainMenu {
@@ -45,6 +44,25 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    page: sanityPages(_id: {eq: "a78c99c2-4c15-4a29-9bf8-0d46f834422d"}) {
+      title
+      intro
+      _rawContent(resolveReferences: {maxDepth: 10})
+      _rawSalesPitchBlock(resolveReferences: {maxDepth: 10})
+      seo {
+        ogDescription
+        ogTitle
+        ogImage {
+          asset {
+            _id
+          }
+        }
+      }
+      mainImage {
+        ...SanityImage
+        alt
       }
     }
   }
@@ -84,6 +102,8 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site
+  const page = (data || {}).page
+  console.log('PAGE', page)
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
       .filter(filterOutDocsWithoutSlugs)
