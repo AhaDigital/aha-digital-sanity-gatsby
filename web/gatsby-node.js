@@ -1,23 +1,19 @@
-// const {isFuture} = require('date-fns')
 /**
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-/* const {format} = require('date-fns')
-
-async function createBlogPostPages (graphql, actions) {
+async function createLandingPages (graphql, actions) {
   const {createPage} = actions
   const result = await graphql(`
     {
-      allSanityPost(
-        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      allSanityPages(
+        filter: { slug: { current: { ne: null } }, _id: {ne: "a78c99c2-4c15-4a29-9bf8-0d46f834422d"}}
       ) {
         edges {
           node {
             id
-            publishedAt
             slug {
               current
             }
@@ -29,23 +25,21 @@ async function createBlogPostPages (graphql, actions) {
 
   if (result.errors) throw result.errors
 
-  const postEdges = (result.data.allSanityPost || {}).edges || []
+  const pageEdges = (result.data.allSanityPages || {}).edges || []
 
-  postEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
-    .forEach((edge, index) => {
-      const {id, slug = {}, publishedAt} = edge.node
-      const dateSegment = format(publishedAt, 'YYYY/MM')
-      const path = `/blog/${dateSegment}/${slug.current}/`
+  pageEdges
+    .forEach((edge) => {
+      const {id, slug = {}} = edge.node
+      const path = `/${slug.current}/`
 
       createPage({
         path,
-        component: require.resolve('./src/templates/blog-post.js'),
+        component: require.resolve('./src/pages/landingPage.js'),
         context: {id}
       })
     })
 }
 
 exports.createPages = async ({graphql, actions}) => {
-  await createBlogPostPages(graphql, actions)
-} */
+  await createLandingPages(graphql, actions)
+}

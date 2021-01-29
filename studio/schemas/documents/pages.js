@@ -7,13 +7,19 @@ export default {
       name: 'title',
       type: 'string',
       title: 'Title',
-      description: 'Title should be catchy, descriptive, and not too long',
+      description: 'Titel för menyn',
+    },
+    {
+      name: 'pageH1',
+      type: 'string',
+      title: 'H1',
+      description: 'Catchy men inte för lång',
     },
     {
       name: 'intro',
       type: 'string',
       title: 'Intro',
-      description: 'Short description as h2 and open graph description.',
+      description: 'H2 och för open graph description.',
     },
     {
       name: 'slug',
@@ -26,7 +32,7 @@ export default {
     {
       name: 'mainImage',
       type: 'mainImage',
-      title: 'Main image'
+      title: 'Huvudbild'
     },
     {
       title: 'SEO',

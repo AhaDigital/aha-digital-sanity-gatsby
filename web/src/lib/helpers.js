@@ -21,15 +21,15 @@ export function getBlogUrl (publishedAt, slug) {
   return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`
 }
 
-export function buildImageObj (source = {asset: {}}) {
-  const imageObj = {
-    asset: {_ref: source.asset._ref || source.asset._id}
-  }
-
-  if (source.crop) imageObj.crop = source.crop
-  if (source.hotspot) imageObj.hotspot = source.hotspot
-
-  return imageObj
+export function buildImageObj(source) {
+  return {
+    asset: {
+      _ref: source.asset && (source.asset._ref || source.asset._id)
+    },
+    // Doesn't add these props if they are empty
+    ...(source.crop && { crop: source.crop }),
+    ...(source.hotspot && { hotspot: source.hotspot })
+  };
 }
 
 export function toPlainText (blocks) {

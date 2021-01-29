@@ -1,5 +1,6 @@
 import React from 'react'
 import {graphql} from 'gatsby'
+import get from 'lodash.get'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
@@ -7,7 +8,7 @@ import {
 } from '../lib/helpers'
 import Grid from '../components/molecules/Grid'
 import GraphQLErrorList from '../components/atoms/graphql-error-list'
-import SEO from '../components/atoms/seo'
+import Content from '../components/organisms/content'
 import App from '../app'
 
 
@@ -48,6 +49,7 @@ export const query = graphql`
     }
     page: sanityPages(_id: {eq: "a78c99c2-4c15-4a29-9bf8-0d46f834422d"}) {
       title
+      pageH1
       intro
       _rawContent(resolveReferences: {maxDepth: 10})
       _rawSalesPitchBlock(resolveReferences: {maxDepth: 10})
@@ -67,29 +69,7 @@ export const query = graphql`
     }
   }
 `
-/*
-* posts: allSanityPost(
- limit: 6
- sort: { fields: [publishedAt], order: DESC }
- filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
- ) {
- edges {
- node {
- id
- publishedAt
- mainImage {
- ...SanityImage
- alt
- }
- title
- _rawExcerpt
- slug {
- current
- }
- }
- }
- }
-* */
+
 const IndexPage = props => {
   const {data, errors} = props
 
@@ -103,12 +83,13 @@ const IndexPage = props => {
 
   const site = (data || {}).site
   const page = (data || {}).page
+  const contentSections = get(page, '_rawContent.contentBlockType', [])
   console.log('PAGE', page)
-  const postNodes = (data || {}).posts
+  /*const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
       .filter(filterOutDocsWithoutSlugs)
       .filter(filterOutDocsPublishedInTheFuture)
-    : []
+    : []*/
 
   if (!site) {
     throw new Error(
@@ -120,6 +101,7 @@ const IndexPage = props => {
     <App pageSEO={pageSEO}>
       /* hide this */
       <h1>Welcome to ...</h1>
+      <Content sections={contentSections} />
     </App>
   )
 }

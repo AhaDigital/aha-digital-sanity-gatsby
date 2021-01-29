@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
+import get from 'lodash.get'
 import Icon from '../atoms/icon'
 
 const Header = ({menu, onHideNav, onShowNav, showNav, siteTitle}) => (
@@ -15,11 +15,11 @@ const Header = ({menu, onHideNav, onShowNav, showNav, siteTitle}) => (
       <ul>
         {
           menu.map(item => {
-            const { page: { title = null, id, slug: { current: linkTo = null }} } = item
-
-            return linkTo && title && (
+            const { page: { title = null, id, slug = {}}} = item
+            const link = get(slug, 'current')
+            return link && title && (
               <li key={id}>
-                <Link to={`/${linkTo}/`}>{title}</Link>
+                <Link to={`/${link}/`}>{title}</Link>
               </li>
             )
           })
@@ -34,7 +34,3 @@ export default Header
 Header.defaultProps = {
   menu: {},
 }
-/*
-Header.propTypes = {
-  menu: PropTypes.shape({})
-}*/
