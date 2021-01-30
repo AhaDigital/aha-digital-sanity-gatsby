@@ -1,12 +1,12 @@
 import React from 'react'
 import {graphql} from 'gatsby'
+import get from 'lodash.get'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
 } from '../lib/helpers'
-import Grid from '../components/molecules/Grid'
 import GraphQLErrorList from '../components/atoms/graphql-error-list'
-import SEO from '../components/atoms/seo'
+import Content from '../components/organisms/content'
 import App from '../app'
 
 export const query = graphql`
@@ -32,10 +32,8 @@ export const query = graphql`
         ...SanityImage
         alt
       }
-      content {
-        _rawContentBlockType(resolveReferences: {maxDepth: 10})
-      }
-      _rawSalesPitchBlock(resolveReferences: {maxDepth: 5})
+      _rawContent(resolveReferences: {maxDepth: 10})
+      _rawSalesPitchBlock(resolveReferences: {maxDepth: 10})
     }
   }
 `
@@ -43,7 +41,11 @@ export const query = graphql`
 const LandingPage = props => {
   const {data, errors} = props
 
+  const page = (data || {}).page
+
   console.log('DATA', data)
+  const contentSections = get(page, '_rawContent.contentBlockType', [])
+
   if (errors) {
     return (
       <App>
@@ -67,6 +69,7 @@ const LandingPage = props => {
     <App pageSEO={pageSEO}>
       /* hide this */
       <h1>Welcome to landingpage...</h1>
+      <Content sections={contentSections} />
     </App>
   )
 }
