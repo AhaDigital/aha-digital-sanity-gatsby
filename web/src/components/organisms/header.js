@@ -19,7 +19,7 @@ const Header = ({menu, onHideNav, onShowNav, showNav, siteTitle}) => (
             const link = get(slug, 'current')
             return link && title && (
               <li key={id}>
-                <Link to={`/${link}/`}>{title}</Link>
+                <Link to={`/${link}/`} activeStyle={{ color: "red" }}>{title}</Link>
               </li>
             )
           })

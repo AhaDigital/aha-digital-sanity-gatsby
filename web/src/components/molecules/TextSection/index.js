@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from '../Grid'
 import PortableText from '../../atoms/portableText'
 
-const Text = ({ bodyPortableText }) => {
+const TextSection = ({ bodyPortableText }) => {
   return (
     <Grid tagName="section" maxWidth="default" withPadding>
       <Grid.Unit withGutter size={{sm: 12, md: 10}}>
@@ -12,4 +12,4 @@ const Text = ({ bodyPortableText }) => {
   )
 }
 
-export default Text
+export default TextSection

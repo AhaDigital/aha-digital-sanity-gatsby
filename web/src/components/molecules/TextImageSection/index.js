@@ -3,7 +3,7 @@ import Grid from '../Grid'
 import PortableText from '../../atoms/portableText'
 import Figure from '../../atoms/Figure'
 
-const TextImage = ({ blockImageDirectionLeft, bodyPortableText, mainImage }) => {
+const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage }) => {
   return (
     <Grid tagName="section" maxWidth="default" withPadding>
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
@@ -24,4 +24,4 @@ const TextImage = ({ blockImageDirectionLeft, bodyPortableText, mainImage }) => 
   )
 }
 
-export default TextImage
+export default TextImageSection

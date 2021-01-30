@@ -3,8 +3,8 @@ import { imageUrlFor } from '../../lib/image-url';
 import {buildImageObj} from '../../lib/helpers';
 
 export default ({node}) => {
-
-  // if (!node || !asset || !asset._id) { return null }
+  const {asset} = node
+  if (!node || !asset || !asset._id) { return null }
   return (
     <figure>
       <picture>
