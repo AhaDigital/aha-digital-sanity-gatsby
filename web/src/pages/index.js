@@ -49,7 +49,9 @@ export const query = graphql`
     }
     page: sanityPages(_id: {eq: "a78c99c2-4c15-4a29-9bf8-0d46f834422d"}) {
       title
-      pageH1
+      pageH1 {
+        _rawInlineTextList(resolveReferences: {maxDepth: 10})
+      }
       intro
       _rawContent(resolveReferences: {maxDepth: 10})
       _rawSalesPitchBlock(resolveReferences: {maxDepth: 10})

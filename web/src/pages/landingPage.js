@@ -14,7 +14,9 @@ export const query = graphql`
     page: sanityPages(id: {eq: $id}) {
       id
       title
-      pageH1
+      pageH1 {
+        _rawInlineTextList(resolveReferences: {maxDepth: 10})
+      }
       intro
       slug {
         current
