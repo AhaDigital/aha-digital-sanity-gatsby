@@ -27,6 +27,8 @@ import listContentBlock from './objects/listContentBlock'
 import columnsBlock from './objects/columnsBlock'
 import columnsBlockItem from './objects/columnsBlockItem'
 import salesPitch from './objects/salesPitch'
+import inlineText from './objects/inlineText'
+import inlineTextListItem from './objects/inlineTextListItem'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -58,6 +60,8 @@ export default createSchema({
     columnsBlock,
     columnsBlockItem,
     salesPitch,
+    inlineText,
+    inlineTextListItem,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
   ])

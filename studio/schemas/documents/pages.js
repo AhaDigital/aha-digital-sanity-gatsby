@@ -11,7 +11,7 @@ export default {
     },
     {
       name: 'pageH1',
-      type: 'string',
+      type: 'inlineText',
       title: 'H1',
       description: 'Catchy men inte för lång',
     },
