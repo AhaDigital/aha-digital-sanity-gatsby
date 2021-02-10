@@ -4,10 +4,10 @@ import get from 'lodash.get'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-} from '../lib/helpers'
-import GraphQLErrorList from '../components/atoms/graphql-error-list'
-import Content from '../components/organisms/content'
-import App from '../app'
+} from './lib/helpers'
+import GraphQLErrorList from './components/atoms/graphql-error-list'
+import Content from './components/organisms/content'
+import App from './app'
 
 export const query = graphql`
   query LandingPageQuery($id: String!) {

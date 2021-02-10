@@ -34,7 +34,7 @@ async function createLandingPages (graphql, actions) {
 
       createPage({
         path,
-        component: require.resolve('./src/pages/landingPage.js'),
+        component: require.resolve('./src/dynamicLandingPage.js'),
         context: {id}
       })
     })
