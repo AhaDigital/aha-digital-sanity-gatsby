@@ -7,7 +7,7 @@ const Footer = ({ salesPitch }) => (
     <Grid tagName="section" maxWidth="default" withPadding>
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
         {
-          salesPitch.length > 0 && (
+          salesPitch && salesPitch.length > 0 && (
             <h3>
               {
                 salesPitch.map(part => <InlineTextScentance part={part} />)
