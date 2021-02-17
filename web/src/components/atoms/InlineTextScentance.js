@@ -2,7 +2,7 @@ import React from 'react'
 
 const InlineTextScentance = ({ part }) => {
   const { _type, _key, text, withLineBreak } = part
- console.log('PT',part)
+
   if(_type === 'inlineTextListItem') {
     return (
       <span key={_key}>{text}</span>

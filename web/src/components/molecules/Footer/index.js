@@ -10,7 +10,7 @@ const Footer = ({ salesPitch }) => (
           salesPitch && salesPitch.length > 0 && (
             <h3>
               {
-                salesPitch.map(part => <InlineTextScentance part={part} />)
+                salesPitch.map(part => <InlineTextScentance key={part._key} part={part} />)
               }
             </h3>
           )

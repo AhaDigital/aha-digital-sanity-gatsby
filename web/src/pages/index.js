@@ -143,7 +143,7 @@ const IndexPage = props => {
           pageH1.length > 0 && (
             <h1>
               {
-                pageH1.map(part => <InlineTextScentance part={part} />)
+                pageH1.map(part => <InlineTextScentance key={part._key} part={part} />)
               }
             </h1>
           )
