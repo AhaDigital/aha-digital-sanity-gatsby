@@ -50,10 +50,6 @@ export default {
       options: {hotspot: true}
     },
     {
-      name: 'bodyPortableRollingText',
-      type: 'bodyPortableRollingText',
-    },
-    {
       name: 'bodyPortableFeaturedLink',
       type: 'bodyPortableFeaturedLink',
     }

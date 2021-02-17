@@ -47,7 +47,7 @@ export default {
     {
       title: 'Säljpitch',
       name: 'salesPitchBlock',
-      type: 'salesPitch',
+      type: 'inlineText'
     }
   ],
   preview: {

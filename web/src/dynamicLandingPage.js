@@ -7,6 +7,7 @@ import {
 } from './lib/helpers'
 import GraphQLErrorList from './components/atoms/graphql-error-list'
 import Content from './components/organisms/content'
+import Footer from './components/molecules/Footer'
 import App from './app'
 
 export const query = graphql`
@@ -35,7 +36,24 @@ export const query = graphql`
         alt
       }
       _rawContent(resolveReferences: {maxDepth: 10})
-      _rawSalesPitchBlock(resolveReferences: {maxDepth: 10})
+      salesPitchBlock {
+        inlineTextList {
+          ... on SanityInlineTextListItem {
+            _key
+            _type
+            text
+            withLineBreak
+          }
+          ... on SanityBodyPortableRollingText {
+            _key
+            _type
+            bodyPortableRollingTextWords {
+              word
+              _key
+            }
+          }
+        }
+      }
     }
   }
 `
@@ -47,6 +65,7 @@ const LandingPage = props => {
 
   console.log('DATA', data)
   const contentSections = get(page, '_rawContent.contentBlockType', [])
+  const salesPitch = get(page, 'salesPitchBlock', [])
 
   if (errors) {
     return (
@@ -72,6 +91,7 @@ const LandingPage = props => {
       /* hide this */
       <h1>Welcome to landingpage...</h1>
       <Content sections={contentSections} />
+      <Footer salesPitch={salesPitch} />
     </App>
   )
 }

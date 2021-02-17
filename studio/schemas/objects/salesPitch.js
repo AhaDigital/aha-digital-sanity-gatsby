@@ -4,9 +4,9 @@ export default {
   title: 'Säljpitch',
   fields: [
     {
-      title: 'Textblock',
-      name: 'bodyPortableTextBlock',
-      type: 'bodyPortableText'
+      title: 'Säljpitch',
+      name: 'inlineText',
+      type: 'inlineText'
     }
   ]
 }

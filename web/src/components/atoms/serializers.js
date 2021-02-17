@@ -5,7 +5,7 @@ import FeaturedLink from './FeaturedLink'
 const serializers = {
   types: {
     mainImage: Figure,
-    bodyPortableFeaturedLink: FeaturedLink
+    bodyPortableFeaturedLink: FeaturedLink,
   }
 }
 

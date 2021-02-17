@@ -9,6 +9,8 @@ import {
 import Grid from '../components/molecules/Grid'
 import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import Content from '../components/organisms/content'
+import Footer from '../components/molecules/Footer'
+import InlineTextScentance from '../components/atoms/InlineTextScentance'
 import App from '../app'
 
 
@@ -50,11 +52,44 @@ export const query = graphql`
     page: sanityPages(_id: {eq: "a78c99c2-4c15-4a29-9bf8-0d46f834422d"}) {
       title
       pageH1 {
-        _rawInlineTextList(resolveReferences: {maxDepth: 10})
+        inlineTextList {
+          ... on SanityBodyPortableRollingText {
+            _key
+            _type
+            bodyPortableRollingTextWords {
+              word
+              _key
+            }
+          }
+          ... on SanityInlineTextListItem {
+            _key
+            _type
+            withDecorator
+            withLineBreak
+            text
+          }
+        }
       }
       intro
       _rawContent(resolveReferences: {maxDepth: 10})
-      _rawSalesPitchBlock(resolveReferences: {maxDepth: 10})
+      salesPitchBlock {
+        inlineTextList {
+          ... on SanityInlineTextListItem {
+            _key
+            _type
+            text
+            withLineBreak
+          }
+          ... on SanityBodyPortableRollingText {
+            _key
+            _type
+            bodyPortableRollingTextWords {
+              word
+              _key
+            }
+          }
+        }
+      }
       seo {
         ogDescription
         ogTitle
@@ -85,8 +120,10 @@ const IndexPage = props => {
 
   const site = (data || {}).site
   const page = (data || {}).page
+  const pageH1 = get(page, 'pageH1.inlineTextList', [])
   const contentSections = get(page, '_rawContent.contentBlockType', [])
-  console.log('PAGE', page)
+  const salesPitch = get(page, 'salesPitchBlock.inlineTextList', [])
+  console.log('PAGE', salesPitch)
   /*const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
       .filter(filterOutDocsWithoutSlugs)
@@ -102,8 +139,17 @@ const IndexPage = props => {
   return (
     <App pageSEO={pageSEO}>
       /* hide this */
-      <h1>Welcome to ...</h1>
+      {
+          pageH1.length > 0 && (
+            <h1>
+              {
+                pageH1.map(part => <InlineTextScentance part={part} />)
+              }
+            </h1>
+          )
+        }
       <Content sections={contentSections} />
+      <Footer salesPitch={salesPitch} />
     </App>
   )
 }

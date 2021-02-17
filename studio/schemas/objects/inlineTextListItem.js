@@ -14,6 +14,11 @@ export default {
       name: 'withDecorator',
       type: 'boolean',
     },
+    {
+      title: 'Visa på en ny rad.',
+      name: 'withLineBreak',
+      type: 'boolean',
+    },
   ],
   preview: {
     select: {

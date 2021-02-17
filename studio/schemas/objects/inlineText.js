@@ -10,6 +10,9 @@ export default {
       of:[{
         name: 'inlineTextListItem',
         type: 'inlineTextListItem'
+      }, {
+        name: 'bodyPortableRollingText',
+        type: 'bodyPortableRollingText',
       }]
     }
   ]
