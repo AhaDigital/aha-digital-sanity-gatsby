@@ -1,19 +1,10 @@
 import React from 'react'
 
-const strokeStyle = {vectorEffect: 'non-scaling-stroke'}
-
 const HamburgerIcon = () => (
-  <svg
-    viewBox='0 0 25 25'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-    preserveAspectRatio='xMidYMid'
-    width='1em'
-    height='1em'
-  >
-    <path d='M5 7.5H20' stroke='currentColor' style={strokeStyle} />
-    <path d='M5 12.5H20' stroke='currentColor' style={strokeStyle} />
-    <path d='M5 17.5H20' stroke='currentColor' style={strokeStyle} />
+  <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line y1="1.5" x2="20" y2="1.5" stroke="#565656" stroke-width="3"/>
+    <line y1="9.5" x2="20" y2="9.5" stroke="#565656" stroke-width="3"/>
+    <line y1="17.5" x2="20" y2="17.5" stroke="#565656" stroke-width="3"/>
   </svg>
 )
 
