@@ -64,8 +64,9 @@ const LandingPage = props => {
   const page = (data || {}).page
 
   console.log('DATA', data)
-  const contentSections = get(page, '_rawContent.contentBlockType', [])
-  const salesPitch = get(page, 'salesPitchBlock', [])
+  const contentSections = get(page, '_rawContent.contentBlockType', []) || []
+  const salesPitch = get(page, 'salesPitchBlock', []) || []
+  const pageSeo = get(page, 'seo', {}) || {}
 
   if (errors) {
     return (
@@ -85,9 +86,9 @@ const LandingPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }*/
-  const pageSEO = { ogTitle: 'YOLO', ogDescription: 'hej'}
+
   return (
-    <App pageSEO={pageSEO}>
+    <App pageSEO={pageSeo}>
       /* hide this */
       <h1>Welcome to landingpage...</h1>
       <Content sections={contentSections} />

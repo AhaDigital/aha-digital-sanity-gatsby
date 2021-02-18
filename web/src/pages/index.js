@@ -120,25 +120,19 @@ const IndexPage = props => {
 
   const site = (data || {}).site
   const page = (data || {}).page
-  const pageH1 = get(page, 'pageH1.inlineTextList', [])
-  const contentSections = get(page, '_rawContent.contentBlockType', [])
-  const salesPitch = get(page, 'salesPitchBlock.inlineTextList', [])
-  console.log('PAGE', salesPitch)
-  /*const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
-    : []*/
+  const pageH1 = get(page, 'pageH1.inlineTextList', []) || []
+  const contentSections = get(page, '_rawContent.contentBlockType', []) || []
+  const salesPitch = get(page, 'salesPitchBlock.inlineTextList', []) || []
+  const pageSeo = get(page, 'seo', {}) || {}
 
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-  const pageSEO = { ogTitle: 'YOLO', ogDescription: 'hej'}
+
   return (
-    <App pageSEO={pageSEO}>
-      /* hide this */
+    <App pageSEO={pageSeo}>
       {
           pageH1.length > 0 && (
             <h1>
