@@ -85,7 +85,7 @@ Grid.propTypes = {
   flexWrap: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   children: PropTypes.any.isRequired,
   className: PropTypes.string,
-  marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl'])]),
+  marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl'])]),
 }
 
 Grid.defaultProps = {
@@ -115,7 +115,7 @@ Unit.propTypes = {
   children: PropTypes.any.isRequired,
   alignText: PropTypes.string,
   className: PropTypes.string,
-  marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl'])]),
+  marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl'])]),
 }
 
 Unit.defaultProps = {

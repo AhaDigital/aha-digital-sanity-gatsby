@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import theme from '../../themes'
 
 const unitWidth = (size) => {
   switch (size) {
@@ -35,20 +34,20 @@ const unitWidth = (size) => {
 
 const unitSizeMedia = css`
   @media (min-width: 0px) {
-    width: ${(props) => unitWidth(props.size.sm)};
+    width: ${({size}) => unitWidth(size.sm)};
   }
-  @media (min-width: ${(props) => props.theme.breakpoints.md}px) {
-    width: ${(props) =>
-  props.size.md ? unitWidth(props.size.md) : unitWidth(props.size.md)};
+  @media (min-width: ${({theme}) => theme.breakpoints.md}px) {
+    width: ${({size}) =>
+  size.md ? unitWidth(size.md) : unitWidth(size.md)};
   }
-  @media (min-width: ${(props) => props.theme.breakpoints.lg}px) {
-    width: ${(props) =>
+  @media (min-width: ${({theme}) => theme.breakpoints.lg}px) {
+    width: ${({size}) =>
   // eslint-disable-next-line no-nested-ternary
-  props.size.lg
-    ? unitWidth(props.size.lg)
-    : props.size.md
-    ? unitWidth(props.size.md)
-    : unitWidth(props.size.sm)};
+  size.lg
+    ? unitWidth(size.lg)
+    : size.md
+    ? unitWidth(size.md)
+    : unitWidth(size.sm)};
   }
 `
 
@@ -56,29 +55,22 @@ const unitSizeMedia = css`
 const StyledGrid = styled.div`
   flex-wrap: ${({ flexWrap }) => flexWrap || 'wrap'};
   box-sizing: border-box;
-  ${(props) =>
-!props.maxWidth &&
-css`
+  ${({maxWidth, withPadding, marginTop, theme}) =>
+    !maxWidth && css`
       display: flex;
-      ${props.withPadding &&
-css`
-        padding: 0 ${props.theme.sizes.containerPadding};
+      ${withPadding && css`
+        padding: 0 ${theme.grid.containerPadding};
       `}
-      ${props.marginTop &&
-css`
-          margin-top: ${({ theme }) => theme.verticalSpacing[props.marginTop]};
-        `}
+      ${marginTop && css`
+        margin-top: ${theme.spacings[marginTop]};
+      `}
     `}
-  ${(props) =>
-props.justify &&
-css`
-      justify-content: ${props.justify};
-    `}
-  ${(props) =>
-props.align &&
-css`
-      align-items: ${props.align};
-    `}
+  ${({justify}) => justify && css`
+    justify-content: ${justify};
+  `}
+  ${({align}) => align && css`
+    align-items: ${align};
+  `}
 `
 
 // Grid inner page wrapper for centered grid content.
@@ -89,42 +81,33 @@ const StyledPageWrapper = styled.div`
 
   max-width: ${({ theme, maxWidth }) => {
   if (maxWidth === 'default') {
-    return theme.sizes.maxWidth
+    return theme.grid.maxWidth
   }
   if (maxWidth === 'large') {
-    return theme.sizes.maxWidthLarge
+    return theme.grid.maxWidthLarge
   }
   if (maxWidth === 'small') {
-    return theme.sizes.maxWidthSmall
+    return theme.grid.maxWidthSmall
   }
   return 'auto'
 }};
   
   ${({ withPadding, theme }) =>
-withPadding &&
-css`
-      padding: 0 ${theme.sizes.containerPadding};
+    withPadding && css`
+      padding: 0 ${theme.grid.containerPadding};
     `}
-  ${({ justify }) =>
-justify &&
-css`
-      justify-content: ${justify};
-    `}
-  ${({ align }) =>
-align &&
-css`
-      align-items: ${align};
-    `}
-  ${({ flexWrap }) =>
-flexWrap &&
-css`
-      flex-wrap: ${flexWrap};
-    `};
-  ${({ marginTop, theme }) =>
-marginTop &&
-css`
-      margin-top: ${theme.verticalSpacing[marginTop]};
-    `};
+  ${({ justify }) => justify && css`
+    justify-content: ${justify};
+  `}
+  ${({ align }) => align && css`
+    align-items: ${align};
+  `}
+  ${({ flexWrap }) => flexWrap && css`
+    flex-wrap: ${flexWrap};
+  `};
+  ${({ marginTop, theme }) => marginTop && css`
+    margin-top: ${theme.spacings[marginTop]};
+  `};
   
 `
 
@@ -133,35 +116,25 @@ css`
 // or object {sm: number, md: number: lg: number}
 const StyledGridUnit = styled.div`
   box-sizing: border-box;
-  ${({ marginTop, theme }) =>
-marginTop &&
-css`
-      margin-top: ${theme.verticalSpacing[marginTop]};
-    `};
-  ${(props) =>
-props.withGutter &&
-css`
-      padding: 0 ${props.theme.sizes.columnGutter};
-    `}
+  ${({ marginTop, theme }) => marginTop && css`
+    margin-top: ${theme.spacings[marginTop]};
+  `};
+  ${({withGutter, theme}) => withGutter && css`
+    padding: 0 ${theme.grid.columnGutter};
+  `}
 
-  ${(props) =>
-typeof props.size === 'number' && `width: ${unitWidth(props.size)};`}
+  ${({size}) => typeof size === 'number' && `width: ${unitWidth(size)};`}
 
-  ${(props) =>
-props.alignText &&
-props.alignText !== '' &&
-css`
-      text-align: ${props.alignText};
-    `}
+  ${({alignText}) => alignText && alignText !== '' && css`
+    text-align: ${alignText};
+  `}
 
 
-  ${(props) => props.size && typeof props.size === 'object' && unitSizeMedia}
+  ${({size}) => size && typeof size === 'object' && unitSizeMedia}
 
-  ${(props) =>
-props.flexGrow &&
-css`
-      flex-grow: ${props.flexGrow};
-    `}
+  ${({flexGrow}) => flexGrow && css`
+    flex-grow: ${flexGrow};
+  `}
 `
 
 StyledGrid.PageWrapper = StyledPageWrapper
