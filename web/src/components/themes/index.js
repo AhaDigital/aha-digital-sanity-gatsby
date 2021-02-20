@@ -38,13 +38,15 @@ theme.palette = {
   dark: `rgb(${ahaDark})`,
   darker: `rgb(${ahaDarker})`,
   pink: `rgb(${ahaPink})`,
-  pinkAlpha: `rgba(${ahaPink}, 0.1)`,
   blue: `rgb(${ahaBlue})`,
-  blueAlpha: `rgba(${ahaBlue}, 0.1)`,
   yellow: `rgb(${ahaYellow})`,
-  yellowAlpha: `rgba(${ahaYellow}, 0.1)`,
   green: `rgb(${ahaGreen})`,
-  greenAlpha: `rgba(${ahaGreen}, 0.1)`,
+  rawRgb: {
+    pink: ahaPink,
+    blue: ahaBlue,
+    yellow: ahaYellow,
+    green: ahaGreen,
+  }
 }
 
 theme.headings = {

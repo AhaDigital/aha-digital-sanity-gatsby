@@ -5,10 +5,11 @@
   "scripts": {
     "build": "gatsby build",
     "clean-cache": "gatsby clean",
-    "dev": "npm run clean-cache && gatsby develop",
+    "dev": "npm run clean-cache && gatsby develop && preload-fonts",
     "lint": "eslint .",
     "format": "prettier-eslint --write \"**/*.js\" \"!.cache/**\" \"!node_modules/**\" \"!public/**\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "preload-fonts": "gatsby-preload-fonts"
   },
   "devDependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
@@ -26,6 +27,7 @@
     "gatsby": "^2.9.2",
     "gatsby-plugin-react-helmet": "^3.2.4",
     "gatsby-source-sanity": "^6.0.4",
+    "google-fonts-plugin": "^5.0.2",
     "prettier-eslint-cli": "^4.7.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -35,6 +37,7 @@
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby-image": "^2.0.41",
     "gatsby-plugin-lodash": "^3.10.0",
+    "gatsby-plugin-preload-fonts": "^1.9.0",
     "gatsby-plugin-styled-components": "^3.7.0",
     "lodash": "^4.17.20",
     "lodash.get": "^4.4.2",

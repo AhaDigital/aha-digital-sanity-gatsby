@@ -12,6 +12,7 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-lodash',
+    'gatsby-plugin-preload-fonts',
     {
       resolve: 'gatsby-source-sanity',
       options: {

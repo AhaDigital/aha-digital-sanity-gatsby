@@ -1,14 +1,16 @@
-import React, { useRef, useLayoutEffect, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import get from 'lodash.get'
 import Icon from '../../atoms/icon'
+import Button from '../../atoms/Button'
+import StyledHeader from './styles'
 
 const Header = ({menu, onHideNav, onShowNav, toContentFocus, showNav, siteTitle}) => {
-  const toContentRef = useRef(null)
+  const toContentRef = createRef()
   const [toContentTriggered, setToContentTriggered] = useState(false)
 
-  useLayoutEffect(() => {
-    if(typeof window !== 'undefined' && toContentTriggered) {
+  useEffect(() => {
+    if(typeof window !== 'undefined' && toContentTriggered && toContentRef) {
       toContentRef.current.blur()
       toContentFocus()
       setToContentTriggered(false)
@@ -16,12 +18,16 @@ const Header = ({menu, onHideNav, onShowNav, toContentFocus, showNav, siteTitle}
   }, [toContentTriggered])
 
   return (
-    <header>
+    <StyledHeader>
       <div>
-        <button ref={toContentRef} name="toContent" onClick={() => setToContentTriggered(true)}>
-          <Icon symbol='arrow-down'/>
-          Till huvudinnehåll
-        </button>
+        <Button
+          ref={toContentRef}
+          name="toContent"
+          onClick={() => setToContentTriggered(true)}
+          text="Till huvudinnehåll"
+          icon="arrow-down" 
+          ariaLabel="Hoppa över huvudmenyn"
+        />
         top menu
       </div>
       <div>
@@ -57,7 +63,7 @@ const Header = ({menu, onHideNav, onShowNav, toContentFocus, showNav, siteTitle}
           </button>
         </nav>
       </div>
-    </header>
+    </StyledHeader>
   )
 }
 

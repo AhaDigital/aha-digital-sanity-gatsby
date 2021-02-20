@@ -1,14 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Layout from './components/organisms/layout'
 
-function App (props) {
+const App = props => {
   const [showNav, setShowNav] = useState(false)
-  function handleShowNav () {
+  const [isUserTabbing, setisUserTabbing] = useState(false)
+
+  const handleShowNav = () => {
     setShowNav(true)
   }
-  function handleHideNav () {
+
+  const handleHideNav = () => {
     setShowNav(false)
   }
+
+  useEffect(() => {
+    if(typeof document !== 'undefined' && !isUserTabbing) {
+      document.addEventListener('keyup', (event) => {
+        if (event.key === 'Tab') {
+          document.body.classList.add('isTabbing')
+          setisUserTabbing(true)
+        }
+      })
+    }
+  }, [isUserTabbing])
 
   return (
     <Layout

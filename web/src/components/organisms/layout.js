@@ -1,7 +1,7 @@
-import React, { useRef, useState, useLayoutEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Header from '../molecules/Header'
 import {StaticQuery, graphql} from 'gatsby'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import SEO from '../atoms/seo'
 import theme from '../themes'
 import {imageUrlFor} from '../../lib/image-url'
@@ -36,11 +36,70 @@ const menuQuery = graphql`
   }
 `
 
+const GlobalStyles = createGlobalStyle`
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  a:focus, button:focus {
+    outline: none;
+  }
+
+  .isTabbing {
+    a:focus {
+      outline: 1px solid blue;
+    }
+  }
+  main {
+    outline: none;
+  }
+`
+
 const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav}) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if(typeof window !== 'undefined' && moveToMainFocus) {
       mainRef.current.focus()
       setMoveToMainFocus(false)
@@ -49,6 +108,7 @@ const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav}) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <StaticQuery
         query={menuQuery}
         render={data => {
