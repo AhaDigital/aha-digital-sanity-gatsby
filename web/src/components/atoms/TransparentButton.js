@@ -18,16 +18,20 @@ const StyledButton = styled.button`
   justify-content: space-between;
   align-items: center;
   border: none;
-  background-color: ${theme.palette.blue};
-  color: ${theme.palette.light};
+  background-color: transparent;
+  color: ${theme.palette.dark};
   cursor: pointer;
   font: ${theme.headings.h4};
-  line-height: 25px;
   transition: all ${theme.animationTime.default} ease-in-out;
-
+  ${({styles}) => styles && styles}
   &:focus, &:hover {
     text-decoration: underline;
-    background-color: rgba(${theme.palette.rawRgb.pink}, 1);
+    color: ${theme.palette.blue};
+    ${({iconId}) => iconId && css`
+      .${iconId} {
+        fill: #1F69FF;
+      }
+    `}
     ${StyledIcon} {
       ${({animationDirection}) => animationDirection && css`
         transform: ${iconAnimation(animationDirection)};
@@ -36,7 +40,7 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = forwardRef((
+const TransparentButton = forwardRef((
   {
     name, 
     type, 
@@ -47,6 +51,7 @@ const Button = forwardRef((
     ariaExpanded,
     ariaHaspopup,
     ariaControls,
+    styles,
   }, ref) => {
 
   const { symbol, animationDirection } = icon
@@ -62,6 +67,8 @@ const Button = forwardRef((
       aria-haspopup={ariaHaspopup}
       aria-controls={ariaControls}
       animationDirection={animationDirection}
+      iconId={symbol}
+      styles={styles}
     >
       {symbol && (
         <StyledIcon>
@@ -73,7 +80,7 @@ const Button = forwardRef((
   )
 })
 
-Button.defaultProps = {
+TransparentButton.defaultProps = {
   type: 'button',
   ref: null,
   icon: {
@@ -85,9 +92,10 @@ Button.defaultProps = {
   ariaExpanded: null,
   ariaHaspopup: null,
   ariaControls: null,
+  styles: ''
 }
 
-Button.propTypes = {
+TransparentButton.propTypes = {
   ref: PropTypes.object,
   name: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
@@ -101,6 +109,7 @@ Button.propTypes = {
   ariaExpanded: PropTypes.bool,
   ariaHaspopup: PropTypes.bool,
   ariaControls: PropTypes.string,
+  styles: PropTypes.string,
 }
 
-export default Button
+export default TransparentButton

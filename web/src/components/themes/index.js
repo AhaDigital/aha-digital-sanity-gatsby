@@ -64,4 +64,27 @@ theme.texts = {
   defaultMobile: `16px/20px ${textFont}`,
 }
 
+theme.visually = {
+  hidden: `
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  `,
+  visible: `
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: auto;
+    position: static;
+    white-space: normal;
+  `
+}
+
+theme.animationTime = {
+  default: '0.2s',
+}
+
 export default theme

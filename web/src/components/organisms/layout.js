@@ -90,6 +90,17 @@ const GlobalStyles = createGlobalStyle`
       outline: 1px solid blue;
     }
   }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
   main {
     outline: none;
   }

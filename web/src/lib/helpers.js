@@ -45,3 +45,18 @@ export function toPlainText (blocks) {
     })
     .join('\n\n')
 }
+
+export function iconAnimation(direction) {
+  switch(direction) {
+    case 'top':
+      return 'translateY(-3px)'
+    case 'right':
+      return 'translateX(3px)'
+    case 'bottom':
+      return 'translateY(3px)'
+    case 'left':
+      return 'translateX(-3px)'
+    default:
+      return 'translate(5px, 5px)'
+  }
+}
