@@ -23,7 +23,6 @@ const StyledButton = styled.button`
   cursor: pointer;
   font: ${theme.headings.h4};
   transition: all ${theme.animationTime.default} ease-in-out;
-  ${({styles}) => styles && styles}
   &:focus, &:hover {
     text-decoration: underline;
     color: ${theme.palette.blue};
@@ -38,6 +37,7 @@ const StyledButton = styled.button`
       `}
     }
   }
+  ${({styles}) => styles && styles}
 `
 
 const TransparentButton = forwardRef((

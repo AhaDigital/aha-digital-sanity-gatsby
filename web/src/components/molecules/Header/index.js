@@ -69,6 +69,7 @@ const Header = ({menu, onHideNav, onShowNav, toContentFocus, showNav, siteTitle}
             text="Till huvudinnehåll"
             icon={{symbol: 'arrow-down', animationDirection: 'bottom'}}
             ariaLabel="Hoppa över huvudmenyn"
+            styles={`&:focus, &:hover {background-color: ${theme.palette.blue};}`}
           />
         </SkipToContent>
         <TopLevelAccessibility>

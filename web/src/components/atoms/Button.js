@@ -34,6 +34,7 @@ const StyledButton = styled.button`
       `}
     }
   }
+  ${({styles}) => styles && styles}
 `
 
 const Button = forwardRef((
@@ -47,6 +48,7 @@ const Button = forwardRef((
     ariaExpanded,
     ariaHaspopup,
     ariaControls,
+    styles,
   }, ref) => {
 
   const { symbol, animationDirection } = icon
@@ -62,6 +64,7 @@ const Button = forwardRef((
       aria-haspopup={ariaHaspopup}
       aria-controls={ariaControls}
       animationDirection={animationDirection}
+      styles={styles}
     >
       {symbol && (
         <StyledIcon>
@@ -85,6 +88,7 @@ Button.defaultProps = {
   ariaExpanded: null,
   ariaHaspopup: null,
   ariaControls: null,
+  styles: null,
 }
 
 Button.propTypes = {
@@ -101,6 +105,7 @@ Button.propTypes = {
   ariaExpanded: PropTypes.bool,
   ariaHaspopup: PropTypes.bool,
   ariaControls: PropTypes.string,
+  styles: PropTypes.string,
 }
 
 export default Button
