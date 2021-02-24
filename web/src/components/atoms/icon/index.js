@@ -6,7 +6,7 @@ import EyeIcon from './eyeIcon'
 import EyeClosedIcon from './eyeClosedIcon'
 import EarClosedIcon from './earClosedIcon'
 import EarIcon from './earIcon'
-import AhaDigitalLogo from './AhaDigitalLogo'
+import AhaDigitalLogo from './ahaDigitalLogo'
 
 function Icon (props) {
   switch (props.symbol) {
