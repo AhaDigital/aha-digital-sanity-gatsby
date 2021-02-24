@@ -64,6 +64,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     line-height: 1;
+    box-sizing: border-box;
   }
   ol, ul {
     list-style: none;
@@ -89,6 +90,9 @@ const GlobalStyles = createGlobalStyle`
     a:focus {
       outline: 1px solid blue;
     }
+    #menuOpener:focus {
+      outline: 1px solid rgb(31,105,255);
+    }
   }
 
   .visually-hidden {
@@ -100,13 +104,14 @@ const GlobalStyles = createGlobalStyle`
     white-space: nowrap;
     width: 1px;
   }
-  
+
   main {
     outline: none;
+    min-height: 3000px;
   }
 `
 
-const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav}) => {
+const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader}) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
 
@@ -137,8 +142,16 @@ const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav}) => {
   
           return (
             <>
-              <Header menu={mainMenuPages} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} toContentFocus={() => setMoveToMainFocus(true)} />
               <SEO title={ogTitle || fallbackTitle} description={ogDescription || fallbackDescription} image={ogImageUrl || fallbackImageUrl} />
+              <Header
+                menu={mainMenuPages}
+                onHideNav={onHideNav}
+                onShowNav={onShowNav}
+                showNav={showNav}
+                foldHeader={foldHeader}
+                toContentFocus={() => setMoveToMainFocus(true)}
+              />
+              {/* HERO: when scrolled to bottom. Fold header. */}
             </>
           )
         }}

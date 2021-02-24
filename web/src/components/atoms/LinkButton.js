@@ -1,6 +1,7 @@
 import React, {forwardRef} from 'react'
 import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
+import { Link } from 'gatsby'
 import Icon from './icon'
 import theme from '../themes'
 import { iconAnimation } from '../../lib/helpers'
@@ -11,66 +12,52 @@ const StyledIcon = styled.span`
   transition: all ${theme.animationTime.default} ease-in-out;
 `
 
-const StyledButton = styled.button`
+const StyledLink = styled(Link)`
   max-height: 40px;
   padding: ${theme.spacings.md} ${theme.spacings.lg};
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: none;
-  background-color: transparent;
   color: ${theme.palette.dark};
   cursor: pointer;
   font: ${theme.headings.h4};
+  line-height: 25px;
   transition: all ${theme.animationTime.default} ease-in-out;
+
   &:focus, &:hover {
     text-decoration: underline;
-    color: ${theme.palette.blue};
-    ${({iconId}) => iconId && css`
-      .${iconId} {
-        fill: #1F69FF;
-      }
-    `}
+    background-color: ${theme.palette.pink};
     ${StyledIcon} {
       ${({animationDirection}) => animationDirection && css`
         transform: ${iconAnimation(animationDirection)};
       `}
     }
   }
-  &:focus {
-    outline: 1px solid ${theme.palette.blue};
-  }
   ${({styles}) => styles && styles}
 `
 
-const TransparentButton = forwardRef((
+const LinkButton = forwardRef((
   {
-    name, 
-    type, 
     icon,
-    text, 
     ariaLabel, 
-    onClick,
-    ariaExpanded,
-    ariaHaspopup,
-    ariaControls,
     styles,
+    to,
+    activeStyle,
+    role,
+    children
   }, ref) => {
 
   const { symbol, animationDirection } = icon
 
   return (
-    <StyledButton
+    <StyledLink
       ref={ref}
-      name={name}
-      type={type}
-      onClick={onClick}
+      role={role}
+      to={to}
+      activeStyle={activeStyle}
       aria-label={ariaLabel}
-      aria-expanded={ariaExpanded}
-      aria-haspopup={ariaHaspopup}
-      aria-controls={ariaControls}
       animationDirection={animationDirection}
-      iconId={symbol}
       styles={styles}
     >
       {symbol && (
@@ -78,41 +65,33 @@ const TransparentButton = forwardRef((
           <Icon symbol={symbol} />
         </StyledIcon>
       )}
-      <span>{text}</span>
-    </StyledButton>
+      <span>{children}</span>
+    </StyledLink>
   )
 })
 
-TransparentButton.defaultProps = {
-  type: 'button',
+LinkButton.defaultProps = {
   ref: null,
   icon: {
     symbol: null,
     animationDirection: null,
   },
-  onClick: null,
   ariaLabel: null,
-  ariaExpanded: null,
-  ariaHaspopup: null,
-  ariaControls: null,
-  styles: ''
+  styles: null,
+  role: null,
 }
 
-TransparentButton.propTypes = {
+LinkButton.propTypes = {
   ref: PropTypes.object,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['button', 'reset', 'submit']),
+  to: PropTypes.string.isRequired,
+  activeStyle: PropTypes.shape(),
+  role: PropTypes.string,
   icon: PropTypes.shape({
     symbol: PropTypes.string,
     animationDirection: PropTypes.oneOf(['top', 'right', 'bottom', 'left'])
   }),
-  text: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
   ariaLabel: PropTypes.string,
-  ariaExpanded: PropTypes.bool,
-  ariaHaspopup: PropTypes.bool,
-  ariaControls: PropTypes.string,
   styles: PropTypes.string,
 }
 
-export default TransparentButton
+export default LinkButton

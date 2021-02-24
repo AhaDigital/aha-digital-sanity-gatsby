@@ -42,6 +42,8 @@ theme.palette = {
   yellow: `rgb(${ahaYellow})`,
   green: `rgb(${ahaGreen})`,
   rawRgb: {
+    dark: ahaDark,
+    light: ahaLight,
     pink: ahaPink,
     blue: ahaBlue,
     yellow: ahaYellow,

@@ -6,6 +6,7 @@ import EyeIcon from './eyeIcon'
 import EyeClosedIcon from './eyeClosedIcon'
 import EarClosedIcon from './earClosedIcon'
 import EarIcon from './earIcon'
+import AhaDigitalLogo from './AhaDigitalLogo'
 
 function Icon (props) {
   switch (props.symbol) {
@@ -23,6 +24,8 @@ function Icon (props) {
       return <EarClosedIcon />
     case 'ear':
       return <EarIcon />
+    case 'logo':
+      return <AhaDigitalLogo {...props} />
     default:
       return <span>Unknown icon: {props.symbol}</span>
   }
