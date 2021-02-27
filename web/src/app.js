@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+import get from 'lodash.get'
 import Layout from './components/organisms/layout'
 import { debounce } from './lib/helpers'
 
@@ -31,9 +32,8 @@ const App = props => {
   }
 
   useEffect(() => {
-    const {state = {}} = location
-    const {addContrast} = state
-    const {addSpeach} = state
+    const addContrast = get(location, 'state.addContrast')
+    const addSpeach = get(location, 'state.addSpeach')
 
     if(addContrast) {
       handleContrast()
