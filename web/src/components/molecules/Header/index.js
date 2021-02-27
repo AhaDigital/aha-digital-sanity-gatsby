@@ -217,24 +217,28 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
             <>
               <Heading id="accessibilityTitle" tagName="span" displayAs="h3" styles={mobileMenuHeadingOverrideStyle}>Tillgänglighet</Heading>
               <ul aria-describedby="accessibilityTitle">
-                <TransparentButton
-                  name="highContrastMobile"
-                  onClick={() => contrastToBodySwitch()}
-                  text={contrastTriggered ? 'Ökad kontrast' : 'Öka kontrast'}
-                  icon={{symbol: contrastTriggered ? 'eye' : 'eye-closed'}}
-                  styles={`color: ${contrastTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
-                  ariaLabel="Öka eller återställ kontrast på webbplatsen"
-                  ariaExpanded={contrastTriggered}
-                />
-                <TransparentButton
-                  name="textToSpeachMobile"
-                  onClick={() => speachToBodySwitch()}
-                  text="Talande webb"
-                  icon={{symbol: speachTriggered ? 'ear' : 'ear-closed'}}
-                  styles={`color: ${speachTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
-                  ariaLabel="Slå på/av talande webb på webbplatsen"
-                  ariaExpanded={speachTriggered}
-                />
+                <li>
+                  <TransparentButton
+                    name="highContrastMobile"
+                    onClick={() => contrastToBodySwitch()}
+                    text={contrastTriggered ? 'Ökad kontrast' : 'Öka kontrast'}
+                    icon={{symbol: contrastTriggered ? 'eye' : 'eye-closed'}}
+                    styles={`color: ${contrastTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                    ariaLabel="Öka eller återställ kontrast på webbplatsen"
+                    ariaExpanded={contrastTriggered}
+                  />
+                </li>
+                <li>
+                  <TransparentButton
+                    name="textToSpeachMobile"
+                    onClick={() => speachToBodySwitch()}
+                    text="Talande webb"
+                    icon={{symbol: speachTriggered ? 'ear' : 'ear-closed'}}
+                    styles={`color: ${speachTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                    ariaLabel="Slå på/av talande webb på webbplatsen"
+                    ariaExpanded={speachTriggered}
+                  />
+                </li>
               </ul>
             </>
           )}
