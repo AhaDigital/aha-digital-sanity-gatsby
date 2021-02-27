@@ -242,4 +242,5 @@ export default Header
 
 Header.defaultProps = {
   menu: {},
+  addContrast: false,
 }
