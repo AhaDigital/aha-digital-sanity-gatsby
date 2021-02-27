@@ -62,9 +62,33 @@ const NavLevel = styled.div`
 
 const Nav = styled.div`
   width: 100%;
+  padding: ${theme.spacings.lg} ${theme.grid.containerPadding} ${theme.spacings.md};
+  box-sizing: border-box;
   position: absolute;
   top: -100vh;
   z-index: -1;
+  transition: all ${theme.animationTime.default} ease-in-out;
+
+  ul {
+    margin: ${theme.spacings.lg} 0 30px;
+  }
+
+  ${({theme}) => theme.media.md`
+    padding: 0;
+    position: relative;
+
+    nav, ul {
+      margin: 0;
+    }
+  `}
+
+  .navActive {
+    color: ${theme.palette.blue};
+    text-decoration: none;
+    &:before {
+      background-color: ${theme.palette.blue};
+    }
+  }
 
   ${({showNav}) => showNav && css`
     height: calc(100vh - 80px);  

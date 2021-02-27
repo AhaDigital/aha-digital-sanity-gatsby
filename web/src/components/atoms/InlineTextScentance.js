@@ -1,20 +1,43 @@
 import React from 'react'
+import styled, {css} from 'styled-components'
+
+const Text = styled.span`
+  ${({theme, withLineBreak, rollingWord}) => theme && css`
+    ${withLineBreak && `
+      display: block;
+    `}
+
+    ${rollingWord && `
+      position: absolute;
+    `}
+  `}
+`
+
+const RollingWordWrapper = styled.span`
+  position: relative;
+`
 
 const InlineTextScentance = ({ part }) => {
   const { _type, _key, text, withLineBreak } = part
 
   if(_type === 'inlineTextListItem') {
     return (
-      <span key={_key}>{text}</span>
+      <Text key={_key} withLineBreak={withLineBreak}>{text}</Text>
     )
   } else {
     const { bodyPortableRollingTextWords } = part
 
-    return bodyPortableRollingTextWords.map( wordObj => {
-      return (
-        <span key={wordObj._key}>{wordObj.word}</span>
-      )
-    })
+    return (
+      <RollingWordWrapper>
+        {
+          bodyPortableRollingTextWords.map( wordObj => {
+            return (
+              <Text key={wordObj._key} rollingWord={true}>{wordObj.word}</Text>
+            )
+          })
+        }
+      </RollingWordWrapper>
+    )
   }
 }
 

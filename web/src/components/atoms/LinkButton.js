@@ -43,7 +43,7 @@ const LinkButton = forwardRef((
     ariaLabel, 
     styles,
     to,
-    activeStyle,
+    activeClassName,
     role,
     children
   }, ref) => {
@@ -55,7 +55,7 @@ const LinkButton = forwardRef((
       ref={ref}
       role={role}
       to={to}
-      activeStyle={activeStyle}
+      activeClassName={activeClassName}
       aria-label={ariaLabel}
       animationDirection={animationDirection}
       styles={styles}
@@ -79,12 +79,13 @@ LinkButton.defaultProps = {
   ariaLabel: null,
   styles: null,
   role: null,
+  activeClassName: null,
 }
 
 LinkButton.propTypes = {
   ref: PropTypes.object,
   to: PropTypes.string.isRequired,
-  activeStyle: PropTypes.shape(),
+  activeClassName: PropTypes.string,
   role: PropTypes.string,
   icon: PropTypes.shape({
     symbol: PropTypes.string,

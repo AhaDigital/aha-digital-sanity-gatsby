@@ -1,12 +1,11 @@
 import React, { createRef, useEffect, useState } from 'react'
-import { Link } from 'gatsby'
 import get from 'lodash.get'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Icon from '../../atoms/icon'
 import Button from '../../atoms/Button'
 import LinkButton from '../../atoms/LinkButton'
 import TransparentButton from '../../atoms/TransparentButton'
-import Grid from '../../molecules/Grid'
+import Heading from '../../atoms/Heading'
 import theme from '../../themes'
 import { Wrapper, TopLevel, NavLevel } from './styles'
 
@@ -62,6 +61,64 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
     }
   }
 
+  const mobileMenuHeadingOverrideStyle = `
+    display: block;
+    padding: ${theme.spacings.md} 0 ${theme.spacings.sm} 0;    
+    color: ${theme.palette.pink};
+    border-bottom: 1px solid ${theme.palette.pink};
+  `
+
+  const skipToContentButtonOverrideStyle = `
+    &:focus, &:hover {
+      background-color: ${theme.palette.blue};
+    }
+  `
+
+  const menuItemOverrideStyle = `
+    font: ${breakpoints.sm ? theme.headings.h3Mobile : theme.headings.h3};
+    line-height: ${breakpoints.sm ? 'auto' : '60px'};
+    max-height: inherit;
+
+    &:hover, &:focus {
+      background-color: transparent;
+      color: ${theme.palette.blue};
+    }
+
+    ${breakpoints.sm ?`
+      text-decoration: underline;
+      justify-content: flex-start;
+      padding-left: 0;
+      transition-delay: 1s;
+      transition: transform ${theme.animationTime.default} ease-in-out;
+      transform: translateX(-10px);
+      ${showNav && `
+        transition-delay: ${theme.animationTime.default};
+        transform: translateX(0);
+      `}
+
+      &:before {
+        content: '';
+        width: 28px;
+        height: 2px;
+        display: block;
+        margin: 0 ${theme.spacings.md} 0 0;
+      }
+    ` : 'text-decoration: none;'};
+  `
+
+  const accessibilityButtonOverrides = `
+    ${breakpoints.sm?`
+      padding-left: 0;
+      font: ${theme.headings.h3Mobile};
+      transition: transform ${theme.animationTime.default} ease-in-out;
+      transform: translateX(-10px);
+      ${showNav && `
+        transition-delay: ${theme.animationTime.longer};
+        transform: translateX(0);
+      `}
+    `: ''};
+  `
+
   return (
     <Wrapper foldHeader={foldHeader}>
       <TopLevel>
@@ -73,7 +130,7 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
             text="Till huvudinnehåll"
             icon={{symbol: 'arrow-down', animationDirection: 'bottom'}}
             ariaLabel="Hoppa över huvudmenyn"
-            styles={`&:focus, &:hover {background-color: ${theme.palette.blue};}`}
+            styles={skipToContentButtonOverrideStyle}
           />
         </TopLevel.SkipToContent>
         <TopLevel.Accessibility>
@@ -120,10 +177,22 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
           showNav={showNav}
         >
           {breakpoints.sm && (
-            <h3>Webbplatsen</h3>
+            <Heading id="navTitle" tagName="span" displayAs="h3" styles={mobileMenuHeadingOverrideStyle}>Webbplatsen</Heading>
           )}
-          <nav>
+          <nav aria-describedby="navTitle">
             <ul role="menubar" aria-label="Huvudmeny">
+              {breakpoints.sm && (
+                <li role="none">
+                  <LinkButton
+                    to={`/`}
+                    activeClassName="navActive"
+                    role="menuitem"
+                    styles={menuItemOverrideStyle}
+                  >
+                    Startsida
+                  </LinkButton>
+                </li>
+              )}
               {
                 menu.map(item => {
                   const { page: { title = null, id, slug = {}}} = item
@@ -132,21 +201,9 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
                     <li key={id} role="none">
                       <LinkButton
                         to={`/${link}/`}
-                        activeStyle={{ 
-                          color: theme.palette.blue,
-                          backgroundColor: theme.palette.light,
-                        }}
+                        activeClassName="navActive"
                         role="menuitem"
-                        styles={`
-                          font: ${breakpoints.sm ? theme.headings.h3Mobile : theme.headings.h3};
-                          text-decoration: none;
-                          line-height: 60px;
-                          max-height: inherit;
-                          &:hover, &:focus {
-                            background-color: transparent;
-                            color: ${theme.palette.blue};
-                          }
-                        `}
+                        styles={menuItemOverrideStyle}
                       >
                         {title}
                       </LinkButton>
@@ -158,21 +215,27 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
           </nav>
           {breakpoints.sm && (
             <>
-              <h3>Tillgänglighet</h3>
-              <TransparentButton
-                name="highContrast"
-                onClick={() => contrastToBodySwitch()}
-                text="Öka kontrast"
-                icon={{symbol: contrastTriggered ? 'eye' : 'eye-closed'}}
-                styles={`color: ${contrastTriggered ? theme.palette.blue : theme.palette.dark};`}
-              />
-              <TransparentButton
-                name="textToSpeach"
-                onClick={() => speachToBodySwitch()}
-                text="Talande webb"
-                icon={{symbol: speachTriggered ? 'ear' : 'ear-closed'}}
-                styles={`color: ${speachTriggered ? theme.palette.blue : theme.palette.dark};`}
-              />
+              <Heading id="accessibilityTitle" tagName="span" displayAs="h3" styles={mobileMenuHeadingOverrideStyle}>Tillgänglighet</Heading>
+              <ul aria-describedby="accessibilityTitle">
+                <TransparentButton
+                  name="highContrastMobile"
+                  onClick={() => contrastToBodySwitch()}
+                  text={contrastTriggered ? 'Ökad kontrast' : 'Öka kontrast'}
+                  icon={{symbol: contrastTriggered ? 'eye' : 'eye-closed'}}
+                  styles={`color: ${contrastTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                  ariaLabel="Öka eller återställ kontrast på webbplatsen"
+                  ariaExpanded={contrastTriggered}
+                />
+                <TransparentButton
+                  name="textToSpeachMobile"
+                  onClick={() => speachToBodySwitch()}
+                  text="Talande webb"
+                  icon={{symbol: speachTriggered ? 'ear' : 'ear-closed'}}
+                  styles={`color: ${speachTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                  ariaLabel="Slå på/av talande webb på webbplatsen"
+                  ariaExpanded={speachTriggered}
+                />
+              </ul>
             </>
           )}
         </NavLevel.Nav>

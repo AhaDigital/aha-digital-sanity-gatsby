@@ -65,6 +65,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     line-height: 1;
     box-sizing: border-box;
+    position: relative;
   }
   ol, ul {
     list-style: none;
@@ -87,10 +88,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .isTabbing {
-    a:focus {
-      outline: 1px solid blue;
-    }
-    #menuOpener:focus {
+    a:focus, button:focus, #menuOpener:focus {
       outline: 1px solid rgb(31,105,255);
     }
   }

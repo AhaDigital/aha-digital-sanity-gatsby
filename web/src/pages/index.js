@@ -11,6 +11,7 @@ import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import Content from '../components/organisms/content'
 import Footer from '../components/molecules/Footer'
 import InlineTextScentance from '../components/atoms/InlineTextScentance'
+import Heading from '../components/atoms/Heading'
 import App from '../app'
 
 
@@ -135,11 +136,11 @@ const IndexPage = props => {
     <App pageSEO={pageSeo}>
       {
           pageH1.length > 0 && (
-            <h1>
+            <Heading>
               {
                 pageH1.map(part => <InlineTextScentance key={part._key} part={part} />)
               }
-            </h1>
+            </Heading>
           )
         }
       <Content sections={contentSections} />

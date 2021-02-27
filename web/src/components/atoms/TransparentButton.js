@@ -37,9 +37,6 @@ const StyledButton = styled.button`
       `}
     }
   }
-  &:focus {
-    outline: 1px solid ${theme.palette.blue};
-  }
   ${({styles}) => styles && styles}
 `
 
@@ -61,12 +58,13 @@ const TransparentButton = forwardRef((
 
   return (
     <StyledButton
+      className="transparentButton"
       ref={ref}
       name={name}
       type={type}
       onClick={onClick}
       aria-label={ariaLabel}
-      aria-expanded={ariaExpanded}
+      aria-expanded={ariaExpanded ? 'true' : 'false'}
       aria-haspopup={ariaHaspopup}
       aria-controls={ariaControls}
       animationDirection={animationDirection}

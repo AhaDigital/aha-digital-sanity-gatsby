@@ -1,6 +1,7 @@
 import React from 'react'
 import Grid from '../Grid'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
+import Heading from '../../atoms/Heading'
 
 const Footer = ({ salesPitch }) => (
   <footer>
@@ -8,11 +9,11 @@ const Footer = ({ salesPitch }) => (
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
         {
           salesPitch && salesPitch.length > 0 && (
-            <h3>
+            <Heading tagName="h3">
               {
                 salesPitch.map(part => <InlineTextScentance key={part._key} part={part} />)
               }
-            </h3>
+            </Heading>
           )
         }
       </Grid.Unit>

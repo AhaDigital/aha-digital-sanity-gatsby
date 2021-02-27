@@ -57,7 +57,9 @@ theme.headings = {
   h3: `22px/22px ${headingFont}`,
   h4: `16px/16px ${headingFont}`,
   h1Mobile: `28px/40px ${headingFont}`,
-  h3Mobile: `26px/16px ${headingFont}`,
+  h2Mobile: `28px/40px ${headingFont}`,
+  h3Mobile: `22px/22px ${headingFont}`,
+  h4Mobile: `16px/16px ${headingFont}`,
 }
 
 theme.texts = {
@@ -87,6 +89,7 @@ theme.visually = {
 
 theme.animationTime = {
   default: '0.2s',
+  longer: '0.4s',
 }
 
 export default theme

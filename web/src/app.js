@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Layout from './components/organisms/layout'
 import { debounce } from './lib/helpers'
 
 const App = props => {
+  const breakpoints = useBreakpoint()
   const [showNav, setShowNav] = useState(false)
   const [isUserTabbing, setisUserTabbing] = useState(false)
 
@@ -36,7 +38,7 @@ const App = props => {
   });
 
   useEffect(() => {
-    if(typeof window !== 'undefined') {
+    if(typeof window !== 'undefined' && !breakpoints.sm) {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }

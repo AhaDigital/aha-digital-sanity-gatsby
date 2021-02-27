@@ -62,8 +62,6 @@ const LandingPage = props => {
   const {data, errors} = props
 
   const page = (data || {}).page
-
-  console.log('DATA', data)
   const contentSections = get(page, '_rawContent.contentBlockType', []) || []
   const salesPitch = get(page, 'salesPitchBlock', []) || []
   const pageSeo = get(page, 'seo', {}) || {}
