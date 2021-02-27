@@ -109,7 +109,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader}) => {
+const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader, onAddContrast, onAddSpeach, addSpeach, addContrast}) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
 
@@ -148,6 +148,10 @@ const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader}) 
                 showNav={showNav}
                 foldHeader={foldHeader}
                 toContentFocus={() => setMoveToMainFocus(true)}
+                onAddContrast={onAddContrast}
+                onAddSpeach={onAddSpeach}
+                addSpeach={addSpeach}
+                addContrast={addContrast}
               />
               {/* HERO: when scrolled to bottom. Fold header. */}
             </>

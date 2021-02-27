@@ -49,8 +49,9 @@ const Button = forwardRef((
     ariaHaspopup,
     ariaControls,
     styles,
+    location
   }, ref) => {
-
+console.log('LOCATION', location)
   const { symbol, animationDirection } = icon
 
   return (

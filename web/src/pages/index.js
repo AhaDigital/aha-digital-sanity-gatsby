@@ -109,7 +109,7 @@ export const query = graphql`
 `
 
 const IndexPage = props => {
-  const {data, errors} = props
+  const {data, errors, location} = props
 
   if (errors) {
     return (
@@ -133,7 +133,7 @@ const IndexPage = props => {
   }
 
   return (
-    <App pageSEO={pageSeo}>
+    <App pageSEO={pageSeo} location={location}>
       {
           pageH1.length > 0 && (
             <Heading>

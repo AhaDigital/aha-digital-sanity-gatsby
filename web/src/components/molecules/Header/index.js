@@ -9,12 +9,20 @@ import Heading from '../../atoms/Heading'
 import theme from '../../themes'
 import { Wrapper, TopLevel, NavLevel } from './styles'
 
-const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus}) => {
+const Header = ({
+  menu,
+  onHideNav,
+  onShowNav,
+  showNav,
+  foldHeader,
+  toContentFocus,
+  onAddContrast,
+  onAddSpeach,
+  addSpeach,
+  addContrast
+}) => {
   const toContentRef = createRef()
   const [toContentTriggered, setToContentTriggered] = useState(false)
-  const [contrastTriggered, setContrastTriggered] = useState(false)
-  const [speachTriggered, setSpeachTriggered] = useState(false)
-
   const breakpoints = useBreakpoint()
 
   useEffect(() => {
@@ -25,47 +33,11 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
     }
   }, [toContentTriggered])
 
-  // On route change check body class and trigger setState.
-  useEffect(() => {
-    if(typeof document !== 'undefined') {
-      if(document.body.classList.contains('addContrast')) {
-        setContrastTriggered(true)
-      }
-      if(document.body.classList.contains('addSpeach')) {
-        setSpeachTriggered(true)
-      }
-    }
-  }, [])
-
-  const contrastToBodySwitch = () => {
-    if(typeof document !== 'undefined') {
-      if(contrastTriggered) {
-        document.body.classList.remove('addContrast')
-        setContrastTriggered(!contrastTriggered)
-      } else {
-        document.body.classList.add('addContrast')
-        setContrastTriggered(!contrastTriggered)
-      }
-    }
-  }
-
-  const speachToBodySwitch = () => {
-    if(typeof document !== 'undefined') {
-      if(speachTriggered) {
-        document.body.classList.remove('addSpeach')
-        setSpeachTriggered(!speachTriggered)
-      } else {
-        document.body.classList.add('addSpeach')
-        setSpeachTriggered(!speachTriggered)
-      }
-    }
-  }
-
   const mobileMenuHeadingOverrideStyle = `
     display: block;
     padding: ${theme.spacings.md} 0 ${theme.spacings.sm} 0;    
-    color: ${theme.palette.pink};
-    border-bottom: 1px solid ${theme.palette.pink};
+    color: ${addContrast ? 'black' : theme.palette.pink};
+    border-bottom: 1px solid ${addContrast ? 'black' : theme.palette.pink};
   `
 
   const skipToContentButtonOverrideStyle = `
@@ -78,10 +50,11 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
     font: ${breakpoints.sm ? theme.headings.h3Mobile : theme.headings.h3};
     line-height: ${breakpoints.sm ? 'auto' : '60px'};
     max-height: inherit;
+    ${addContrast ? 'color: black;' : ''}
 
     &:hover, &:focus {
       background-color: transparent;
-      color: ${theme.palette.blue};
+      color: ${addContrast ? 'blue' : theme.palette.blue};
     }
 
     ${breakpoints.sm ?`
@@ -120,7 +93,7 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
   `
 
   return (
-    <Wrapper foldHeader={foldHeader}>
+    <Wrapper foldHeader={foldHeader} addContrast={addContrast}>
       <TopLevel>
         <TopLevel.SkipToContent>
           <Button
@@ -136,22 +109,31 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
         <TopLevel.Accessibility>
           <TransparentButton
             name="highContrast"
-            onClick={() => contrastToBodySwitch()}
+            onClick={() => onAddContrast()}
             text="Öka kontrast"
-            icon={{symbol: contrastTriggered ? 'eye' : 'eye-closed'}}
-            styles={`color: ${contrastTriggered ? theme.palette.blue : theme.palette.dark};`}
+            icon={{symbol: addContrast ? 'eye' : 'eye-closed'}}
+            styles={`color: ${addContrast ? 'blue' : theme.palette.dark};`}
+            addContrast={addContrast}
           />
           <TransparentButton
             name="textToSpeach"
-            onClick={() => speachToBodySwitch()}
+            onClick={() => onAddSpeach()}
             text="Talande webb"
-            icon={{symbol: speachTriggered ? 'ear' : 'ear-closed'}}
-            styles={`color: ${speachTriggered ? theme.palette.blue : theme.palette.dark};`}
+            icon={{symbol: addSpeach ? 'ear' : 'ear-closed'}}
+            styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue)  : theme.palette.dark};`}
+            addContrast={addContrast}
           />
         </TopLevel.Accessibility>
       </TopLevel>
       <NavLevel>
-        <NavLevel.Link to='/' aria-label="Till startsidan - Aha Digital">
+        <NavLevel.Link
+          to='/'
+          aria-label="Till startsidan - Aha Digital"
+          state={{
+            addContrast: addContrast,
+            addSpeach: addSpeach
+          }}
+        >
           <Icon symbol="logo" isAnimated={foldHeader} />
         </NavLevel.Link>
         <NavLevel.MobileMenuButton
@@ -188,6 +170,10 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
                     activeClassName="navActive"
                     role="menuitem"
                     styles={menuItemOverrideStyle}
+                    state={{
+                      addContrast: addContrast,
+                      addSpeach: addSpeach
+                    }}
                   >
                     Startsida
                   </LinkButton>
@@ -204,6 +190,10 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
                         activeClassName="navActive"
                         role="menuitem"
                         styles={menuItemOverrideStyle}
+                        state={{
+                          addContrast: addContrast,
+                          addSpeach: addSpeach
+                        }}
                       >
                         {title}
                       </LinkButton>
@@ -220,23 +210,23 @@ const Header = ({menu, onHideNav, onShowNav, showNav, foldHeader, toContentFocus
                 <li>
                   <TransparentButton
                     name="highContrastMobile"
-                    onClick={() => contrastToBodySwitch()}
-                    text={contrastTriggered ? 'Ökad kontrast' : 'Öka kontrast'}
-                    icon={{symbol: contrastTriggered ? 'eye' : 'eye-closed'}}
-                    styles={`color: ${contrastTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                    onClick={() => onAddContrast()}
+                    text={addContrast ? 'Ökad kontrast' : 'Öka kontrast'}
+                    icon={{symbol: addContrast ? 'eye' : 'eye-closed'}}
+                    styles={`color: ${addContrast ? 'blue' : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                     ariaLabel="Öka eller återställ kontrast på webbplatsen"
-                    ariaExpanded={contrastTriggered}
+                    ariaExpanded={addContrast}
                   />
                 </li>
                 <li>
                   <TransparentButton
                     name="textToSpeachMobile"
-                    onClick={() => speachToBodySwitch()}
+                    onClick={() => onAddSpeach()}
                     text="Talande webb"
-                    icon={{symbol: speachTriggered ? 'ear' : 'ear-closed'}}
-                    styles={`color: ${speachTriggered ? theme.palette.blue : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                    icon={{symbol: addSpeach ? 'ear' : 'ear-closed'}}
+                    styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                     ariaLabel="Slå på/av talande webb på webbplatsen"
-                    ariaExpanded={speachTriggered}
+                    ariaExpanded={addSpeach}
                   />
                 </li>
               </ul>

@@ -59,7 +59,7 @@ export const query = graphql`
 `
 
 const LandingPage = props => {
-  const {data, errors} = props
+  const {data, errors, location} = props
 
   const page = (data || {}).page
   const contentSections = get(page, '_rawContent.contentBlockType', []) || []
@@ -86,7 +86,7 @@ const LandingPage = props => {
   }*/
 
   return (
-    <App pageSEO={pageSeo}>
+    <App pageSEO={pageSeo} location={location}>
       /* hide this */
       <h1>Welcome to landingpage...</h1>
       <Content sections={contentSections} />

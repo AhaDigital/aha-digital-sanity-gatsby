@@ -155,6 +155,24 @@ const Wrapper = styled.header`
       height: auto;
     }
   `}
+
+  ${({addContrast}) => addContrast && css`
+    ${MobileMenuButton} {
+      &:hover, &:focus {
+        svg .hamburger, svg .close {
+          stroke: #0000ff;
+        }
+      }
+    }
+    ${Nav} {
+      .navActive {
+        color: blue;
+        &:before {
+          background-color: blue;
+        }
+      }
+    }
+  `}
 `
 
 NavLevel.Nav = Nav

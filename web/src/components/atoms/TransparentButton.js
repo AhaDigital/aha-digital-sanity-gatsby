@@ -25,10 +25,10 @@ const StyledButton = styled.button`
   transition: all ${theme.animationTime.default} ease-in-out;
   &:focus, &:hover {
     text-decoration: underline;
-    color: ${theme.palette.blue};
-    ${({iconId}) => iconId && css`
+    color: ${({addContrast}) => addContrast ? 'blue' : theme.palette.blue};
+    ${({iconId, addContrast}) => iconId && css`
       .${iconId} {
-        fill: #1F69FF;
+        fill: ${addContrast ? '#0000ff' : '#1F69FF'};
       }
     `}
     ${StyledIcon} {
@@ -52,6 +52,7 @@ const TransparentButton = forwardRef((
     ariaHaspopup,
     ariaControls,
     styles,
+    addContrast
   }, ref) => {
 
   const { symbol, animationDirection } = icon
@@ -70,6 +71,7 @@ const TransparentButton = forwardRef((
       animationDirection={animationDirection}
       iconId={symbol}
       styles={styles}
+      addContrast={addContrast}
     >
       {symbol && (
         <StyledIcon>
@@ -93,7 +95,8 @@ TransparentButton.defaultProps = {
   ariaExpanded: null,
   ariaHaspopup: null,
   ariaControls: null,
-  styles: ''
+  styles: '',
+  addContrast: false,
 }
 
 TransparentButton.propTypes = {
@@ -111,6 +114,7 @@ TransparentButton.propTypes = {
   ariaHaspopup: PropTypes.bool,
   ariaControls: PropTypes.string,
   styles: PropTypes.string,
+  addContrast: PropTypes.bool,
 }
 
 export default TransparentButton

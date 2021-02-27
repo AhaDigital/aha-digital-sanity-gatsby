@@ -45,6 +45,7 @@ const LinkButton = forwardRef((
     to,
     activeClassName,
     role,
+    state,
     children
   }, ref) => {
 
@@ -59,6 +60,7 @@ const LinkButton = forwardRef((
       aria-label={ariaLabel}
       animationDirection={animationDirection}
       styles={styles}
+      state={state}
     >
       {symbol && (
         <StyledIcon>
@@ -80,6 +82,7 @@ LinkButton.defaultProps = {
   styles: null,
   role: null,
   activeClassName: null,
+  state: {}
 }
 
 LinkButton.propTypes = {
@@ -93,6 +96,7 @@ LinkButton.propTypes = {
   }),
   ariaLabel: PropTypes.string,
   styles: PropTypes.string,
+  state: PropTypes.object
 }
 
 export default LinkButton

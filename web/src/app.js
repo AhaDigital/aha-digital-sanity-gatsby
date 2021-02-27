@@ -4,9 +4,12 @@ import Layout from './components/organisms/layout'
 import { debounce } from './lib/helpers'
 
 const App = props => {
+  const {location} = props
   const breakpoints = useBreakpoint()
   const [showNav, setShowNav] = useState(false)
   const [isUserTabbing, setisUserTabbing] = useState(false)
+  const [contrastTriggered, setContrastTriggered] = useState(false)
+  const [speachTriggered, setSpeachTriggered] = useState(false)
 
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [desktopUnfoldedHeader, setDesktopUnfoldedHeader] = useState(false)
@@ -19,6 +22,28 @@ const App = props => {
     setShowNav(false)
   }
 
+  const handleContrast = () => {
+    setContrastTriggered(!contrastTriggered)
+  }
+
+  const handleSpeach = () => {
+    setSpeachTriggered(!speachTriggered)
+  }
+
+  useEffect(() => {
+    const {state = {}} = location
+    const {addContrast} = state
+    const {addSpeach} = state
+
+    if(addContrast) {
+      handleContrast()
+    }
+
+    if(addSpeach) {
+      handleSpeach()
+    }
+  }, [location])
+
   useEffect(() => {
     if(typeof document !== 'undefined' && !isUserTabbing) {
       document.addEventListener('keyup', (event) => {
@@ -29,7 +54,6 @@ const App = props => {
       })
     }
   }, [isUserTabbing])
-
 
   const handleScroll = debounce(() => {
     const currentScrollPos = window.pageYOffset;
@@ -52,6 +76,10 @@ const App = props => {
       onHideNav={handleHideNav}
       onShowNav={handleShowNav}
       foldHeader={desktopUnfoldedHeader}
+      onAddSpeach={handleSpeach}
+      onAddContrast={handleContrast}
+      addSpeach={speachTriggered}
+      addContrast={contrastTriggered}
     />
   )
 }
