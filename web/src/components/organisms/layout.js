@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Header from '../molecules/Header'
 import {StaticQuery, graphql} from 'gatsby'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import SEO from '../atoms/seo'
-import theme from '../themes'
 import {imageUrlFor} from '../../lib/image-url'
 import {buildImageObj} from '../../lib/helpers'
+import SEO from '../atoms/seo'
+import Header from '../molecules/Header'
+import Hero from '../molecules/Hero'
+import theme from '../themes'
 
 const menuQuery = graphql`
   query DefaultMenu {
@@ -109,7 +110,20 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader, onAddContrast, onAddSpeach, addSpeach, addContrast}) => {
+const Layout = ({
+  pageSEO,
+  children,
+  onHideNav,
+  onShowNav,
+  showNav,
+  foldHeader,
+  onAddContrast,
+  onAddSpeach,
+  addSpeach,
+  addContrast,
+  location,
+  hero
+}) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
 
@@ -119,7 +133,7 @@ const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader, o
       setMoveToMainFocus(false)
     }
   }, [moveToMainFocus])
-
+  
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -153,7 +167,7 @@ const Layout = ({pageSEO, children, onHideNav, onShowNav, showNav, foldHeader, o
                 addSpeach={addSpeach}
                 addContrast={addContrast}
               />
-              {/* HERO: when scrolled to bottom. Fold header. */}
+              <Hero hero={hero} location={location} />
             </>
           )
         }}

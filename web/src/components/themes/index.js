@@ -60,6 +60,8 @@ theme.headings = {
   h2Mobile: `28px/40px ${headingFont}`,
   h3Mobile: `22px/22px ${headingFont}`,
   h4Mobile: `16px/16px ${headingFont}`,
+  text: `16px/16px ${textFont}`,
+  textMobile: `16px/16px ${textFont}`,
 }
 
 theme.texts = {

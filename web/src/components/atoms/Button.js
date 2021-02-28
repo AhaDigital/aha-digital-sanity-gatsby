@@ -51,7 +51,6 @@ const Button = forwardRef((
     styles,
     location
   }, ref) => {
-console.log('LOCATION', location)
   const { symbol, animationDirection } = icon
 
   return (

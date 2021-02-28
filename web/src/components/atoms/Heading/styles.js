@@ -14,29 +14,12 @@ const defaultStyles = tagName => {
   `
 }
 
-const H1 = styled.h1`
-  ${defaultStyles('h1')}
-  ${({styles}) => styles && css`${styles}`}
-`
-const H2 = styled.h2`
-  ${defaultStyles('h2')}
-  ${({styles}) => styles && css`${styles}`}
-`
-const H3 = styled.h3`
-  ${defaultStyles('h3')}
-  ${({styles}) => styles && css`${styles}`}
-`
-const H4 = styled.h4`
-  ${defaultStyles('h4')}
-  ${({styles}) => styles && css`${styles}`}
-`
-
 const HeadingElement = styled.h1`
-  ${({styles, displayAs}) => styles && css`
+  ${({styles, displayAs}) => css`
     ${defaultStyles(displayAs || 'h1')}
-    ${styles}
+    ${styles && styles}
   `}
 `
 
-export {H1, H2, H3, H4, HeadingElement}
+export default HeadingElement
 

@@ -10,8 +10,6 @@ import Grid from '../components/molecules/Grid'
 import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import Content from '../components/organisms/content'
 import Footer from '../components/molecules/Footer'
-import InlineTextScentance from '../components/atoms/InlineTextScentance'
-import Heading from '../components/atoms/Heading'
 import App from '../app'
 
 
@@ -121,10 +119,12 @@ const IndexPage = props => {
 
   const site = (data || {}).site
   const page = (data || {}).page
-  const pageH1 = get(page, 'pageH1.inlineTextList', []) || []
+  const heading = get(page, 'pageH1.inlineTextList', []) || []
   const contentSections = get(page, '_rawContent.contentBlockType', []) || []
   const salesPitch = get(page, 'salesPitchBlock.inlineTextList', []) || []
   const pageSeo = get(page, 'seo', {}) || {}
+  const image = get(page, 'mainImage', {}) || {}
+  const intro = get(page, 'intro') || null
 
   if (!site) {
     throw new Error(
@@ -132,17 +132,14 @@ const IndexPage = props => {
     )
   }
 
+  const heroData = {
+    image,
+    heading,
+    intro
+  }
+
   return (
-    <App pageSEO={pageSeo} location={location}>
-      {
-          pageH1.length > 0 && (
-            <Heading>
-              {
-                pageH1.map(part => <InlineTextScentance key={part._key} part={part} />)
-              }
-            </Heading>
-          )
-        }
+    <App pageSEO={pageSeo} location={location} hero={heroData}>
       <Content sections={contentSections} />
       <Footer salesPitch={salesPitch} />
     </App>

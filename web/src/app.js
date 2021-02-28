@@ -4,8 +4,8 @@ import get from 'lodash.get'
 import Layout from './components/organisms/layout'
 import { debounce } from './lib/helpers'
 
-const App = props => {
-  const {location} = props
+const App = (props) => {
+  const { location, hero } = props
   const breakpoints = useBreakpoint()
   const [showNav, setShowNav] = useState(false)
   const [isUserTabbing, setisUserTabbing] = useState(false)
@@ -80,6 +80,8 @@ const App = props => {
       onAddContrast={handleContrast}
       addSpeach={speachTriggered}
       addContrast={contrastTriggered}
+      location={location}
+      hero={hero}
     />
   )
 }

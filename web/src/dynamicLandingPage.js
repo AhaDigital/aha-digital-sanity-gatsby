@@ -62,9 +62,12 @@ const LandingPage = props => {
   const {data, errors, location} = props
 
   const page = (data || {}).page
+  const heading = get(page, 'pageH1.inlineTextList', []) || []
   const contentSections = get(page, '_rawContent.contentBlockType', []) || []
   const salesPitch = get(page, 'salesPitchBlock', []) || []
   const pageSeo = get(page, 'seo', {}) || {}
+  const image = get(page, 'mainImage', {}) || {}
+  const intro = get(page, 'intro') || null
 
   if (errors) {
     return (
@@ -85,8 +88,14 @@ const LandingPage = props => {
     )
   }*/
 
+  const heroData = {
+    image,
+    heading,
+    intro
+  }
+
   return (
-    <App pageSEO={pageSeo} location={location}>
+    <App pageSEO={pageSeo} location={location} hero={heroData}>
       /* hide this */
       <h1>Welcome to landingpage...</h1>
       <Content sections={contentSections} />
