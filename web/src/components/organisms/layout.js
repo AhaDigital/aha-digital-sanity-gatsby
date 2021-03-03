@@ -167,7 +167,7 @@ const Layout = ({
                 addSpeach={addSpeach}
                 addContrast={addContrast}
               />
-              <Hero hero={hero} location={location} />
+              <Hero hero={hero} addContrast={addContrast} />
             </>
           )
         }}

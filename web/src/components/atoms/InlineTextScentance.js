@@ -43,14 +43,14 @@ const RightIcon = styled.span`
   display: flex;
 `
 
-const InlineTextScentance = ({ part }) => {
+const InlineTextScentance = ({ part, addContrast }) => {
   const { _type, _key, text, withLineBreak, withDecorator } = part
-console.log(part)
+
   if(_type === 'inlineTextListItem') {
     return (
       <Text key={_key} withLineBreak={withLineBreak}>
         {text}
-        {withDecorator && (
+        {withDecorator && !addContrast && (
           <Decorator>
             <LeftIcon>
               <Icon symbol="decorator-left"/>

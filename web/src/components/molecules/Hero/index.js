@@ -10,12 +10,11 @@ import InlineTextScentance from '../../atoms/InlineTextScentance'
 import StyledHero from './styles'
 import theme from '../../themes'
 
-const Hero = ({hero, location}) => {
+const Hero = ({hero, addContrast}) => {
   const breakpoints = useBreakpoint()
   const {image, heading, intro} = hero
   const sanityImage = get(image, 'asset')
   let finalImage
-
   if(sanityImage) {
     if(breakpoints.sm || breakpoints.md) {
       finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).quality(80).auto("format").url()
@@ -30,9 +29,9 @@ const Hero = ({hero, location}) => {
         <Grid.Unit withGutter size={12}>
           <StyledHero.Heading>
             {heading.length > 0 && (
-              <Heading>
+              <Heading addContrast={addContrast}>
                 {
-                  heading.map(part => <InlineTextScentance key={part._key} part={part} />)
+                  heading.map(part => <InlineTextScentance key={part._key} part={part} addContrast={addContrast} />)
                 }
               </Heading>
             )}
