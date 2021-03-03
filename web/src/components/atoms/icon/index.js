@@ -6,6 +6,8 @@ import EyeIcon from './eyeIcon'
 import EyeClosedIcon from './eyeClosedIcon'
 import EarClosedIcon from './earClosedIcon'
 import EarIcon from './earIcon'
+import DecoratorLeftIcon from './decoratorLeft'
+import DecoratorRightIcon from './decoratorRight'
 import AhaDigitalLogo from './ahaDigitalLogo'
 
 function Icon (props) {
@@ -24,6 +26,10 @@ function Icon (props) {
       return <EarClosedIcon />
     case 'ear':
       return <EarIcon />
+    case 'decorator-left':
+      return <DecoratorLeftIcon />
+    case 'decorator-right':
+      return <DecoratorRightIcon />
     case 'logo':
       return <AhaDigitalLogo {...props} />
     default:

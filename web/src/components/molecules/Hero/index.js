@@ -8,6 +8,7 @@ import Grid from '../Grid'
 import Heading from '../../atoms/Heading'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
 import StyledHero from './styles'
+import theme from '../../themes'
 
 const Hero = ({hero, location}) => {
   const breakpoints = useBreakpoint()
@@ -16,26 +17,31 @@ const Hero = ({hero, location}) => {
   let finalImage
 
   if(sanityImage) {
-    if(breakpoints.sm) {
-      finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).format('auto').quality(80)
-    } else {
-      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(355).format('auto').quality(80)
+    if(breakpoints.sm || breakpoints.md) {
+      finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).quality(80).auto("format").url()
+    }
+    else {
+      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(355).quality(80).auto("format").url()
     }
   }
   return (
     <StyledHero image={finalImage}>
-     <Grid tagName="section" maxWidth="default" withPadding>
-        <Grid.Unit withGutter size={{sm: 12}}>
-          {heading.length > 0 && (
-            <Heading>
-              {
-                heading.map(part => <InlineTextScentance key={part._key} part={part} />)
-              }
-            </Heading>
-          )}
-          {intro && (
-            <Heading tagName="h2" displayAs="text">{intro}</Heading>
-          )}
+     <Grid tagName="section" withPadding maxWidth="default" align="center" justify="center">
+        <Grid.Unit withGutter size={12}>
+          <StyledHero.Heading>
+            {heading.length > 0 && (
+              <Heading>
+                {
+                  heading.map(part => <InlineTextScentance key={part._key} part={part} />)
+                }
+              </Heading>
+            )}
+            {intro && (
+              <StyledHero.Intro>
+                <Heading tagName="h2" displayAs="text" styles={`color: ${theme.palette.darker};`}>{intro}</Heading>
+              </StyledHero.Intro>
+            )}
+          </StyledHero.Heading>
         </Grid.Unit>
       </Grid> 
     </StyledHero>

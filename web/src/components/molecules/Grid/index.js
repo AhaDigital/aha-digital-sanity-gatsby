@@ -75,7 +75,7 @@ Grid.propTypes = {
   // Override div with another html tag.
   tagName: PropTypes.string,
   // Add centered page wrapper
-  maxWidth: PropTypes.oneOf(['default', 'large', 'small']),
+  maxWidth: PropTypes.oneOf(['default']),
   // Add padding on left and right side.
   withPadding: PropTypes.bool,
   // Flex value for css justify-content.

@@ -2,11 +2,13 @@ import styled, {css} from 'styled-components'
 import theme from '../../themes'
 
 const defaultStyles = tagName => {
+
   return `
     font: ${theme.headings[`${tagName}Mobile`]};
     word-break: break-word;
     hyphens: auto;
     position: relative;
+    color: ${theme.palette.dark};
 
     ${({theme}) => theme.media.md`
       font: ${theme.headings[tagName]};

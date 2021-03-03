@@ -53,6 +53,7 @@ const unitSizeMedia = css`
 
 // Grid outer container wrapping units.
 const StyledGrid = styled.div`
+  width: 100%;
   flex-wrap: ${({ flexWrap }) => flexWrap || 'wrap'};
   box-sizing: border-box;
   ${({maxWidth, withPadding, marginTop, theme}) =>
@@ -83,13 +84,7 @@ const StyledPageWrapper = styled.div`
   if (maxWidth === 'default') {
     return theme.grid.maxWidth
   }
-  if (maxWidth === 'large') {
-    return theme.grid.maxWidthLarge
-  }
-  if (maxWidth === 'small') {
-    return theme.grid.maxWidthSmall
-  }
-  return 'auto'
+  return '100%'
 }};
   
   ${({ withPadding, theme }) =>

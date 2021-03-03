@@ -26,9 +26,7 @@ theme.spacings = {
 }
 
 theme.grid = {
-  maxWidthSmall: '800px',
   maxWidth: '1280px',
-  maxWidthLarge: '1920px',
   containerPadding: theme.spacings.md,
   columnGutter: theme.spacings.md,
 }
@@ -52,16 +50,16 @@ theme.palette = {
 }
 
 theme.headings = {
-  h1: `40px/40px ${headingFont}`,
-  h2: `28px/28px ${headingFont}`,
+  h1: `40px/1.2 ${headingFont}`,
+  h2: `28px/1.2 ${headingFont}`,
   h3: `22px/22px ${headingFont}`,
   h4: `16px/16px ${headingFont}`,
-  h1Mobile: `28px/40px ${headingFont}`,
+  h1Mobile: `28px/1.2 ${headingFont}`,
   h2Mobile: `28px/40px ${headingFont}`,
   h3Mobile: `22px/22px ${headingFont}`,
   h4Mobile: `16px/16px ${headingFont}`,
-  text: `16px/16px ${textFont}`,
-  textMobile: `16px/16px ${textFont}`,
+  text: `18px/23px ${textFont}`,
+  textMobile: `16px/20px ${textFont}`,
 }
 
 theme.texts = {
