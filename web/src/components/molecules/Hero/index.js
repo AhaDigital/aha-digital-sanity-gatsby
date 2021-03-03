@@ -17,9 +17,9 @@ const Hero = ({hero, location}) => {
 
   if(sanityImage) {
     if(breakpoints.sm) {
-      finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).format('webp').quality(80)
+      finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).format('auto').quality(80)
     } else {
-      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(355).format('webp').quality(80)
+      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(355).format('auto').quality(80)
     }
   }
   return (

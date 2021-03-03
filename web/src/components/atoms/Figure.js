@@ -12,7 +12,7 @@ export default ({node}) => {
           type="image/webp"
           media="(min-width: 1008px)"
           srcSet={
-            imageUrlFor(buildImageObj(node)).width(1920).height(1080).format('webp').quality(80)
+            imageUrlFor(buildImageObj(node)).width(1920).height(1080).format('auto').quality(80)
           }
         />
         <source
@@ -20,7 +20,7 @@ export default ({node}) => {
           srcSet={imageUrlFor(buildImageObj(node))}
         />
         <img
-          src={imageUrlFor(buildImageObj(node)).width(1920 / 2).height(1080 / 2)}
+          src={imageUrlFor(buildImageObj(node)).width(1920 / 2).height(1080 / 2).format('auto').quality(80)}
           style={{maxWidth: '100%'}}
           alt={node.alt || ''}
         />
