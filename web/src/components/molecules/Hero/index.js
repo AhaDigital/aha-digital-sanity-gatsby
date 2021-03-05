@@ -8,7 +8,7 @@ import Grid from '../Grid'
 import theme from '../../themes'
 import Heading from '../../atoms/Heading'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
-import Icon from '../../atoms/Icon'
+import Icon from '../../atoms/icon'
 import StyledHero from './styles'
 
 const Hero = ({hero, addContrast}) => {

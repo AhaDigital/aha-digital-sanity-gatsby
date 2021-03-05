@@ -2,6 +2,8 @@ import React from 'react'
 import Figure from './Figure'
 import FeaturedLink from './FeaturedLink'
 import Heading from './Heading'
+import SmallText from './SmallText'
+import Text from './Text'
 
 const BlockRenderer = props => {
   const style = props.node.style || 'normal'
@@ -10,11 +12,15 @@ const BlockRenderer = props => {
     const level = style.replace(/[^\d]/g, '')
     return <Heading tagName={`h${level}`}>{props.children}</Heading>
   }
- 
-  //TODO: Replace with components
-  return style === 'blockquote'
-    ? <blockquote className="my-block-quote">{props.children}</blockquote>
-    : <p className="my-paragraph">{props.children}</p>
+  
+  switch(style) {
+    case 'small':
+      return <SmallText>{props.children}</SmallText>
+    case 'blockquote':
+      return <blockquote>{props.children}</blockquote>
+    default:
+      return <Text>{props.children}</Text>
+  }
 }
 
 const serializers = {

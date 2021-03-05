@@ -64,7 +64,7 @@ theme.headings = {
 }
 
 theme.texts = {
-  sm: `15px/22px ${textFont}`,
+  sm: `15px/1.3 ${textFont}`,
   default: `18px/23px ${textFont}`,
   defaultMobile: `16px/20px ${textFont}`,
 }
