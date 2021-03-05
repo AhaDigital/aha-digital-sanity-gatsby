@@ -32,10 +32,6 @@ function Icon (props) {
       return <DecoratorLeftIcon />
     case 'decoratorRight':
       return <DecoratorRightIcon />
-    case 'bubbleLeft':
-      return <BubbleLeft />
-    case 'bubbleRight':
-      return <BubbleRight />
     case 'logo':
       return <AhaDigitalLogo {...props} />
     default:
