@@ -7,7 +7,7 @@ const StyledHero = styled.section`
   height: 217px;
   display: flex;
   align-items: flex-end;
-  margin: 0 0 ${theme.spacings.xxl};
+  margin: 0 0 115px;
   background-position: bottom center;
   background-size: cover;
   background-color: rgba(${theme.palette.rawRgb.yellow}, 0.1);

@@ -7,7 +7,7 @@ const ListContentSection = ({ bodyPortableText, listBlock = {} }) => {
   const { listBlockTitle, listBlockList } = listBlock
 
   return (
-    <Grid tagName="section" maxWidth="default" withPadding>
+    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
         <PortableText blocks={bodyPortableText} />
       </Grid.Unit>

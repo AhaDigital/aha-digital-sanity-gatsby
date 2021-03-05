@@ -106,7 +106,6 @@ const GlobalStyles = createGlobalStyle`
 
   main {
     outline: none;
-    min-height: 3000px;
   }
 `
 

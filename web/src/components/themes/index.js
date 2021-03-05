@@ -28,6 +28,7 @@ theme.spacings = {
 theme.grid = {
   maxWidth: '1280px',
   containerPadding: theme.spacings.md,
+  containerPaddingDesktop: theme.spacings.lg,
   columnGutter: theme.spacings.md,
 }
 
@@ -51,11 +52,11 @@ theme.palette = {
 
 theme.headings = {
   h1: `40px/1.2 ${headingFont}`,
-  h2: `28px/1.2 ${headingFont}`,
+  h2: `22px/22px ${headingFont}`,
   h3: `22px/22px ${headingFont}`,
   h4: `16px/16px ${headingFont}`,
   h1Mobile: `28px/1.2 ${headingFont}`,
-  h2Mobile: `28px/40px ${headingFont}`,
+  h2Mobile: `22px/22px ${headingFont}`,
   h3Mobile: `22px/22px ${headingFont}`,
   h4Mobile: `16px/16px ${headingFont}`,
   text: `18px/23px ${textFont}`,

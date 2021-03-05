@@ -51,6 +51,7 @@ const Unit = ({
     alignText,
     className,
     marginTop,
+    withClearFix
   }) => {
   return (
     <StyledGrid.GridUnit
@@ -61,6 +62,7 @@ const Unit = ({
       alignText={alignText}
       className={className}
       marginTop={marginTop && typeof marginTop === 'boolean' ? 'sm' : marginTop}
+      withClearFix={withClearFix}
     >
       {children}
     </StyledGrid.GridUnit>
@@ -116,6 +118,7 @@ Unit.propTypes = {
   alignText: PropTypes.string,
   className: PropTypes.string,
   marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl'])]),
+  withClearFix: PropTypes.bool,
 }
 
 Unit.defaultProps = {
@@ -126,6 +129,7 @@ Unit.defaultProps = {
   alignText: '',
   className: '',
   marginTop: null,
+  withClearFix: null
 }
 
 export default Grid

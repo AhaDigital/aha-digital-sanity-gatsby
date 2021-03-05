@@ -4,7 +4,7 @@ import FoldableList from '../../atoms/FoldableList'
 
 const ListSection = ({ listBlockTitle: title, listBlockList = []}) => {
   return (
-    <Grid tagName="section" maxWidth="default" withPadding>
+    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
         {
           title && (

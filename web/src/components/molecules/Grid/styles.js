@@ -90,6 +90,10 @@ const StyledPageWrapper = styled.div`
   ${({ withPadding, theme }) =>
     withPadding && css`
       padding: 0 ${theme.grid.containerPadding};
+
+      ${({theme}) => theme.media.md`
+        padding: 0 ${theme.grid.containerPaddingDesktop};
+      `}
     `}
   ${({ justify }) => justify && css`
     justify-content: ${justify};
@@ -109,6 +113,7 @@ const StyledPageWrapper = styled.div`
 // Grid unit.
 // props.size {number | object} 1-12 columns
 // or object {sm: number, md: number: lg: number}
+// withClearFix at the moment only supported on size 6.
 const StyledGridUnit = styled.div`
   box-sizing: border-box;
   ${({ marginTop, theme }) => marginTop && css`
@@ -118,7 +123,16 @@ const StyledGridUnit = styled.div`
     padding: 0 ${theme.grid.columnGutter};
   `}
 
-  ${({size}) => typeof size === 'number' && `width: ${unitWidth(size)};`}
+  ${({size}) => typeof size === 'number' && css`
+    width: ${unitWidth(size)};
+  `}
+
+  ${({withClearFix}) => withClearFix && css`
+
+    ${({theme}) => theme.media.md`
+      margin-right: 50%;
+    `}
+  `}
 
   ${({alignText}) => alignText && alignText !== '' && css`
     text-align: ${alignText};

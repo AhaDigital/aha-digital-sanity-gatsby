@@ -17,7 +17,7 @@ const ColumnsSection = ({ column: columns = [] }) => {
   }
 
   return (
-    <Grid tagName="section" maxWidth="default" withPadding>
+    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
       {
         columns.map(column => {
           const { columnBlockImage = {}, columnBlockIntro, columnBlockLink, columnBlockTitle1, columnBlockTitle2 } = column
