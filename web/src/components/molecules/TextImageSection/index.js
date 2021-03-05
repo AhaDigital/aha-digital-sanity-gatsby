@@ -23,7 +23,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
       {
         heading.length > 0 && (
           <Grid.Unit withGutter size={{sm: 12, md: 6}} withClearFix>
-            <TextContainer withPadding margin={{marginDirection: 'bottom', marginSize: 'md'}}>
+            <TextContainer withPadding>
               <PortableText blocks={heading} />
             </TextContainer>
           </Grid.Unit>

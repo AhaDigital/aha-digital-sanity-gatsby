@@ -1,12 +1,11 @@
-import React, {forwardRef} from 'react'
-import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import React from 'react'
+import styled from 'styled-components'
 import theme from '../themes'
 
 const Text = styled.p`
   font: ${theme.texts.sm};
   color: ${theme.palette.darker};
-  margin-top: ${theme.spacings.md};
+  margin: ${theme.spacings.sm} 0 ${theme.spacings.lg};
 `
 
 const SmallText = ({children}) => (
