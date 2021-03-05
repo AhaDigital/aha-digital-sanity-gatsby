@@ -7,12 +7,16 @@ import Text from './Text'
 
 const BlockRenderer = props => {
   const style = props.node.style || 'normal'
- 
+  const type = props.node._type
+  
+  if(type === 'bodyPortableFeaturedLink') {
+    return <FeaturedLink {...props}/>
+  }
+
   if (/^h\d/.test(style)) {
     const level = style.replace(/[^\d]/g, '')
     return <Heading tagName={`h${level}`}>{props.children}</Heading>
   }
-  
   switch(style) {
     case 'small':
       return <SmallText>{props.children}</SmallText>
@@ -26,7 +30,6 @@ const BlockRenderer = props => {
 const serializers = {
   types: {
     mainImage: Figure,
-    bodyPortableFeaturedLink: FeaturedLink,
   },
   block: BlockRenderer
 }

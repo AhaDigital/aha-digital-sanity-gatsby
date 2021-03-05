@@ -1,6 +1,8 @@
 import React from 'react'
 import Grid from '../Grid'
 import Figure from '../../atoms/Figure'
+import Heading from '../../atoms/Heading'
+import Text from '../../atoms/Text'
 
 const ColumnsSection = ({ column: columns = [] }) => {
   const columnWidth = columnsCount => {
@@ -30,18 +32,18 @@ const ColumnsSection = ({ column: columns = [] }) => {
                 )
               }
               {columnBlockTitle1 && (
-                <h3>
+                <Heading tagName="h3">
                   <span>{columnBlockTitle1} </span>
                   {
                     columnBlockTitle2 && (
                       <span>{columnBlockTitle2}</span>
                     )
                   }
-                </h3>
+                </Heading>
               )}
               {
                 columnBlockIntro && (
-                  <p>{columnBlockIntro}</p>
+                  <Text>{columnBlockIntro}</Text>
                 )
               }
             </Grid.Unit>

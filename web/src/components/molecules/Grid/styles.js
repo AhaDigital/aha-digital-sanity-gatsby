@@ -130,7 +130,7 @@ const StyledGridUnit = styled.div`
   ${({withClearFix}) => withClearFix && css`
 
     ${({theme}) => theme.media.md`
-      margin-right: 50%;
+      ${withClearFix.toLeft ? 'margin-left: 50%;' : 'margin-right: 50%;'}
     `}
   `}
 

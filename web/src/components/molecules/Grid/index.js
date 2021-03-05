@@ -118,7 +118,6 @@ Unit.propTypes = {
   alignText: PropTypes.string,
   className: PropTypes.string,
   marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl'])]),
-  withClearFix: PropTypes.bool,
 }
 
 Unit.defaultProps = {
