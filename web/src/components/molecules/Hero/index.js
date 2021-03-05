@@ -5,10 +5,11 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { imageUrlFor } from '../../../lib/image-url';
 import {buildImageObj} from '../../../lib/helpers';
 import Grid from '../Grid'
+import theme from '../../themes'
 import Heading from '../../atoms/Heading'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
+import Icon from '../../atoms/Icon'
 import StyledHero from './styles'
-import theme from '../../themes'
 
 const Hero = ({hero, addContrast}) => {
   const breakpoints = useBreakpoint()
@@ -42,7 +43,11 @@ const Hero = ({hero, addContrast}) => {
             )}
           </StyledHero.Heading>
         </Grid.Unit>
-      </Grid> 
+      </Grid>
+      <StyledHero.Bubbles>
+        <Icon symbol="bubbleLeft"/>
+        <Icon symbol="bubbleRight"/>
+      </StyledHero.Bubbles>
     </StyledHero>
   )
 }

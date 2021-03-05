@@ -1,14 +1,16 @@
 import React from 'react'
-import HamburgerIcon from './hamburger'
-import CloseIcon from './closeIcon'
-import ArrowDownIcon from './arrowDownIcon'
-import EyeIcon from './eyeIcon'
-import EyeClosedIcon from './eyeClosedIcon'
-import EarClosedIcon from './earClosedIcon'
-import EarIcon from './earIcon'
-import DecoratorLeftIcon from './decoratorLeft'
-import DecoratorRightIcon from './decoratorRight'
-import AhaDigitalLogo from './ahaDigitalLogo'
+import HamburgerIcon from './Hamburger'
+import CloseIcon from './CloseIcon'
+import ArrowDownIcon from './ArrowDownIcon'
+import EyeIcon from './EyeIcon'
+import EyeClosedIcon from './EyeClosedIcon'
+import EarClosedIcon from './EarClosedIcon'
+import EarIcon from './EarIcon'
+import DecoratorLeftIcon from './DecoratorLeft'
+import DecoratorRightIcon from './DecoratorRight'
+import AhaDigitalLogo from './AhaDigitalLogo'
+import BubbleLeft from './BubbleLeft'
+import BubbleRight from './BubbleRight'
 
 function Icon (props) {
   switch (props.symbol) {
@@ -16,20 +18,24 @@ function Icon (props) {
       return <HamburgerIcon />
     case 'close':
       return <CloseIcon />
-    case 'arrow-down':
+    case 'arrowDown':
       return <ArrowDownIcon />
     case 'eye':
       return <EyeIcon />
-    case 'eye-closed':
+    case 'eyeClosed':
       return <EyeClosedIcon />
-    case 'ear-closed':
+    case 'earClosed':
       return <EarClosedIcon />
     case 'ear':
       return <EarIcon />
-    case 'decorator-left':
+    case 'decoratorLeft':
       return <DecoratorLeftIcon />
-    case 'decorator-right':
+    case 'decoratorRight':
       return <DecoratorRightIcon />
+    case 'bubbleLeft':
+      return <BubbleLeft />
+    case 'bubbleRight':
+      return <BubbleRight />
     case 'logo':
       return <AhaDigitalLogo {...props} />
     default:

@@ -101,7 +101,7 @@ const Header = ({
             name="toContent"
             onClick={() => setToContentTriggered(true)}
             text="Till huvudinnehåll"
-            icon={{symbol: 'arrow-down', animationDirection: 'bottom'}}
+            icon={{symbol: 'arrowDown', animationDirection: 'bottom'}}
             ariaLabel="Hoppa över huvudmenyn"
             styles={skipToContentButtonOverrideStyle}
           />
@@ -111,7 +111,7 @@ const Header = ({
             name="highContrast"
             onClick={() => onAddContrast()}
             text="Öka kontrast"
-            icon={{symbol: addContrast ? 'eye' : 'eye-closed'}}
+            icon={{symbol: addContrast ? 'eye' : 'eyeClosed'}}
             styles={`color: ${addContrast ? 'blue' : theme.palette.dark};`}
             addContrast={addContrast}
           />
@@ -119,7 +119,7 @@ const Header = ({
             name="textToSpeach"
             onClick={() => onAddSpeach()}
             text="Talande webb"
-            icon={{symbol: addSpeach ? 'ear' : 'ear-closed'}}
+            icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
             styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue)  : theme.palette.dark};`}
             addContrast={addContrast}
           />
@@ -212,7 +212,7 @@ const Header = ({
                     name="highContrastMobile"
                     onClick={() => onAddContrast()}
                     text={addContrast ? 'Ökad kontrast' : 'Öka kontrast'}
-                    icon={{symbol: addContrast ? 'eye' : 'eye-closed'}}
+                    icon={{symbol: addContrast ? 'eye' : 'eyeClosed'}}
                     styles={`color: ${addContrast ? 'blue' : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                     ariaLabel="Öka eller återställ kontrast på webbplatsen"
                     ariaExpanded={addContrast}
@@ -223,7 +223,7 @@ const Header = ({
                     name="textToSpeachMobile"
                     onClick={() => onAddSpeach()}
                     text="Talande webb"
-                    icon={{symbol: addSpeach ? 'ear' : 'ear-closed'}}
+                    icon={{symbol: addSpeach ? 'ear' : ''}}
                     styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                     ariaLabel="Slå på/av talande webb på webbplatsen"
                     ariaExpanded={addSpeach}

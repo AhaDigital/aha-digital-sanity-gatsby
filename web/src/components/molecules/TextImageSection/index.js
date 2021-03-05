@@ -1,12 +1,10 @@
 import React from 'react'
-import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Grid from '../Grid'
 import PortableText from '../../atoms/portableText'
 import Figure from '../../atoms/Figure'
 import TextContainer from '../../atoms/TextContainer'
 
 const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage }) => {
-  const breakpoints = useBreakpoint()
   const heading = []
   const rest = []
 

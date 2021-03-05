@@ -53,10 +53,10 @@ const InlineTextScentance = ({ part, addContrast }) => {
         {withDecorator && !addContrast && (
           <Decorator>
             <LeftIcon>
-              <Icon symbol="decorator-left"/>
+              <Icon symbol="decoratorLeft"/>
             </LeftIcon>
             <RightIcon>
-              <Icon symbol="decorator-right"/>
+              <Icon symbol="decoratorRight"/>
             </RightIcon>
           </Decorator>
         )}

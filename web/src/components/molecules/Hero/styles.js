@@ -1,5 +1,4 @@
 import styled, {css} from 'styled-components'
-import Heading from '../../atoms/Heading'
 import theme from '../../themes'
 
 const StyledHero = styled.section`
@@ -38,6 +37,15 @@ const StyledHero = styled.section`
   `}
 `
 
+const Bubbles = styled.span`
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: -1;
+`
+
 const StyledHeading = styled.div`
   padding: ${theme.spacings.lg} ${theme.spacings.xl};
   text-align: center;
@@ -53,5 +61,6 @@ const Intro = styled.div`
 
 StyledHero.Heading = StyledHeading
 StyledHero.Intro = Intro
+StyledHero.Bubbles = Bubbles
 
 export default StyledHero
