@@ -2,7 +2,6 @@ import React, { createRef, useEffect, useState } from 'react'
 import get from 'lodash.get'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Icon from '../../atoms/icon'
-import AhaDigitalLogo from '../../atoms/svg/ahaDigitalLogo'
 import Button from '../../atoms/Button'
 import LinkButton from '../../atoms/LinkButton'
 import TransparentButton from '../../atoms/TransparentButton'
@@ -135,7 +134,6 @@ const Header = ({
             addSpeach: addSpeach
           }}
         >
-          <AhaDigitalLogo isAnimated={foldHeader} />
         </NavLevel.Link>
         <NavLevel.MobileMenuButton
           name="menuButton"
