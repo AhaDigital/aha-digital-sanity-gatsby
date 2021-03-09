@@ -9,8 +9,6 @@ import EarIcon from './earIcon'
 import DecoratorLeftIcon from './decoratorLeft'
 import DecoratorRightIcon from './decoratorRight'
 import AhaDigitalLogo from './ahaDigitalLogo'
-import BubbleLeft from './bubbleLeft'
-import BubbleRight from './bubbleRight'
 
 function Icon (props) {
   switch (props.symbol) {
