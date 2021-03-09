@@ -8,7 +8,6 @@ import EarClosedIcon from './earClosedIcon'
 import EarIcon from './earIcon'
 import DecoratorLeftIcon from './decoratorLeft'
 import DecoratorRightIcon from './decoratorRight'
-import AhaDigitalLogo from './ahaDigitalLogo'
 
 function Icon (props) {
   switch (props.symbol) {
@@ -30,8 +29,6 @@ function Icon (props) {
       return <DecoratorLeftIcon />
     case 'decoratorRight':
       return <DecoratorRightIcon />
-    case 'logo':
-      return <AhaDigitalLogo {...props} />
     default:
       return <span>Unknown icon: {props.symbol}</span>
   }

@@ -8,8 +8,8 @@ import Grid from '../Grid'
 import theme from '../../themes'
 import Heading from '../../atoms/Heading'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
-import BubbleLeft from '../../atoms/icon/bubbleLeft'
-import BubbleRight from '../../atoms/icon/bubbleRight'
+import BubbleLeft from '../../atoms/Svg/bubbleLeft'
+import BubbleRight from '../../atoms/Svg/bubbleRight'
 import StyledHero from './styles'
 
 const Hero = ({hero, addContrast}) => {
