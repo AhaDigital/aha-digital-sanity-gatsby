@@ -15,7 +15,9 @@ const BlockRenderer = props => {
 
   if (/^h\d/.test(style)) {
     const level = style.replace(/[^\d]/g, '')
-    return <Heading tagName={`h${level}`}>{props.children}</Heading>
+    const addContrast = props.node.addContrast
+
+    return <Heading tagName={`h${level}`} addContrast={addContrast}>{props.children}</Heading>
   }
   switch(style) {
     case 'small':

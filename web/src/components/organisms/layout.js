@@ -151,6 +151,13 @@ const Layout = ({
           const ogImageUrl = (ogImage && ogImage.asset) ? imageUrlFor(buildImageObj(ogImage)).width(1200).url() : null
           const fallbackImageUrl = (fallbackImage && fallbackImage.asset) ? imageUrlFor(buildImageObj(fallbackImage)).width(1200).url() : null
   
+          const childrenWithProps = React.Children.map(children, child => {
+            if (React.isValidElement(child)) {
+              return React.cloneElement(child, { addContrast: addContrast });
+            }
+            return child;
+          });
+
           return (
             <>
               <SEO title={ogTitle || fallbackTitle} description={ogDescription || fallbackDescription} image={ogImageUrl || fallbackImageUrl} />
@@ -167,16 +174,16 @@ const Layout = ({
                 addContrast={addContrast}
               />
               <Hero hero={hero} addContrast={addContrast} />
+              <main ref={mainRef} tabIndex={-1}>
+                {childrenWithProps}
+              </main>
+              <footer>
+                &copy; {new Date().getFullYear()} ahadigital.se - Aha Digital AB
+              </footer>
             </>
           )
         }}
       />
-      <main ref={mainRef} tabIndex={-1}>
-        {children}
-      </main>
-      <footer>
-        &copy; {new Date().getFullYear()} ahadigital.se - Aha Digital AB
-      </footer>
     </ThemeProvider>
   )
 }

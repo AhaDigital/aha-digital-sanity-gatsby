@@ -4,7 +4,7 @@ import PortableText from '../../atoms/portableText'
 import Figure from '../../atoms/Figure'
 import TextContainer from '../../atoms/TextContainer'
 
-const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage }) => {
+const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage, addContrast }) => {
   const heading = []
   const rest = []
 
@@ -12,7 +12,9 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
     const {style} = element
 
     if(style === 'h2') {
-      heading.push(element)
+      const H2 = element
+      H2.addContrast = addContrast
+      heading.push(H2)
     } else {
       rest.push(element)
     }
