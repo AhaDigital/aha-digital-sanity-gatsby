@@ -8,8 +8,6 @@ import Grid from '../Grid'
 import theme from '../../themes'
 import Heading from '../../atoms/Heading'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
-import BubbleLeft from '../../atoms/svg/BubbleLeft'
-import BubbleRight from '../../atoms/svg/BubbleRight'
 import StyledHero from './styles'
 
 const Hero = ({hero, addContrast}) => {
@@ -46,8 +44,6 @@ const Hero = ({hero, addContrast}) => {
         </Grid.Unit>
       </Grid>
       <StyledHero.Bubbles>
-        <BubbleLeft/>
-        <BubbleRight/>
       </StyledHero.Bubbles>
     </StyledHero>
   )
