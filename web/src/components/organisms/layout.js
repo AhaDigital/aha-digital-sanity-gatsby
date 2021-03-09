@@ -90,7 +90,8 @@ const GlobalStyles = createGlobalStyle`
 
   .isTabbing {
     a:focus, button:focus, #menuOpener:focus {
-      outline: 1px solid rgb(31,105,255);
+      outline: 4px solid rgb(31,105,255);
+      outline-offset: unset;
     }
   }
 

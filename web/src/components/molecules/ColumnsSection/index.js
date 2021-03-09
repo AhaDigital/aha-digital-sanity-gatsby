@@ -1,10 +1,10 @@
 import React from 'react'
 import Grid from '../Grid'
-import Figure from '../../atoms/Figure'
 import Heading from '../../atoms/Heading'
-import Text from '../../atoms/Text'
+import Figure from '../../atoms/Figure'
+import Columns from './styles'
 
-const ColumnsSection = ({ column: columns = [] }) => {
+const ColumnsSection = ({ column: columns = [], addContrast }) => {
   const columnWidth = columnsCount => {
     switch(columnsCount) {
       case 2:
@@ -18,39 +18,59 @@ const ColumnsSection = ({ column: columns = [] }) => {
     }
   }
 
+  const overrideHeadingStyle = `
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  `
+
   return (
-    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
+    <Columns>
       {
         columns.map(column => {
           const { columnBlockImage = {}, columnBlockIntro, columnBlockLink, columnBlockTitle1, columnBlockTitle2 } = column
 
           return (
-            <Grid.Unit key={column._key} withGutter size={columnWidth(columns.length)}>
-              {
-                columnBlockImage && columnBlockImage.asset && (
-                  <Figure node={columnBlockImage} />
-                )
-              }
-              {columnBlockTitle1 && (
-                <Heading tagName="h3">
-                  <span>{columnBlockTitle1} </span>
+            <Columns.Column key={column._key}>
+              <Columns.ColumnInner>
+                {
+                  columnBlockLink && (
+                    <Columns.ColumnLink to={columnBlockLink}>
+                      <span className="visually-hidden">
+                        {columnBlockTitle1}
+                        {columnBlockTitle2 && columnBlockTitle2}
+                      </span>
+                    </Columns.ColumnLink>
+                  )
+                }
+                <Columns.ColumnTop>
                   {
-                    columnBlockTitle2 && (
-                      <span>{columnBlockTitle2}</span>
+                    columnBlockImage && columnBlockImage.asset && (
+                      <Figure node={columnBlockImage} />
                     )
                   }
-                </Heading>
-              )}
-              {
-                columnBlockIntro && (
-                  <Text>{columnBlockIntro}</Text>
-                )
-              }
-            </Grid.Unit>
+                  {columnBlockTitle1 && (
+                    <Heading tagName="h3" addContrast={addContrast} styles={overrideHeadingStyle}>
+                      <Columns.ColumnHeadingText>{columnBlockTitle1} </Columns.ColumnHeadingText>
+                      {
+                        columnBlockTitle2 && (
+                          <Columns.ColumnHeadingText>{columnBlockTitle2}</Columns.ColumnHeadingText>
+                        )
+                      }
+                    </Heading>
+                  )}
+                </Columns.ColumnTop>
+                {
+                  columnBlockIntro && (
+                    <Columns.ColumnBottom>{columnBlockIntro}</Columns.ColumnBottom>
+                  )
+                }
+              </Columns.ColumnInner>
+            </Columns.Column>
           )
         })
       }
-    </Grid>
+    </Columns>
   )
 }
 
