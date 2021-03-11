@@ -2,37 +2,26 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import theme from '../../themes'
 
-const Columns = styled.section`
-  max-width: ${theme.grid.maxWidth};
-  margin: ${theme.spacings.xxl} auto 0;
-  padding: 0 ${theme.spacings.lg};
-
-  ${({theme}) => theme.media.md`
-    display: table;
-    padding: 0 ${theme.spacings.md};
-  `}
-`
-
-const Column = styled.div`
-  padding: 0 ${theme.spacings.lg};
-  ${({theme}) => theme.media.md`
-    width: 50%;
-    display: table-cell;
-  `}
-`
+const Columns = {}
 
 const ColumnInner = styled.div`
-  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.08);
+  height: 100%;
   border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 0;
-  overflow: hidden;
+
+  ${({theme}) => theme.media.md`
+    margin: 0;
+  `}
 `
 
 const Top = styled.div`
   position: relative;
-  span {
-    transition: all ${theme.animationTime.default} ease-in-out;
+  overflow: hidden;
+  * {
+    transition: all ${theme.animationTime.longer} ease-in-out;
   }
 `
 
@@ -57,13 +46,22 @@ const StyledLink = styled(Link)`
   z-index: 1;
 
   &:focus, &:hover {
-    & ~ ${Top} span {
-      color: ${theme.palette.light};
-      background-color: ${theme.palette.blue};
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    top: 4px;
+    left: 4px;
+    outline-color: ${theme.palette.green} !important;
+    & ~ ${Top} {
+      figure {
+        transform: scale(1.02);
+      }
+      span {
+        color: ${theme.palette.light};
+        background-color: ${theme.palette.green};
+      }
     }
   }
 `
-Columns.Column = Column
 Columns.ColumnInner = ColumnInner
 Columns.ColumnTop = Top
 Columns.ColumnBottom = Bottom

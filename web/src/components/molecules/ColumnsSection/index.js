@@ -5,8 +5,8 @@ import Figure from '../../atoms/Figure'
 import Columns from './styles'
 
 const ColumnsSection = ({ column: columns = [], addContrast }) => {
-  const columnWidth = columnsCount => {
-    switch(columnsCount) {
+  const columnWidth = () => {
+    switch(columns.length) {
       case 2:
         return { sm: 12, md: 6 }
       case 3:
@@ -25,13 +25,13 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
   `
 
   return (
-    <Columns>
+    <Grid tagName="section" maxWidth="default" marginTop="xl" withPadding>
       {
         columns.map(column => {
           const { columnBlockImage = {}, columnBlockIntro, columnBlockLink, columnBlockTitle1, columnBlockTitle2 } = column
 
           return (
-            <Columns.Column key={column._key}>
+            <Grid.Unit key={column._key} size={columnWidth()} withGutter marginTop="xl">
               <Columns.ColumnInner>
                 {
                   columnBlockLink && (
@@ -66,11 +66,11 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
                   )
                 }
               </Columns.ColumnInner>
-            </Columns.Column>
+            </Grid.Unit>
           )
         })
       }
-    </Columns>
+    </Grid>
   )
 }
 
