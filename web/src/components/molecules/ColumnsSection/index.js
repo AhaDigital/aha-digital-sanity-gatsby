@@ -1,10 +1,13 @@
 import React from 'react'
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Grid from '../Grid'
 import Heading from '../../atoms/Heading'
 import Figure from '../../atoms/Figure'
 import Columns from './styles'
 
 const ColumnsSection = ({ column: columns = [], addContrast }) => {
+  const breakpoints = useBreakpoint()
+  
   const columnWidth = () => {
     switch(columns.length) {
       case 2:
@@ -18,7 +21,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
     }
   }
 
-  const overrideHeadingStyle = `
+  const overrideHeadingStyle = breakpoints.sm ? '' : `
     position: absolute;
     bottom: 0;
     left: 0;
@@ -51,7 +54,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
                   }
                   {columnBlockTitle1 && (
                     <Heading tagName="h3" addContrast={addContrast} styles={overrideHeadingStyle}>
-                      <Columns.ColumnHeadingText>{columnBlockTitle1} </Columns.ColumnHeadingText>
+                      <Columns.ColumnHeadingText>{columnBlockTitle1}</Columns.ColumnHeadingText>
                       {
                         columnBlockTitle2 && (
                           <Columns.ColumnHeadingText>{columnBlockTitle2}</Columns.ColumnHeadingText>

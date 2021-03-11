@@ -6,15 +6,12 @@ const Columns = {}
 
 const ColumnInner = styled.div`
   height: 100%;
+  margin: 0 ${theme.spacings.md};
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 0;
-
-  ${({theme}) => theme.media.md`
-    margin: 0;
-  `}
 `
 
 const Top = styled.div`
@@ -28,11 +25,11 @@ const Top = styled.div`
 const Bottom = styled.p`
   font: ${theme.texts.default};
   color: ${theme.palette.darker};
-  margin: ${theme.spacings.md};
+  margin: ${theme.spacings.lg};
 `
 
 const HeadingText = styled.span`
-  padding: 0 ${theme.spacings.md};
+  padding: 3px ${theme.spacings.md} 3px ${theme.spacings.lg};
   display: inline-block;
   background-color: ${theme.palette.light};
 `

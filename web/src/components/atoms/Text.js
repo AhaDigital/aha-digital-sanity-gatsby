@@ -5,7 +5,7 @@ import theme from '../themes'
 const StyledText = styled.p`
   font: ${theme.texts.default};
   color: ${theme.palette.darker};
-  margin: 0 0 ${theme.spacings.md} 0;
+  margin: 0 0 ${theme.spacings.lg} 0;
 `
 
 const Text = ({children}) => (

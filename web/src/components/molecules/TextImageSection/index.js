@@ -34,7 +34,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
         <TextContainer withPadding>
           {blockImageDirectionLeft ? (
-            <Figure node={mainImage} />
+            <Figure node={mainImage} aspectRatio4to3 />
           ) : (
             <PortableText blocks={rest} />
           )}
@@ -45,7 +45,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
           {blockImageDirectionLeft ? (
             <PortableText blocks={rest} />
           ) : (
-            <Figure node={mainImage} />
+            <Figure node={mainImage} aspectRatio4to3 />
           )}
         </TextContainer>
       </Grid.Unit>
