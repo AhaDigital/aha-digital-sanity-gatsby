@@ -17,11 +17,12 @@ const defaultStyles = tagName => {
 }
 
 const HeadingElement = styled.h1`
-  ${({styles, displayAs, addContrast}) => css`
+  ${({styles, displayAs, addContrast, color}) => css`
     ${defaultStyles(displayAs || 'h1')}
     ${addContrast && css`
       color: ${theme.palette.darker};
     `}
+    ${color && color}
     ${styles && styles}
   `}
 `

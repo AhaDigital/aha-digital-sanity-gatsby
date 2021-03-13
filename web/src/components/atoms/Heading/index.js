@@ -4,13 +4,14 @@ import HeadingElement from './styles'
 import theme from '../../themes'
 
 const Heading = ({id, tagName, displayAs, addContrast, styles, children}) => {
+  let color
   if(!addContrast) {
     switch(displayAs || tagName) {
       case 'h2':
-        styles += `color: ${theme.palette.pink};`
+        color = `color: ${theme.palette.pink} !important;`
         break;
       case 'h3':
-        styles += `color: ${theme.palette.green};`
+        color = `color: ${theme.palette.green} !important;`
         break;
       default:
         break;
@@ -18,7 +19,7 @@ const Heading = ({id, tagName, displayAs, addContrast, styles, children}) => {
   }
 
   return (
-    <HeadingElement id={id} as={tagName} displayAs={displayAs} addContrast={addContrast} styles={styles}>{children}</HeadingElement>
+    <HeadingElement id={id} as={tagName} displayAs={displayAs} addContrast={addContrast} styles={styles} color={color}>{children}</HeadingElement>
   )
 }
 
