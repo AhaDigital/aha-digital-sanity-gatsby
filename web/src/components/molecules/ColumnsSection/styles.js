@@ -6,12 +6,15 @@ const Columns = {}
 
 const ColumnInner = styled.div`
   height: 100%;
-  margin: 0 ${theme.spacings.md};
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 0;
+
+  ${({theme}) => theme.media.lg`
+    margin: 0 ${theme.spacings.md};
+  `}
 `
 
 const Top = styled.div`
@@ -29,9 +32,15 @@ const Bottom = styled.p`
 `
 
 const HeadingText = styled.span`
-  padding: 3px ${theme.spacings.md} 3px ${theme.spacings.lg};
-  display: inline-block;
+  padding: 0 ${theme.spacings.md} 0 ${theme.spacings.lg};
+  display: block;
   background-color: ${theme.palette.light};
+  text-decoration: underline;
+  ${({theme}) => theme.media.lg`
+    padding: 3px ${theme.spacings.md} 3px ${theme.spacings.lg};
+    display: inline-block;
+    text-decoration: none;
+  `}
 `
 
 const StyledLink = styled(Link)`
@@ -53,8 +62,10 @@ const StyledLink = styled(Link)`
         transform: scale(1.02);
       }
       span {
-        color: ${theme.palette.light};
-        background-color: ${theme.palette.green};
+        ${({theme}) => theme.media.lg`
+          color: ${theme.palette.light};
+          background-color: ${theme.palette.green};
+        `}
       }
     }
   }

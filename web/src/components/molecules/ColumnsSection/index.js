@@ -21,7 +21,9 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
     }
   }
 
-  const overrideHeadingStyle = breakpoints.sm ? '' : `
+  const overrideHeadingStyle = breakpoints.sm || breakpoints.md ? `
+    margin-top: 10px;
+  ` : `
     position: absolute;
     bottom: 0;
     left: 0;
