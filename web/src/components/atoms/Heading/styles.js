@@ -22,7 +22,9 @@ const HeadingElement = styled.h1`
     ${addContrast && css`
       color: ${theme.palette.darker};
     `}
-    ${color && color}
+    ${color && css`
+      color: ${theme.palette[color]};
+    `}
     ${styles && styles}
   `}
 `

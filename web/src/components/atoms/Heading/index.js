@@ -8,10 +8,10 @@ const Heading = ({id, tagName, displayAs, addContrast, styles, children}) => {
   if(!addContrast) {
     switch(displayAs || tagName) {
       case 'h2':
-        color = `color: ${theme.palette.pink} !important;`
+        color = 'pink'
         break;
       case 'h3':
-        color = `color: ${theme.palette.green} !important;`
+        color = 'green'
         break;
       default:
         break;
