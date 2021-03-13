@@ -25,7 +25,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
     }
   })
 
-  const mobileHeading = breakpoints.sm && get(heading[0], 'children[0].text')
+  const headingText = get(heading[0], 'children[0].text')
 
   return (
     <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
@@ -36,9 +36,9 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
               <HeadingWithImage>
                 <Figure node={mainImage} />
                 {
-                  mobileHeading && (
+                  heading.length > 0 && (
                     <Heading tagName={get(heading[0], 'style')} addContrast={get(heading[0], 'addContrast')}>
-                      {mobileHeading.split(' ').map((word, index) => <span key={`heading-word-${word}-${index}`}>{word}</span>)}
+                      {headingText && headingText.split(' ').map((word, index) => <span key={`heading-word-${word}-${index}`}>{word}</span>)}
                     </Heading>
                   )
                 }
@@ -54,7 +54,13 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
               heading.length > 0 && (
                 <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
                   <TextContainer withPadding margin={{marginDirection: 'bottom', marginSize: 'md'}}>
-                    <PortableText blocks={heading} />
+                    {
+                      heading.length > 0 && (
+                        <Heading tagName={get(heading[0], 'style')} addContrast={get(heading[0], 'addContrast')}>
+                          {headingText}
+                        </Heading>
+                      )
+                    }
                   </TextContainer>
                 </Grid.Unit>
               )
