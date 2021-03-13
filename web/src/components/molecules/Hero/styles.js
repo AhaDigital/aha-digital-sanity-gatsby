@@ -38,12 +38,16 @@ const StyledHero = styled.section`
 `
 
 const Bubbles = styled.span`
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  z-index: -1;
+  display: none;
+  ${({theme}) => theme.media.lg`
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: -1;
+  `}
 `
 
 const StyledHeading = styled.div`
