@@ -20,6 +20,14 @@ const ColumnInner = styled.div`
 const Top = styled.div`
   position: relative;
   overflow: hidden;
+  h3 {
+    margin-top: 10px;
+    ${({theme}) => theme.media.lg`
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    `}
+  }
   * {
     transition: all ${theme.animationTime.longer} ease-in-out;
   }
@@ -70,6 +78,7 @@ const StyledLink = styled(Link)`
     }
   }
 `
+
 Columns.ColumnInner = ColumnInner
 Columns.ColumnTop = Top
 Columns.ColumnBottom = Bottom
