@@ -3,7 +3,8 @@ import { imageUrlFor } from '../../lib/image-url';
 import {buildImageObj} from '../../lib/helpers';
 
 export default ({node, aspectRatio4to3}) => {
-  const {asset} = node
+
+  const {asset, is4to3AspectRatio} = node
   if (!node || !asset || !asset._id) { return null }
 
   const sizes = {
@@ -46,8 +47,8 @@ export default ({node, aspectRatio4to3}) => {
             imageUrlFor(
               buildImageObj(node)
             )
-            .width(aspectRatio4to3 ? sizes4to3.desktop.w : sizes.desktop.w)
-            .height(aspectRatio4to3 ? sizes4to3.desktop.h : sizes.desktop.h)
+            .width(aspectRatio4to3 || is4to3AspectRatio ? sizes4to3.desktop.w : sizes.desktop.w)
+            .height(aspectRatio4to3 || is4to3AspectRatio ? sizes4to3.desktop.h : sizes.desktop.h)
             .quality(80)
             .auto("format")
             .url()
@@ -59,8 +60,8 @@ export default ({node, aspectRatio4to3}) => {
             imageUrlFor(
               buildImageObj(node)
             )
-            .width(aspectRatio4to3 ? sizes4to3.mobileLarger.w : sizes.mobileLarger.w)
-            .height(aspectRatio4to3 ? sizes4to3.mobileLarger.h : sizes.mobileLarger.h)
+            .width(aspectRatio4to3 || is4to3AspectRatio ? sizes4to3.mobileLarger.w : sizes.mobileLarger.w)
+            .height(aspectRatio4to3 || is4to3AspectRatio ? sizes4to3.mobileLarger.h : sizes.mobileLarger.h)
             .quality(80)
             .auto("format")
             .url()
@@ -71,8 +72,8 @@ export default ({node, aspectRatio4to3}) => {
             imageUrlFor(
               buildImageObj(node)
             )
-            .width(aspectRatio4to3 ? sizes4to3.mobile.w : sizes.mobile.w)
-            .height(aspectRatio4to3 ? sizes4to3.mobile.h : sizes.mobile.h)
+            .width(aspectRatio4to3 || is4to3AspectRatio ? sizes4to3.mobile.w : sizes.mobile.w)
+            .height(aspectRatio4to3 || is4to3AspectRatio ? sizes4to3.mobile.h : sizes.mobile.h)
             .quality(80)
             .auto("format")
             .url()

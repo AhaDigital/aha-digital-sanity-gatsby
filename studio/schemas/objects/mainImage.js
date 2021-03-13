@@ -23,6 +23,15 @@ export default {
       options: {
         isHighlighted: true
       }
+    },
+    {
+      name: 'is4to3AspectRatio',
+      type: 'boolean',
+      title: '4:3 aspect ratio',
+      description: 'Used in body content',
+      options: {
+        isHighlighted: true
+      }
     }
   ],
   preview: {
