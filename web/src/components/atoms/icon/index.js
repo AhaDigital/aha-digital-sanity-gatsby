@@ -8,6 +8,8 @@ import EarClosedIcon from './earClosedIcon'
 import EarIcon from './earIcon'
 import DecoratorLeftIcon from './decoratorLeft'
 import DecoratorRightIcon from './decoratorRight'
+import ChevronRightIcon from './chevronRightIcon'
+import PdfIcon from './pdfIcon'
 
 function Icon (props) {
   switch (props.symbol) {
@@ -29,6 +31,10 @@ function Icon (props) {
       return <DecoratorLeftIcon />
     case 'decoratorRight':
       return <DecoratorRightIcon />
+    case 'chevronRight':
+      return <ChevronRightIcon />
+    case 'pdf':
+      return <PdfIcon />
     default:
       return <span>Unknown icon: {props.symbol}</span>
   }

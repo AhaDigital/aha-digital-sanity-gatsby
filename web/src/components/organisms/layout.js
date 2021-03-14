@@ -84,6 +84,9 @@ const GlobalStyles = createGlobalStyle`
     border-spacing: 0;
   }
 
+  a, a:active {
+    color: rgb(31,105,255);
+  }
   a:focus, button:focus {
     outline: none;
   }
