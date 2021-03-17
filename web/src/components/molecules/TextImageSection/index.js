@@ -53,7 +53,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
             {
               heading.length > 0 && (
                 <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
-                  <TextContainer withPadding margin={{marginDirection: 'bottom', marginSize: 'md'}}>
+                  <TextContainer withPadding>
                     {
                       heading.length > 0 && (
                         <Heading tagName={get(heading[0], 'style')} addContrast={get(heading[0], 'addContrast')}>

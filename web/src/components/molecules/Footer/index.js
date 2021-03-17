@@ -2,14 +2,15 @@ import React from 'react'
 import Grid from '../Grid'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
 import Heading from '../../atoms/Heading'
+import StyledFooter from './styles'
 
-const Footer = ({ salesPitch }) => (
-  <footer>
+const Footer = ({ salesPitch, addContrast }) => (
+  <StyledFooter>
     <Grid tagName="section" maxWidth="default" withPadding>
       <Grid.Unit withGutter size={{sm: 12, md: 6}}>
         {
           salesPitch && salesPitch.length > 0 && (
-            <Heading tagName="h3">
+            <Heading tagName="h3" addContrast={addContrast}>
               {
                 salesPitch.map(part => <InlineTextScentance key={part._key} part={part} />)
               }
@@ -21,7 +22,34 @@ const Footer = ({ salesPitch }) => (
         Kontaktinformation...
       </Grid.Unit>
     </Grid>
-  </footer>
+    <StyledFooter.Bottom>
+      <Grid tagName="section" maxWidth="default" withPadding>
+        <Grid.Unit withGutter size={{sm: 12, md: 6}}>
+          <Heading tagName="h3">
+            Om webbplatsen
+          </Heading>
+          <ul>
+            <li>
+              Webbplatskarta
+            </li>
+            <li>
+              Tillgänglighetsredogörelse
+            </li>
+            <li>
+              Om kakor på webbplatsen
+            </li>
+            <li>
+              Aha på Github
+            </li>
+          </ul>
+        </Grid.Unit>
+        <Grid.Unit withGutter size={{sm: 12, md: 6}}>
+          aha logo black
+          &copy; {new Date().getFullYear()} ahadigital.se - Aha Digital AB
+        </Grid.Unit>
+      </Grid>
+    </StyledFooter.Bottom>
+  </StyledFooter>
 )
 
 Footer.defaultProps = {

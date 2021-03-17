@@ -31,7 +31,7 @@ const Hero = ({hero, addContrast}) => {
         <Grid.Unit withGutter size={12}>
           <StyledHero.Heading>
             {heading.length > 0 && (
-              <Heading addContrast={addContrast}>
+              <Heading tagName="h1" addContrast={addContrast}>
                 {
                   heading.map(part => <InlineTextScentance key={part._key} part={part} addContrast={addContrast} />)
                 }

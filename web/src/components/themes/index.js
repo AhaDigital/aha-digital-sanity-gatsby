@@ -51,7 +51,7 @@ theme.palette = {
 }
 
 theme.headings = {
-  h1: `40px/1.2 ${headingFont}`,
+  h1: `40px/40px ${headingFont}`,
   h2: `22px/22px ${headingFont}`,
   h3: `22px/22px ${headingFont}`,
   h4: `16px/16px ${headingFont}`,

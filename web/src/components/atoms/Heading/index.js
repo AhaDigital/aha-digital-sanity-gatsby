@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import HeadingElement from './styles'
-import theme from '../../themes'
 
 const Heading = ({id, tagName, displayAs, addContrast, styles, children}) => {
   let color

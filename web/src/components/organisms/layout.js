@@ -181,9 +181,6 @@ const Layout = ({
               <main ref={mainRef} tabIndex={-1}>
                 {childrenWithProps}
               </main>
-              <footer>
-                &copy; {new Date().getFullYear()} ahadigital.se - Aha Digital AB
-              </footer>
             </>
           )
         }}
