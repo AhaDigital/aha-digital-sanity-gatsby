@@ -10,7 +10,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const breakpoints = {
   sm: '(max-width: 374px)',
   md: '(max-width: 767px)',
-  lg: '(max-width: 1279px)',
+  lg: '(max-width: 1023px)',
 };
 
 module.exports = {

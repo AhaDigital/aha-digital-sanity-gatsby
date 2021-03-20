@@ -7,10 +7,10 @@ import StyledFooter from './styles'
 const Footer = ({ salesPitch, addContrast }) => (
   <StyledFooter>
     <Grid tagName="section" maxWidth="default" withPadding>
-      <Grid.Unit withGutter size={{sm: 12, md: 6}}>
+      <Grid.Unit withGutter size={{sm: 12, lg: 8}}>
         {
           salesPitch && salesPitch.length > 0 && (
-            <Heading tagName="h3" addContrast={addContrast}>
+            <Heading tagName="h3" displayAs="h1" addContrast={addContrast} color="green">
               {
                 salesPitch.map(part => <InlineTextScentance key={part._key} part={part} />)
               }
@@ -18,7 +18,7 @@ const Footer = ({ salesPitch, addContrast }) => (
           )
         }
       </Grid.Unit>
-      <Grid.Unit withGutter size={{sm: 12, md: 6}}>
+      <Grid.Unit withGutter size={{sm: 12, lg: 4}}>
         Kontaktinformation...
       </Grid.Unit>
     </Grid>

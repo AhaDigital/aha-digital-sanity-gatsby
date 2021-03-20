@@ -45,7 +45,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
                     )
                   }
                   {columnBlockTitle1 && (
-                    <Heading tagName="h3" addContrast={addContrast}>
+                    <Heading tagName="h3" displayAs="h2" addContrast={addContrast} color="green">
                       <Columns.ColumnHeadingText>{columnBlockTitle1}</Columns.ColumnHeadingText>
                       {
                         columnBlockTitle2 && (

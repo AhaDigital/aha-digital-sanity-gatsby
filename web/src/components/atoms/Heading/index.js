@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HeadingElement from './styles'
 
-const Heading = ({id, tagName, displayAs, addContrast, styles, children}) => {
-  let color
-  if(!addContrast) {
+const Heading = ({id, tagName, displayAs, addContrast, styles, color, children}) => {
+  if(!addContrast && !color) {
     switch(displayAs || tagName) {
       case 'h2':
         color = 'pink'
@@ -26,6 +25,7 @@ Heading.defaultProps = {
   styles: '',
   id: null,
   addContrast: false,
+  color: null,
 }
 
 Heading.propTypes = {
@@ -34,6 +34,7 @@ Heading.propTypes = {
   displayAs: PropTypes.string,
   addContrast: PropTypes.bool,
   styles: PropTypes.string,
+  color: PropTypes.string,
   children: PropTypes.node.isRequired
 }
 export default Heading

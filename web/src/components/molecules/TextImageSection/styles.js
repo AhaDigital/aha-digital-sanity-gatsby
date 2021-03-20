@@ -15,6 +15,7 @@ const HeadingWithImage = styled.div`
       position: absolute;
       bottom: 0;
       left: 0;
+      margin: 0;
 
       span {
         padding: 3px 5px 3px 0;

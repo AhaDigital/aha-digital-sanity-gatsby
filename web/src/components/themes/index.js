@@ -26,7 +26,7 @@ theme.spacings = {
 }
 
 theme.grid = {
-  maxWidth: '1280px',
+  maxWidth: '1200px',
   containerPadding: theme.spacings.md,
   containerPaddingDesktop: theme.spacings.lg,
   columnGutter: theme.spacings.md,

@@ -37,7 +37,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                 <Figure node={mainImage} />
                 {
                   heading.length > 0 && (
-                    <Heading tagName={get(heading[0], 'style')} addContrast={get(heading[0], 'addContrast')}>
+                    <Heading tagName="h2" displayAs="h3" addContrast={get(heading[0], 'addContrast')} color="pink">
                       {headingText && headingText.split(' ').map((word, index) => <span key={`heading-word-${word}-${index}`}>{word}</span>)}
                     </Heading>
                   )
@@ -56,7 +56,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                   <TextContainer withPadding>
                     {
                       heading.length > 0 && (
-                        <Heading tagName={get(heading[0], 'style')} addContrast={get(heading[0], 'addContrast')}>
+                        <Heading tagName="h2" displayAs="h3" addContrast={get(heading[0], 'addContrast')} color="pink">
                           {headingText}
                         </Heading>
                       )

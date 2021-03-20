@@ -21,7 +21,7 @@ const Top = styled.div`
   position: relative;
   overflow: hidden;
   h3 {
-    margin-top: 10px;
+    margin: ${theme.spacings.md} 0 0 0;
     ${({theme}) => theme.media.lg`
       position: absolute;
       bottom: 0;
@@ -46,7 +46,7 @@ const HeadingText = styled.span`
   background-color: ${theme.palette.light};
   text-decoration: underline;
   ${({theme}) => theme.media.lg`
-    padding: 3px ${theme.spacings.md} 3px ${theme.spacings.lg};
+    padding: ${theme.spacings.sm} ${theme.spacings.lg};
     display: inline-block;
     text-decoration: none;
   `}

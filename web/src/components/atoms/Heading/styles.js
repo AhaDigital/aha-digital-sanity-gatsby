@@ -9,20 +9,22 @@ const defaultStyles = (tagName, color) => {
     position: relative;
     color: ${color ? theme.palette[color] : theme.palette.dark};
     margin: 0 0 ${theme.spacings.md};
-
-    ${({theme}) => theme.media.md`
-      font: ${theme.headings[tagName]};
-      margin: 0 0 ${theme.spacings.lg};
-    `}
   `
 }
 
 const HeadingElement = styled.h1`
   ${({styles, displayAs, addContrast, color}) => css`
     ${defaultStyles(displayAs || 'h1', color)}
+
     ${addContrast && css`
       color: ${theme.palette.darker};
     `}
+
+    ${({theme, displayAs}) => displayAs && theme.media.md`
+      font: ${theme.headings[displayAs]};
+      margin: 0 0 ${theme.spacings.lg};
+    `}
+
     ${styles && styles}
   `}
 `
