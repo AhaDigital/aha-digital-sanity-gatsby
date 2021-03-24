@@ -11,6 +11,10 @@ export default {
     {
       name: 'mainMenu',
       type: 'mainMenu'
+    },
+    {
+      name: 'contactInfo',
+      type: 'contactInfo'
     }
   ],
   preview: {
