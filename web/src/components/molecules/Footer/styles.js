@@ -5,7 +5,15 @@ const StyledFooter = styled.footer`
   margin-top: ${theme.spacings.xxl};
 `
 
+const ContactAlternative = styled.span`
+  display: block;
+  a, a span {
+    color: ${theme.palette.blue};
+  }
+`
+
 const Bottom = styled.div`
+  margin-top: ${theme.spacings.xxl};
   background: linear-gradient(
     90deg,
     rgba(${theme.palette.rawRgb.blue}, 0.25) 0.73%,
@@ -14,6 +22,7 @@ const Bottom = styled.div`
   );
 `
 
+StyledFooter.ContactAlternative = ContactAlternative
 StyledFooter.Bottom = Bottom
 
 export default StyledFooter

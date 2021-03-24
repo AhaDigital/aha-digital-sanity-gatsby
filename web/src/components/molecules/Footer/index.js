@@ -5,6 +5,7 @@ import { imageUrlFor } from '../../../lib/image-url';
 import { buildImageObj } from '../../../lib/helpers';
 import InlineTextScentance from '../../atoms/InlineTextScentance'
 import Heading from '../../atoms/Heading'
+import Text from '../../atoms/Text'
 import Grid from '../Grid'
 import StyledFooter from './styles'
 
@@ -19,7 +20,7 @@ const Footer = ({ salesPitch, contactPerson, addContrast }) => {
   return (
     <StyledFooter>
       <Grid tagName="section" maxWidth="default" withPadding>
-        <Grid.Unit withGutter size={{sm: 12, lg: 7}}>
+        <Grid.Unit withGutter size={{sm: 12, lg: 7}} marginTop="lg">
           {
             salesPitch && salesPitch.length > 0 && (
               <Heading tagName="h3" displayAs="h1" addContrast={addContrast} color="green">
@@ -35,7 +36,7 @@ const Footer = ({ salesPitch, contactPerson, addContrast }) => {
             )
           }
         </Grid.Unit>
-        <Grid.Unit withGutter size={{sm: 12, lg: 5}}>
+        <Grid.Unit withGutter size={{sm: 12, lg: 5}} marginTop="lg">
         <Grid justify="flex-start" flexWrap="nowrap">
           <Grid.Unit withGutter>
             {image && image.asset && (
@@ -55,23 +56,32 @@ const Footer = ({ salesPitch, contactPerson, addContrast }) => {
           <Grid.Unit withGutter>
             
             {name && (
-              <Heading tagName="h4" addContrast={addContrast}>{name}</Heading>
+              <Heading tagName="h4" displayAs="h3" color="dark" addContrast={addContrast} styles={`margin: 0 0 5px !important;`}>{name}</Heading>
             )}
             {title && (
-              <Heading tagName="h5" color="darker">{title}</Heading>
+              <Heading tagName="h5" displayAs="h5" color="darker">{title}</Heading>
             )}
             {
               email && (
-                <span>
-                  E-post: <a href={`mailto:${email}`}>{email}</a>
-                </span>
+                <StyledFooter.ContactAlternative>
+                  <Text isParagraph={false}>E-post:</Text>{' '}
+                  <a href={`mailto:${email}`}>
+                    <Text isParagraph={false}>{email}</Text>
+                  </a>
+                </StyledFooter.ContactAlternative>
               )
             }
             {
               phone && (
-                <span>
-                  Telefon: <a href={`tel:${phone}`}>{phone.replace('+46', '0')}</a>
-                </span>
+                <StyledFooter.ContactAlternative>
+                  <Text isParagraph={false}>Telefon:</Text>{' '}
+                  {breakpoints.sm ? (
+                    <a href={`tel:${phone}`}>
+                      <Text isParagraph={false}>{phone.replace('+46', '0')}</Text>
+                    </a>
+                    ) : <Text isParagraph={false}>{phone.replace('+46', '0')}</Text>
+                  }
+                </StyledFooter.ContactAlternative>
               )
             }
           </Grid.Unit>
