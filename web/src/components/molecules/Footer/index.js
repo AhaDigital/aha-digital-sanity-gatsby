@@ -1,16 +1,20 @@
 import React from 'react'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints'
-import Grid from '../Grid'
+import { imageUrlFor } from '../../../lib/image-url';
+import { buildImageObj } from '../../../lib/helpers';
 import InlineTextScentance from '../../atoms/InlineTextScentance'
 import Heading from '../../atoms/Heading'
+import Grid from '../Grid'
 import StyledFooter from './styles'
 
-const Footer = ({ salesPitch, addContrast }) => {
+const Footer = ({ salesPitch, contactPerson, addContrast }) => {
+  console.log(contactPerson, addContrast)
+  const {email, name, title, phone, image} = contactPerson
   const breakpoints = useBreakpoint()
   return (
     <StyledFooter>
       <Grid tagName="section" maxWidth="default" withPadding>
-        <Grid.Unit withGutter size={{sm: 12, lg: 8}}>
+        <Grid.Unit withGutter size={{sm: 12, lg: 7}}>
           {
             salesPitch && salesPitch.length > 0 && (
               <Heading tagName="h3" displayAs="h1" addContrast={addContrast} color="green">
@@ -26,8 +30,47 @@ const Footer = ({ salesPitch, addContrast }) => {
             )
           }
         </Grid.Unit>
-        <Grid.Unit withGutter size={{sm: 12, lg: 4}}>
-          Kontaktinformation...
+        <Grid.Unit withGutter size={{sm: 12, lg: 5}}>
+        <Grid justify="flex-start" flexWrap="nowrap">
+          <Grid.Unit withGutter>
+            {image && image.asset && (
+              <img
+                src={imageUrlFor(
+                  buildImageObj(image)
+                )
+                .width(120)
+                .height(120)
+                .quality(80)
+                .auto("format")
+                .url()}
+                alt={image.alt || ''}
+              />
+            )}
+          </Grid.Unit>
+          <Grid.Unit withGutter>
+            
+            {name && (
+              <Heading tagName="h4" addContrast={addContrast}>{name}</Heading>
+            )}
+            {title && (
+              <Heading tagName="h5" color="darker">{title}</Heading>
+            )}
+            {
+              email && (
+                <span>
+                  E-post: <a href={`mailto:${email}`}>{email}</a>
+                </span>
+              )
+            }
+            {
+              phone && (
+                <span>
+                  Telefon: <a href={`tel:${phone}`}>{phone.replace('+46', '0')}</a>
+                </span>
+              )
+            }
+          </Grid.Unit>
+          </Grid>
         </Grid.Unit>
       </Grid>
       <StyledFooter.Bottom>

@@ -37,13 +37,17 @@ export const query = graphql`
   }
   query IndexPageQuery {
     site: sanitySiteSettings {
-      mainMenu {
-        mainMenuPages {
-          page {
-            title
-            slug {
-              current
+      contactInfo {
+        person {
+          email
+          name
+          phone
+          title
+          image {
+            asset {
+              _id
             }
+            alt
           }
         }
       }
@@ -125,12 +129,7 @@ const IndexPage = props => {
   const pageSeo = get(page, 'seo', {}) || {}
   const image = get(page, 'mainImage', {}) || {}
   const intro = get(page, 'intro') || null
-
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    )
-  }
+  const contactPerson = get(site, 'contactInfo.person[0]', {}) || {}
 
   const heroData = {
     image,
@@ -141,7 +140,7 @@ const IndexPage = props => {
   return (
     <App pageSEO={pageSeo} location={location} hero={heroData}>
       <Content sections={contentSections} />
-      <Footer salesPitch={salesPitch} />
+      <Footer salesPitch={salesPitch} contactPerson={contactPerson}/>
     </App>
   )
 }
