@@ -1,4 +1,5 @@
 import React from 'react'
+import get from 'lodash.get'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints'
 import { imageUrlFor } from '../../../lib/image-url';
 import { buildImageObj } from '../../../lib/helpers';
@@ -8,8 +9,11 @@ import Grid from '../Grid'
 import StyledFooter from './styles'
 
 const Footer = ({ salesPitch, contactPerson, addContrast }) => {
-  console.log(contactPerson, addContrast)
-  const {email, name, title, phone, image = {}} = contactPerson
+  const email = get(contactPerson, 'email')
+  const name = get(contactPerson, 'name')
+  const title = get(contactPerson, 'title')
+  const phone = get(contactPerson, 'phone')
+  const image = get(contactPerson, 'image', {})
 
   const breakpoints = useBreakpoint()
   return (
