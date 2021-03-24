@@ -9,6 +9,11 @@ export default {
       type: 'string',
     },
     {
+      title: 'Titel',
+      name: 'title',
+      type: 'string',
+    },
+    {
       title: 'E-post',
       name: 'email',
       type: 'string'
@@ -23,5 +28,10 @@ export default {
       name: 'image',
       type: 'simpleImage'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name',
+    }
+  }
 }
