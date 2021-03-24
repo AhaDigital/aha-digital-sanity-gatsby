@@ -9,7 +9,8 @@ import StyledFooter from './styles'
 
 const Footer = ({ salesPitch, contactPerson, addContrast }) => {
   console.log(contactPerson, addContrast)
-  const {email, name, title, phone, image} = contactPerson
+  const {email, name, title, phone, image = {}} = contactPerson
+
   const breakpoints = useBreakpoint()
   return (
     <StyledFooter>
