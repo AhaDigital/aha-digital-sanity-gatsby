@@ -10,7 +10,8 @@ import FeaturedLink from '../../atoms/FeaturedLink'
 import Grid from '../Grid'
 import StyledFooter from './styles'
 
-const Footer = ({ salesPitch, contactPerson, addContrast }) => {
+const Footer = ({data}) => {
+  const { salesPitch, contactPerson, addContrast } = data
   const email = get(contactPerson, 'email')
   const name = get(contactPerson, 'name')
   const title = get(contactPerson, 'title')

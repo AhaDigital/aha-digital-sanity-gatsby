@@ -5,7 +5,7 @@ import Layout from './components/organisms/layout'
 import { debounce } from './lib/helpers'
 
 const App = (props) => {
-  const { location, hero } = props
+  const { location, hero, footer } = props
   const breakpoints = useBreakpoint()
   const [showNav, setShowNav] = useState(false)
   const [isUserTabbing, setisUserTabbing] = useState(false)
@@ -82,6 +82,7 @@ const App = (props) => {
       addContrast={contrastTriggered}
       location={location}
       hero={hero}
+      footer={footer}
     />
   )
 }

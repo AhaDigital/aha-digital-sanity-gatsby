@@ -126,11 +126,6 @@ const MobileMenuButton = styled.button`
   border: 0;
   cursor: pointer;
 
-  &:hover, &:focus {
-    svg .hamburger, svg .close {
-      stroke: ${theme.palette.blue};
-    }
-  }
   ${({theme}) => theme.media.md`
     display: none;
   `}

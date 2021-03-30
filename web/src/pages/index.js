@@ -1,15 +1,8 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import get from 'lodash.get'
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../lib/helpers'
-import Grid from '../components/molecules/Grid'
 import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import Content from '../components/organisms/content'
-import Footer from '../components/molecules/Footer'
 import App from '../app'
 
 
@@ -137,10 +130,14 @@ const IndexPage = props => {
     intro
   }
 
+  const footerData = {
+    salesPitch,
+    contactPerson
+  }
+
   return (
-    <App pageSEO={pageSeo} location={location} hero={heroData}>
+    <App pageSEO={pageSeo} location={location} hero={heroData} footer={footerData}>
       <Content sections={contentSections} />
-      <Footer salesPitch={salesPitch} contactPerson={contactPerson}/>
     </App>
   )
 }

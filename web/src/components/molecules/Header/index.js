@@ -160,7 +160,7 @@ const Header = ({
           showNav={showNav}
         >
           {breakpoints.sm && (
-            <Heading id="navTitle" tagName="span" displayAs="h3" styles={mobileMenuHeadingOverrideStyle}>Webbplatsen</Heading>
+            <Heading id="navTitle" tagName="span" displayAs="h2" styles={mobileMenuHeadingOverrideStyle}>Webbplatsen</Heading>
           )}
           <nav aria-describedby="navTitle">
             <ul role="menubar" aria-label="Huvudmeny">
@@ -224,7 +224,7 @@ const Header = ({
                     name="textToSpeachMobile"
                     onClick={() => onAddSpeach()}
                     text="Talande webb"
-                    icon={{symbol: addSpeach ? 'ear' : ''}}
+                    icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
                     styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                     ariaLabel="Slå på/av talande webb på webbplatsen"
                     ariaExpanded={addSpeach}

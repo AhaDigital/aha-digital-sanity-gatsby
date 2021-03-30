@@ -5,6 +5,7 @@ import {imageUrlFor} from '../../lib/image-url'
 import {buildImageObj} from '../../lib/helpers'
 import SEO from '../atoms/seo'
 import Header from '../molecules/Header'
+import Footer from '../molecules/Footer'
 import Hero from '../molecules/Hero'
 import theme from '../themes'
 
@@ -124,8 +125,8 @@ const Layout = ({
   onAddSpeach,
   addSpeach,
   addContrast,
-  location,
-  hero
+  hero,
+  footer,
 }) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
@@ -181,6 +182,7 @@ const Layout = ({
               <main ref={mainRef} tabIndex={-1}>
                 {childrenWithProps}
               </main>
+              <Footer data={footer} />
             </>
           )
         }}

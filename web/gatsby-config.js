@@ -8,9 +8,9 @@ const clientConfig = require('./client-config')
 const isProd = process.env.NODE_ENV === 'production'
 
 const breakpoints = {
-  sm: '(max-width: 374px)',
-  md: '(max-width: 767px)',
-  lg: '(max-width: 1023px)',
+  sm: '(min-width: 0)',
+  md: '(min-width: 768px)',
+  lg: '(min-width: 960px)',
 };
 
 module.exports = {
