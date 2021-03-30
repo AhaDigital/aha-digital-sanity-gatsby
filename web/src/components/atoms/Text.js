@@ -9,10 +9,14 @@ const StyledText = styled.p`
   ${({isParagraph}) => isParagraph && css`
     margin: 0 0 ${theme.spacings.lg} 0;
   `}
+
+  ${({withLineBreak}) => withLineBreak && css`
+    display: block;
+  `}
 `
 
-const Text = ({isParagraph, children}) => (
-  <StyledText as={isParagraph ? 'p' : 'span'} isParagraph={isParagraph}>{children}</StyledText>
+const Text = ({isParagraph, withLineBreak, children}) => (
+  <StyledText as={isParagraph ? 'p' : 'span'} isParagraph={isParagraph} withLineBreak={withLineBreak}>{children}</StyledText>
 )
 
 Text.defaultProps = {
@@ -20,7 +24,8 @@ Text.defaultProps = {
 }
 
 Text.propTypes = {
-  isParagraph: PropTypes.bool
+  isParagraph: PropTypes.bool,
+  withLineBreak: PropTypes.bool
 }
 
 export default Text

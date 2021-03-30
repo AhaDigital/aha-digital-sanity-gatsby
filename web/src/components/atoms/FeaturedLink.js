@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Icon from './icon'
 import theme from '../themes'
 
@@ -28,6 +28,10 @@ const StyledIcon = styled.span`
 const StyledFeaturedLink = styled.a`
   ${linkStyle}
 
+  ${({color}) => color && css`
+    color: ${color};
+  `}
+
   &:focus, &:hover {
     ${StyledIcon} {
       transform: translateX(3px);
@@ -37,6 +41,10 @@ const StyledFeaturedLink = styled.a`
 
 const StyledFeaturedGatsbyLink = styled(Link)`
   ${linkStyle}
+  ${({color, theme}) => color && css`
+    color: ${color};
+  `}
+
   &:focus, &:hover {
     ${StyledIcon} {
       transform: translateX(3px);
@@ -45,16 +53,16 @@ const StyledFeaturedGatsbyLink = styled(Link)`
 `
 
 export default ({node}) => {
-  const { href, linkName, isPdf } = node
+  const { href, linkName, isPdf, color } = node
   if(!href || !linkName) return null
 
   return (
     <div>
       {
         href.indexOf('http') > -1 ? (
-          <StyledFeaturedLink href={href}>
+          <StyledFeaturedLink href={href} color={color}>
             <StyledIcon>
-              <Icon symbol="chevronRight"/>
+              <Icon symbol="chevronRight" color={color}/>
             </StyledIcon>
             <span>
               {linkName}
@@ -66,9 +74,9 @@ export default ({node}) => {
             }
           </StyledFeaturedLink>
         ) : (
-          <StyledFeaturedGatsbyLink to={href}>
+          <StyledFeaturedGatsbyLink to={href} color={color}>
             <StyledIcon>
-              <Icon symbol="chevronRight"/>
+              <Icon symbol="chevronRight" color={color}/>
             </StyledIcon>
             <span>
               {linkName}

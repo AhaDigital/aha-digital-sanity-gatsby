@@ -19,8 +19,9 @@ const ContactAlternative = styled.span`
   `}
 `
 
-const Bottom = styled.div`
+const Bottom = styled.section`
   margin-top: ${theme.spacings.xxl};
+  padding: ${theme.spacings.md} 0 ${theme.spacings.xl} 0;
   background: linear-gradient(
     90deg,
     rgba(${theme.palette.rawRgb.blue}, 0.25) 0.73%,

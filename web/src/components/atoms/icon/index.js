@@ -12,7 +12,8 @@ import ChevronRightIcon from './chevronRightIcon'
 import PdfIcon from './pdfIcon'
 
 function Icon (props) {
-  switch (props.symbol) {
+  const {symbol, color = '#1F69FF'} = props
+  switch (symbol) {
     case 'hamburger':
       return <HamburgerIcon />
     case 'close':
@@ -32,7 +33,7 @@ function Icon (props) {
     case 'decoratorRight':
       return <DecoratorRightIcon />
     case 'chevronRight':
-      return <ChevronRightIcon />
+      return <ChevronRightIcon color={color} />
     case 'pdf':
       return <PdfIcon />
     default:
