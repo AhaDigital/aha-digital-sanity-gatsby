@@ -54,15 +54,15 @@ theme.headings = {
   h1: `40px/40px ${headingFont}`,
   h2: `22px/22px ${headingFont}`,
   h3: `22px/22px ${headingFont}`,
-  h4: `16px/16px ${headingFont}`,
-  h5: `16px/16px ${headingFont}`,
+  h4: `16px/20px ${headingFont}`,
+  h5: `16px/20px ${headingFont}`,
   h1Mobile: `28px/1.2 ${headingFont}`,
   h2Mobile: `24px/1.2 ${headingFont}`,
   h3Mobile: `22px/22px ${headingFont}`,
-  h4Mobile: `16px/16px ${headingFont}`,
-  h5Mobile: `16px/16px ${headingFont}`,
-  text: `18px/23px ${textFont}`,
-  textMobile: `16px/20px ${textFont}`,
+  h4Mobile: `16px/20px ${headingFont}`,
+  h5Mobile: `16px/20px ${headingFont}`,
+  text: `18px/25px ${textFont}`,
+  textMobile: `16px/23px ${textFont}`,
 }
 
 theme.texts = {

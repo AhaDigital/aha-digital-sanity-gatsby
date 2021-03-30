@@ -44,12 +44,14 @@ const Footer = ({ salesPitch, contactPerson, addContrast }) => {
                 src={imageUrlFor(
                   buildImageObj(image)
                 )
-                .width(120)
-                .height(120)
+                .width(360)
+                .height(360)
                 .quality(80)
                 .auto("format")
                 .url()}
                 alt={image.alt || ''}
+                width="120"
+                height="120"
               />
             )}
           </Grid.Unit>

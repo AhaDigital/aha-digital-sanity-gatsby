@@ -9,7 +9,14 @@ const ContactAlternative = styled.span`
   display: block;
   a, a span {
     color: ${theme.palette.blue};
+    display: block;
   }
+
+  ${({theme}) => theme.media.md`
+    a, a span {
+      display: inline-block;
+    }
+  `}
 `
 
 const Bottom = styled.div`
