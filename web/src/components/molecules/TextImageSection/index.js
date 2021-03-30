@@ -30,7 +30,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
   return (
     <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
       {
-        breakpoints.sm ? (
+        breakpoints.sm && (
           <>
             <Grid.Unit withGutter size={12}>
               <HeadingWithImage>
@@ -48,7 +48,10 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
               <PortableText blocks={rest} />
             </Grid.Unit>
           </>
-        ) : (
+        )
+      }
+      {
+        breakpoints.md || breakpoints.lg && (
           <>
             {
               heading.length > 0 && (

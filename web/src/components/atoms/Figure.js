@@ -9,8 +9,8 @@ export default ({node, aspectRatio4to3}) => {
 
   const sizes = {
     mobile: {
-      w: 480,
-      h: 205,
+      w: 960,
+      h: 411,
     },
     mobileLarger: {
       w: 768,

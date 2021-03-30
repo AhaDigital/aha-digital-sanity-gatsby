@@ -206,7 +206,7 @@ const Header = ({
           </nav>
           {breakpoints.sm && (
             <>
-              <Heading id="accessibilityTitle" tagName="span" displayAs="h3" styles={mobileMenuHeadingOverrideStyle}>Tillgänglighet</Heading>
+              <Heading id="accessibilityTitle" tagName="span" displayAs="h2" styles={mobileMenuHeadingOverrideStyle}>Tillgänglighet</Heading>
               <ul aria-describedby="accessibilityTitle">
                 <li>
                   <TransparentButton
