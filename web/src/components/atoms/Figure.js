@@ -24,8 +24,8 @@ export default ({node, aspectRatio4to3}) => {
 
   const sizes4to3 = {
     mobile: {
-      w: 480,
-      h: 360,
+      w: 960,
+      h: 720,
     },
     mobileLarger: {
       w: 768,
