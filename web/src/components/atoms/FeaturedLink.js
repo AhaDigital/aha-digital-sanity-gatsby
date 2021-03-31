@@ -19,6 +19,10 @@ const linkStyle = `
   }
 `
 
+const StyledFeaturedLinkBlock = styled.span`
+  display: block;
+`
+
 const StyledIcon = styled.span`
   margin: ${theme.spacings.sm} ${theme.spacings.sm} 0 0;
   display: block;
@@ -57,7 +61,7 @@ export default ({node}) => {
   if(!href || !linkName) return null
 
   return (
-    <div>
+    <StyledFeaturedLinkBlock>
       {
         href.indexOf('http') > -1 ? (
           <StyledFeaturedLink href={href} color={color}>
@@ -89,6 +93,6 @@ export default ({node}) => {
           </StyledFeaturedGatsbyLink>
         )
       }
-    </div>
+    </StyledFeaturedLinkBlock>
   )
 }

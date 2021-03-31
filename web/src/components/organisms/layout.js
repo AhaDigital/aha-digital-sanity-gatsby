@@ -141,9 +141,11 @@ const Layout = ({
   addContrast,
   hero,
   footer,
+  location
 }) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
+  const { pathname } = location
 
   useEffect(() => {
     if(typeof window !== 'undefined' && moveToMainFocus) {
@@ -195,7 +197,7 @@ const Layout = ({
                 addSpeach={addSpeach}
                 addContrast={addContrast}
               />
-              <Hero hero={hero} addContrast={addContrast} />
+              <Hero hero={hero} addContrast={addContrast} pathname={pathname} />
               <main ref={mainRef} tabIndex={-1}>
                 {childrenWithProps}
               </main>

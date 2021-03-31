@@ -7,10 +7,7 @@ const Text = styled.span`
   position: relative;
   display: inline-block;
   margin: 0 3px;
-  ${({theme, withLineBreak, rollingWord, isVisible}) => theme && css`
-    ${withLineBreak && `
-      display: block;
-    `}
+  ${({theme, rollingWord, isVisible}) => theme && css`
 
     ${rollingWord && `
       position: absolute;
@@ -24,6 +21,10 @@ const Text = styled.span`
       `}
     `}
   `}
+`
+
+const LineBreak = styled.span`
+  display: block;
 `
 
 const RollingWordWrapper = styled.span`
@@ -74,28 +75,35 @@ const InlineTextScentance = ({ part, addContrast }) => {
     }
   }, [currentVisibleWord])
 
+  const textContent = () => (
+    <Text key={_key} addContrast={addContrast}>
+      {text}
+      {withDecorator && !addContrast && (
+        <Decorator>
+          <LeftIcon>
+            <Icon symbol="decoratorLeft"/>
+          </LeftIcon>
+          <RightIcon>
+            <Icon symbol="decoratorRight"/>
+          </RightIcon>
+        </Decorator>
+      )}
+    </Text>
+  )
+
   if(_type === 'inlineTextListItem') {
-    return (
-      <Text key={_key} withLineBreak={withLineBreak} addContrast={addContrast}>
-        {text}
-        {withDecorator && !addContrast && (
-          <Decorator>
-            <LeftIcon>
-              <Icon symbol="decoratorLeft"/>
-            </LeftIcon>
-            <RightIcon>
-              <Icon symbol="decoratorRight"/>
-            </RightIcon>
-          </Decorator>
-        )}
-      </Text>
-    )
+    return withLineBreak ? (
+      <LineBreak>
+        {
+          textContent()
+        }
+      </LineBreak>
+    ) : textContent()
   } else {
     return (
       <RollingWordWrapper>
         {
           bodyPortableRollingTextWords.map((wordObj, index) => {
-            
             return (
               <Text key={wordObj._key} rollingWord={true} isVisible={index === currentVisibleWord}>
                 {wordObj.word}

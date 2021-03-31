@@ -11,7 +11,9 @@ import Grid from '../Grid'
 import StyledFooter from './styles'
 
 const Footer = ({data, addContrast}) => {
-  const salesPitch = get(data, 'footer.salesPitch', [])
+  const salesPitchRollingText = get(data, 'footer.salesPitch', [])
+  const salesPitchTextList = get(data, 'footer.salesPitch.inlineTextList', [])
+
   const contactPerson = get(data, 'footer.contactPerson', {})
   const footerMenu = get(data, 'mainMenuPages', [])
   const email = get(contactPerson, 'email')
@@ -26,11 +28,19 @@ const Footer = ({data, addContrast}) => {
       <Grid tagName="section" maxWidth="default" withPadding>
         <Grid.Unit withGutter size={{sm: 12, lg: 7}} marginTop="lg">
           {
-            salesPitch && salesPitch.length > 0 && (
+            salesPitchRollingText.length > 0 || salesPitchTextList.length > 0 && (
               <Heading tagName="h3" displayAs="h1" color="green" addContrast={addContrast}>
                 {
-                  salesPitch.map((part, index) => {
-                    if(breakpoints.sm && salesPitch[index +1] && salesPitch[index +1]._type !== 'inlineTextListItem') {
+                  salesPitchRollingText.length > 0 && salesPitchRollingText.map((part, index) => {
+                    if(breakpoints.sm && salesPitchRollingText[index +1] && salesPitchRollingText[index +1]._type !== 'inlineTextListItem') {
+                      part.withLineBreak = true
+                    }
+                    return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
+                  })
+                }
+                {
+                  salesPitchTextList.length > 0 && salesPitchTextList.map((part, index) => {
+                    if(breakpoints.sm && salesPitchTextList[index +1] && salesPitchTextList[index +1]._type !== 'inlineTextListItem') {
                       part.withLineBreak = true
                     }
                     return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
@@ -100,25 +110,27 @@ const Footer = ({data, addContrast}) => {
             <Heading tagName="h3" color={addContrast ? 'darker' : 'dark'}>
               Om webbplatsen
             </Heading>
-            <ul>
-              <li>
-                <FeaturedLink node={{href: "/webbplatskarta/", linkName: "Webbplatskarta", color: '#000000'}}/>
-              </li>
-              {
-                footerMenu.map(item => (
-                  <li>
-                    <FeaturedLink
-                      key={item._key}
-                      node={{
-                        href: item.page ? `/${item.page.slug.current}/` : item.externalLink,
-                        linkName: item.page ? item.page.title : item.externalLinkName,
-                        color: '#000000'
-                      }}
-                    />
-                  </li>    
-                ))
-              }
-            </ul>
+            <nav aria-label="Om webbplatsen">
+              <ol>
+                <li>
+                  <FeaturedLink node={{href: "/webbplatskarta/", linkName: "Webbplatskarta", color: '#000000'}}/>
+                </li>
+                {
+                  footerMenu.map(item => (
+                      <li key={item._key}>
+                        <FeaturedLink
+                          node={{
+                            href: item.page ? `/${item.page.slug.current}/` : item.externalLink,
+                            linkName: item.page ? item.page.title : item.externalLinkName,
+                            color: '#000000'
+                          }}
+                        />
+                      </li>    
+                    )
+                  )
+                }
+              </ol>
+            </nav>
           </Grid.Unit>
           <Grid.Unit withGutter size={{sm: 12, md: 5}} marginTop="lg">
             <Heading tagName="h3" color={addContrast || 'dark'}>

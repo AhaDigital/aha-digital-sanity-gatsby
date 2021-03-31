@@ -1,13 +1,8 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import get from 'lodash.get'
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-} from './lib/helpers'
 import GraphQLErrorList from './components/atoms/graphql-error-list'
 import Content from './components/organisms/content'
-import Footer from './components/molecules/Footer'
 import App from './app'
 
 export const query = graphql`
@@ -32,7 +27,23 @@ export const query = graphql`
       id
       title
       pageH1 {
-        _rawInlineTextList(resolveReferences: {maxDepth: 10})
+        inlineTextList {
+          ... on SanityBodyPortableRollingText {
+            _key
+            _type
+            bodyPortableRollingTextWords {
+              word
+              _key
+            }
+          }
+          ... on SanityInlineTextListItem {
+            _key
+            _type
+            withDecorator
+            withLineBreak
+            text
+          }
+        }
       }
       intro
       slug {
@@ -83,6 +94,7 @@ const LandingPage = props => {
   const contentSections = get(page, '_rawContent.contentBlockType', []) || []
   const salesPitch = get(page, 'salesPitchBlock', []) || []
   const pageSeo = get(page, 'seo', {}) || {}
+  const title = get(page, 'title', {}) || {}
   const image = get(page, 'mainImage', {}) || {}
   const intro = get(page, 'intro') || null
   const contactPerson = get(site, 'contactInfo.person[0]', {}) || {}
@@ -103,7 +115,8 @@ const LandingPage = props => {
   const heroData = {
     image,
     heading,
-    intro
+    intro,
+    title
   }
 
   return (
