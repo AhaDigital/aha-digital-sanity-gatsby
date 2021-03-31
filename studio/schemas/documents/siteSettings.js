@@ -13,6 +13,10 @@ export default {
       type: 'mainMenu'
     },
     {
+      name: 'footerMenu',
+      type: 'mainMenu'
+    },
+    {
       name: 'contactInfo',
       type: 'contactInfo'
     }

@@ -76,7 +76,7 @@ const InlineTextScentance = ({ part, addContrast }) => {
 
   if(_type === 'inlineTextListItem') {
     return (
-      <Text key={_key} withLineBreak={withLineBreak}>
+      <Text key={_key} withLineBreak={withLineBreak} addContrast={addContrast}>
         {text}
         {withDecorator && !addContrast && (
           <Decorator>
@@ -99,14 +99,16 @@ const InlineTextScentance = ({ part, addContrast }) => {
             return (
               <Text key={wordObj._key} rollingWord={true} isVisible={index === currentVisibleWord}>
                 {wordObj.word}
-                <Decorator>
-                  <LeftIcon>
-                    <Icon symbol="decoratorLeft"/>
-                  </LeftIcon>
-                  <RightIcon>
-                    <Icon symbol="decoratorRight"/>
-                  </RightIcon>
-                </Decorator>
+                {!addContrast && (
+                  <Decorator>
+                    <LeftIcon>
+                      <Icon symbol="decoratorLeft"/>
+                    </LeftIcon>
+                    <RightIcon>
+                      <Icon symbol="decoratorRight"/>
+                    </RightIcon>
+                  </Decorator>
+                )}
               </Text>
             )
           })

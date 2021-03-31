@@ -12,6 +12,22 @@ import App from './app'
 
 export const query = graphql`
   query LandingPageQuery($id: String!) {
+    site: sanitySiteSettings {
+      contactInfo {
+        person {
+          email
+          name
+          phone
+          title
+          image {
+            asset {
+              _id
+            }
+            alt
+          }
+        }
+      }
+    }
     page: sanityPages(id: {eq: $id}) {
       id
       title
@@ -62,12 +78,14 @@ const LandingPage = props => {
   const {data, errors, location} = props
 
   const page = (data || {}).page
+  const site = (data || {}).site
   const heading = get(page, 'pageH1.inlineTextList', []) || []
   const contentSections = get(page, '_rawContent.contentBlockType', []) || []
   const salesPitch = get(page, 'salesPitchBlock', []) || []
   const pageSeo = get(page, 'seo', {}) || {}
   const image = get(page, 'mainImage', {}) || {}
   const intro = get(page, 'intro') || null
+  const contactPerson = get(site, 'contactInfo.person[0]', {}) || {}
 
   if (errors) {
     return (
@@ -76,17 +94,11 @@ const LandingPage = props => {
       </App>
     )
   }
-/*
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-      .filter(filterOutDocsWithoutSlugs)
-    : []
 
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    )
-  }*/
+  const footerData = {
+    salesPitch,
+    contactPerson
+  }
 
   const heroData = {
     image,
@@ -95,11 +107,8 @@ const LandingPage = props => {
   }
 
   return (
-    <App pageSEO={pageSeo} location={location} hero={heroData}>
-      /* hide this */
-      <h1>Welcome to landingpage...</h1>
+    <App pageSEO={pageSeo} location={location} hero={heroData} footer={footerData}>
       <Content sections={contentSections} />
-      <Footer salesPitch={salesPitch} />
     </App>
   )
 }

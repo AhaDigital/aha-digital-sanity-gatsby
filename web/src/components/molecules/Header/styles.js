@@ -16,7 +16,7 @@ const TopLevel = styled.div`
   `}
 `
 
-const SkipToContent = styled.div`
+const toContentStyles = `
   position: absolute;
   top: 0;
   left: 0;
@@ -28,6 +28,10 @@ const SkipToContent = styled.div`
   > button:focus {
     ${theme.visually.visible}
   }
+`
+
+const SkipToContent = styled.div`
+  ${toContentStyles}
 `
 
 const Accessibility = styled.div`
@@ -43,10 +47,29 @@ TopLevel.Accessibility = Accessibility
 
 const StyledLink = styled(Link)`
   display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
   padding: 8px ${theme.spacings.md};
+
+  ${({theme}) => theme.media.md`
+    position: absolute;
+    top: 0;
+    left: 0;
+  `}
+`
+
+const MobileSkipToContent = styled.div`
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  > button {
+    ${theme.visually.hidden}
+  }
+
+  > button:focus {
+    ${theme.visually.visible}
+    ${StyledLink} {
+      position: static;
+    }
+  }
 `
 
 const NavLevel = styled.div`
@@ -173,4 +196,4 @@ const Wrapper = styled.header`
 NavLevel.Nav = Nav
 NavLevel.Link = StyledLink
 NavLevel.MobileMenuButton = MobileMenuButton
-export { Wrapper, TopLevel, NavLevel }
+export { Wrapper, TopLevel, NavLevel, MobileSkipToContent }

@@ -8,7 +8,7 @@ import LinkButton from '../../atoms/LinkButton'
 import TransparentButton from '../../atoms/TransparentButton'
 import Heading from '../../atoms/Heading'
 import theme from '../../themes'
-import { Wrapper, TopLevel, NavLevel } from './styles'
+import { Wrapper, TopLevel, NavLevel, MobileSkipToContent } from './styles'
 
 const Header = ({
   menu,
@@ -127,6 +127,19 @@ const Header = ({
         </TopLevel.Accessibility>
       </TopLevel>
       <NavLevel>
+        {breakpoints.sm && (
+          <MobileSkipToContent>
+            <Button
+              ref={toContentRef}
+              name="toContent"
+              onClick={() => setToContentTriggered(true)}
+              text="Till huvudinnehåll"
+              icon={{symbol: 'arrowDown', animationDirection: 'bottom'}}
+              ariaLabel="Hoppa över huvudmenyn"
+              styles={skipToContentButtonOverrideStyle}
+            />
+          </MobileSkipToContent>
+        )}
         <NavLevel.Link
           to='/'
           aria-label="Till startsidan - Aha Digital"

@@ -10,8 +10,10 @@ import FeaturedLink from '../../atoms/FeaturedLink'
 import Grid from '../Grid'
 import StyledFooter from './styles'
 
-const Footer = ({data}) => {
-  const { salesPitch, contactPerson, addContrast } = data
+const Footer = ({data, addContrast}) => {
+  const salesPitch = get(data, 'footer.salesPitch', [])
+  const contactPerson = get(data, 'footer.contactPerson', {})
+  const footerMenu = get(data, 'mainMenuPages', [])
   const email = get(contactPerson, 'email')
   const name = get(contactPerson, 'name')
   const title = get(contactPerson, 'title')
@@ -25,13 +27,13 @@ const Footer = ({data}) => {
         <Grid.Unit withGutter size={{sm: 12, lg: 7}} marginTop="lg">
           {
             salesPitch && salesPitch.length > 0 && (
-              <Heading tagName="h3" displayAs="h1" addContrast={addContrast} color="green">
+              <Heading tagName="h3" displayAs="h1" color="green" addContrast={addContrast}>
                 {
                   salesPitch.map((part, index) => {
                     if(breakpoints.sm && salesPitch[index +1] && salesPitch[index +1]._type !== 'inlineTextListItem') {
                       part.withLineBreak = true
                     }
-                    return <InlineTextScentance key={part._key} part={part}/>
+                    return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
                   })
                 }
               </Heading>
@@ -95,22 +97,27 @@ const Footer = ({data}) => {
       <StyledFooter.Bottom>
         <Grid maxWidth="default" withPadding>
           <Grid.Unit withGutter size={{sm: 12, md: 7}} marginTop="lg">
-            <Heading tagName="h3" color={addContrast || 'dark'}>
+            <Heading tagName="h3" color={addContrast ? 'darker' : 'dark'}>
               Om webbplatsen
             </Heading>
             <ul>
               <li>
                 <FeaturedLink node={{href: "/webbplatskarta/", linkName: "Webbplatskarta", color: '#000000'}}/>
               </li>
-              <li>
-                <FeaturedLink node={{href: "/tillganglighetsredogorelse/", linkName: "Tillgänglighetsredogörelse", color: '#000000'}}/>
-              </li>
-              <li>
-                <FeaturedLink node={{href: "/cookies/", linkName: "Om kakor på webbplatsen", color: '#000000'}}/>
-              </li>
-              <li>
-                <FeaturedLink node={{href: "https://github.com/AhaDigital", linkName: "Aha på GitHub", color: '#000000'}}/>
-              </li>
+              {
+                footerMenu.map(item => (
+                  <li>
+                    <FeaturedLink
+                      key={item._key}
+                      node={{
+                        href: item.page ? `/${item.page.slug.current}/` : item.externalLink,
+                        linkName: item.page ? item.page.title : item.externalLinkName,
+                        color: '#000000'
+                      }}
+                    />
+                  </li>    
+                ))
+              }
             </ul>
           </Grid.Unit>
           <Grid.Unit withGutter size={{sm: 12, md: 5}} marginTop="lg">

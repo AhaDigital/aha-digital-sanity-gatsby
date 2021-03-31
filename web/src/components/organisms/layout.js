@@ -34,6 +34,20 @@ const menuQuery = graphql`
           }
         }
       }
+      footerMenu {
+        mainMenuPages {
+          _key
+          page {
+            id
+            title
+            slug {
+              current
+            }
+          }
+          externalLink
+          externalLinkName
+        }
+      }
     }
   }
 `
@@ -145,7 +159,10 @@ const Layout = ({
         query={menuQuery}
         render={data => {
           const {
-            menu: { mainMenu: { mainMenuPages = {}} = {}} = {},
+            menu: { 
+              mainMenu: { mainMenuPages = {}} = {},
+              footerMenu
+            } = {},
             seo: { fallbackSEO: fallback = {}} = {}
           } = data
   
@@ -182,7 +199,7 @@ const Layout = ({
               <main ref={mainRef} tabIndex={-1}>
                 {childrenWithProps}
               </main>
-              <Footer data={footer} />
+              <Footer data={{footer, ...footerMenu}} addContrast={addContrast} />
             </>
           )
         }}
