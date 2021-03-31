@@ -26,15 +26,16 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
   })
 
   const headingText = get(heading[0], 'children[0].text')
+  const {is4to3AspectRatio} = mainImage
 
   return (
-    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
+    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl" justify={breakpoints.md ? 'center' : 'left'}>
       {
-        breakpoints.sm && (
+        breakpoints.sm || breakpoints.md ? (
           <>
-            <Grid.Unit withGutter size={12}>
+            <Grid.Unit withGutter size={breakpoints.sm ? 12 : 8}>
               <HeadingWithImage>
-                <Figure node={mainImage} />
+                <Figure node={mainImage} aspectRatio4to3={is4to3AspectRatio}/>
                 {
                   heading.length > 0 && (
                     <Heading tagName="h2" addContrast={get(heading[0], 'addContrast')} color="pink">
@@ -44,14 +45,11 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                 }
               </HeadingWithImage>
             </Grid.Unit>
-            <Grid.Unit withGutter size={12} marginTop="lg">
+            <Grid.Unit withGutter size={breakpoints.sm ? 12 : 8} marginTop="lg">
               <PortableText blocks={rest} />
             </Grid.Unit>
           </>
-        )
-      }
-      {
-        breakpoints.md || breakpoints.lg && (
+        ) : (
           <>
             {
               heading.length > 0 && (
@@ -69,9 +67,9 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
               )
             }
             <Grid.Unit withGutter size={6}>
-              <TextContainer withPadding>
+              <TextContainer>
                 {blockImageDirectionLeft ? (
-                  <Figure node={mainImage} />
+                  <Figure node={mainImage} aspectRatio4to3={is4to3AspectRatio} />
                 ) : (
                   <PortableText blocks={rest} />
                 )}
@@ -82,7 +80,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                 {blockImageDirectionLeft ? (
                   <PortableText blocks={rest} />
                 ) : (
-                  <Figure node={mainImage} />
+                  <Figure node={mainImage} aspectRatio4to3={is4to3AspectRatio} />
                 )}
               </TextContainer>
             </Grid.Unit>

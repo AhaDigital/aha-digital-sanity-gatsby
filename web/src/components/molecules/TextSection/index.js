@@ -12,7 +12,7 @@ const TextSection = ({ bodyPortableText, BlockDirectionLeft, addContrast }) => {
   })
   return (
     <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl" justify={BlockDirectionLeft ? 'flex-start' : 'center'}>
-      <Grid.Unit withGutter size={{sm: 12, md: 10, lg: 7}}>
+      <Grid.Unit withGutter size={{sm: 12, md: 8, lg: 7}}>
         <PortableText blocks={bodyPortableText} />
       </Grid.Unit>
     </Grid>
