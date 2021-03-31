@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import {StaticQuery, graphql} from 'gatsby'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import get from 'lodash.get'
 import {imageUrlFor} from '../../lib/image-url'
 import {buildImageObj} from '../../lib/helpers'
 import SEO from '../atoms/seo'
@@ -145,7 +146,7 @@ const Layout = ({
 }) => {
   const mainRef = useRef(null)
   const [moveToMainFocus, setMoveToMainFocus] = useState(false)
-  const { pathname } = location
+  const path = get(location, 'pathname')
 
   useEffect(() => {
     if(typeof window !== 'undefined' && moveToMainFocus) {
@@ -197,7 +198,7 @@ const Layout = ({
                 addSpeach={addSpeach}
                 addContrast={addContrast}
               />
-              <Hero hero={hero} addContrast={addContrast} pathname={pathname} />
+              <Hero hero={hero} addContrast={addContrast} pathname={path} />
               <main ref={mainRef} tabIndex={-1}>
                 {childrenWithProps}
               </main>
