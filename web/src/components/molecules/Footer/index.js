@@ -23,32 +23,29 @@ const Footer = ({data, addContrast}) => {
   const image = get(contactPerson, 'image', {})
 
   const breakpoints = useBreakpoint()
+  
   return (
     <StyledFooter>
       <Grid tagName="section" maxWidth="default" withPadding>
         <Grid.Unit withGutter size={{sm: 12, lg: 7}} marginTop="lg">
-          {
-            salesPitchRollingText.length > 0 || salesPitchTextList.length > 0 && (
-              <Heading tagName="h3" displayAs="h1" color="green" addContrast={addContrast}>
-                {
-                  salesPitchRollingText.length > 0 && salesPitchRollingText.map((part, index) => {
-                    if(breakpoints.sm && salesPitchRollingText[index +1] && salesPitchRollingText[index +1]._type !== 'inlineTextListItem') {
-                      part.withLineBreak = true
-                    }
-                    return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
-                  })
+          <Heading tagName="h3" displayAs="h1" color="green" addContrast={addContrast}>
+            {
+              salesPitchRollingText.length > 0 && salesPitchRollingText.map((part, index) => {
+                if(breakpoints.sm && salesPitchRollingText[index +1] && salesPitchRollingText[index +1]._type !== 'inlineTextListItem') {
+                  part.withLineBreak = true
                 }
-                {
-                  salesPitchTextList.length > 0 && salesPitchTextList.map((part, index) => {
-                    if(breakpoints.sm && salesPitchTextList[index +1] && salesPitchTextList[index +1]._type !== 'inlineTextListItem') {
-                      part.withLineBreak = true
-                    }
-                    return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
-                  })
+                return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
+              })
+            }
+            {
+              salesPitchTextList.length > 0 && salesPitchTextList.map((part, index) => {
+                if(breakpoints.sm && salesPitchTextList[index +1] && salesPitchTextList[index +1]._type !== 'inlineTextListItem') {
+                  part.withLineBreak = true
                 }
-              </Heading>
-            )
-          }
+                return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
+              })
+            }
+          </Heading>
         </Grid.Unit>
         <Grid.Unit size={{sm: 12, lg: 5}} marginTop="lg">
           <Grid justify="flex-start" flexWrap="nowrap">
@@ -72,10 +69,10 @@ const Footer = ({data, addContrast}) => {
             <Grid.Unit withGutter>
               
               {name && (
-                <Heading tagName="h4" displayAs="h3" color="dark" addContrast={addContrast} styles={`margin: 0 0 5px !important;`}>{name}</Heading>
+                <Heading tagName="span" displayAs="h3" color="dark" addContrast={addContrast} styles={`display: block; margin: 0 0 5px !important;`}>{name}</Heading>
               )}
               {title && (
-                <Heading tagName="h5" displayAs="h5" color="darker">{title}</Heading>
+                <Heading tagName="span" displayAs="h5" color="darker" styles={`display: block; margin: 0 0 10px !important;`}>{title}</Heading>
               )}
               {
                 email && (
