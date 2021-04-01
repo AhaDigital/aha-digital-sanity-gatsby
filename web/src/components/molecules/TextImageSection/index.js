@@ -54,7 +54,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
             {
               heading.length > 0 && (
                 <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
-                  <TextContainer withPadding={blockImageDirectionLeft}>
+                  <TextContainer>
                     {
                       heading.length > 0 && (
                         <Heading tagName="h2" addContrast={get(heading[0], 'addContrast')} color="pink">
@@ -76,7 +76,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
               </TextContainer>
             </Grid.Unit>
             <Grid.Unit withGutter size={6}>
-              <TextContainer withPadding>
+              <TextContainer>
                 {blockImageDirectionLeft ? (
                   <PortableText blocks={rest} />
                 ) : (
