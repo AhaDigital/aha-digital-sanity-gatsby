@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import styled, {css} from 'styled-components'
-import Icon from '../atoms/icon'
+import Icon from '../atoms/Icon'
 import theme from '../themes'
 
 const Text = styled.span`

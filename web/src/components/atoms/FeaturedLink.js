@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
-import Icon from './icon'
+import Icon from './Icon'
 import theme from '../themes'
 
 const linkStyle = `

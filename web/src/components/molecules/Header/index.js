@@ -1,7 +1,7 @@
 import React, { createRef, useEffect, useState } from 'react'
 import get from 'lodash.get'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import Icon from '../../atoms/icon'
+import Icon from '../../atoms/Icon'
 import AhaDigitalLogo from '../../atoms/ahaDigitalLogo'
 import Button from '../../atoms/Button'
 import LinkButton from '../../atoms/LinkButton'
