@@ -178,7 +178,7 @@ const Layout = ({
   
           const childrenWithProps = React.Children.map(children, child => {
             if (React.isValidElement(child)) {
-              return React.cloneElement(child, { addContrast: addContrast });
+              return React.cloneElement(child, { addContrast: addContrast, pathname: path });
             }
             return child;
           });

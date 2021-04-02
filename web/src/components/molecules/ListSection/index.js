@@ -5,7 +5,7 @@ import Heading from '../../atoms/Heading'
 const ListSection = ({ listBlockTitle: title, listBlockList = [], addContrast}) => {
   return (
     <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
-      <Grid.Unit withGutter size={{sm: 12, md: 6}}>
+      <Grid.Unit withGutter size={{sm: 12, md: 8, lg: 6}}>
         {
           title && (
             <Heading tagName="h3" addContrast={addContrast}>{title}</Heading>

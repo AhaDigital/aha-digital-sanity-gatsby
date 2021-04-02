@@ -8,7 +8,7 @@ import Heading from '../../atoms/Heading'
 import TextContainer from '../../atoms/TextContainer'
 import HeadingWithImage from './styles'
 
-const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage, addContrast }) => {
+const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage, addContrast, pathname }) => {
   const breakpoints = useBreakpoint()
   const heading = []
   const rest = []
@@ -28,8 +28,15 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
   const headingText = get(heading[0], 'children[0].text')
   const {is4to3AspectRatio} = mainImage
 
+  let justify = 'flex-start'
+  if(breakpoints.md) {
+    if(pathname === '/') {
+      justify = 'center'
+    }
+  }
+
   return (
-    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl" justify={breakpoints.md ? 'center' : 'left'}>
+    <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl" justify={justify}>
       {
         breakpoints.sm || breakpoints.md ? (
           <>
