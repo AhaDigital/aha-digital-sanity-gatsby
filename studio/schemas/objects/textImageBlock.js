@@ -10,6 +10,11 @@ export default {
       description: 'Bild till höger om inga val görs.',
     },
     {
+      title: 'Bildrubrik',
+      name: 'imageHeading',
+      type: 'mainImage'
+    },
+    {
       title: 'Textblock',
       name: 'bodyPortableText',
       type: 'bodyPortableText'

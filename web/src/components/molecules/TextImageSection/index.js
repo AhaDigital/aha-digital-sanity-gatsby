@@ -6,13 +6,13 @@ import PortableText from '../../atoms/portableText'
 import Figure from '../../atoms/Figure'
 import Heading from '../../atoms/Heading'
 import TextContainer from '../../atoms/TextContainer'
-import HeadingWithImage from './styles'
+import {HeadingWithImage, HeadingAsImage} from './styles'
 
-const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage, addContrast, pathname }) => {
+const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage, imageHeading, addContrast, pathname }) => {
   const breakpoints = useBreakpoint()
   const heading = []
   const rest = []
-
+console.log('imageHeading', imageHeading)
   bodyPortableText.forEach(element => {
     const {style} = element
 
@@ -52,12 +52,34 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                 }
               </HeadingWithImage>
             </Grid.Unit>
+            {imageHeading && imageHeading.asset && (
+              <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
+                {imageHeading.alt ? (
+                  <HeadingAsImage>
+                    <Figure node={imageHeading} />
+                    <span className="visually-hidden">{imageHeading.alt}</span>
+                  </HeadingAsImage>
+                ) : <Figure node={imageHeading} />}
+                
+              </Grid.Unit>
+            )}
             <Grid.Unit withGutter size={breakpoints.sm ? 12 : 8} marginTop="lg">
               <PortableText blocks={rest} />
             </Grid.Unit>
           </>
         ) : (
           <>
+            {imageHeading && imageHeading.asset && (
+              <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
+                {imageHeading.alt ? (
+                  <HeadingAsImage>
+                    <Figure node={imageHeading} />
+                    <span className="visually-hidden">{imageHeading.alt}</span>
+                  </HeadingAsImage>
+                ) : <Figure node={imageHeading} />}
+                
+              </Grid.Unit>
+            )}
             {
               heading.length > 0 && (
                 <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from '../../themes'
 
 const HeadingWithImage = styled.div`
   position: relative;
@@ -25,4 +26,8 @@ const HeadingWithImage = styled.div`
   }
 `
 
-export default HeadingWithImage
+const HeadingAsImage = styled.h2`
+  margin: 0 0 ${theme.spacings.lg};
+`
+
+export {HeadingWithImage, HeadingAsImage}
