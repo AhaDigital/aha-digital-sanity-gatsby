@@ -49,7 +49,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
                       <Columns.ColumnHeadingText>{columnBlockTitle1}</Columns.ColumnHeadingText>
                       {
                         columnBlockTitle2 && (
-                          <Columns.ColumnHeadingText>{columnBlockTitle2}</Columns.ColumnHeadingText>
+                          <Columns.ColumnHeadingText isLast>{columnBlockTitle2}</Columns.ColumnHeadingText>
                         )
                       }
                     </Heading>

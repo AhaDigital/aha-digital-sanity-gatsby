@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import { Link } from 'gatsby'
 import theme from '../../themes'
 
@@ -11,10 +11,6 @@ const ColumnInner = styled.div`
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 0;
-
-  ${({theme}) => theme.media.lg`
-    margin: 0 ${theme.spacings.md};
-  `}
 `
 
 const Top = styled.div`
@@ -45,9 +41,9 @@ const HeadingText = styled.span`
   display: block;
   background-color: ${theme.palette.light};
   text-decoration: underline;
-  ${({theme}) => theme.media.lg`
+  ${({theme, isLast}) => theme.media.lg`
     padding: ${theme.spacings.sm} ${theme.spacings.lg};
-    display: inline-block;
+    display: ${isLast ? 'block' : 'inline-block'};
     text-decoration: none;
   `}
 `
