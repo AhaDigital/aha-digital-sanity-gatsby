@@ -12,7 +12,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
   const breakpoints = useBreakpoint()
   const heading = []
   const rest = []
-console.log('imageHeading', imageHeading)
+
   bodyPortableText.forEach(element => {
     const {style} = element
 

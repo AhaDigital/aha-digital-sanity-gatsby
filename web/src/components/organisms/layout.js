@@ -100,6 +100,10 @@ const GlobalStyles = createGlobalStyle`
     border-spacing: 0;
   }
 
+  strong {
+    font: 16px/20px 'Roboto Condensed',Arial Narrow,Avenir Next Condensed,Roboto,sans-serif;
+  }
+
   a, a:active {
     color: rgb(31,105,255);
   }
