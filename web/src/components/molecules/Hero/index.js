@@ -30,6 +30,7 @@ const Hero = ({hero, addContrast, pathname}) => {
       finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(355).quality(80).auto("format").url()
     }
   }
+
   return (
     <>
     <StyledHero image={finalImage} isLandingPage={isLandingPage}>
