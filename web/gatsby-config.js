@@ -14,12 +14,16 @@ const breakpoints = {
 };
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://ahadigital.se`,
+  },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-lodash',
     'gatsby-plugin-preload-fonts',
     'gatsby-plugin-breakpoints',
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-source-sanity',
       options: {
