@@ -32,8 +32,8 @@ export default ({node, aspectRatio4to3}) => {
       h: 576,
     },
     desktop: {
-      w: 640,
-      h: 480,
+      w: 1266,
+      h: 950,
     },
   }
 

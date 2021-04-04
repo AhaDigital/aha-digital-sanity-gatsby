@@ -24,6 +24,7 @@ module.exports = {
     'gatsby-plugin-preload-fonts',
     'gatsby-plugin-breakpoints',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-source-sanity',
       options: {
@@ -37,6 +38,26 @@ module.exports = {
       resolve: 'gatsby-plugin-breakpoints',
       options: {
         queries: breakpoints,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Aha Digital`,
+        short_name: `Aha Digital`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#000000`,
+        display: `standalone`,
+        icon: 'src/images/icon.png',
+        lang: 'sv',
+        cache_busting_mode: 'none'
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/tjanster`, `/uppdrag`, '/om-aha', '/universell-utformning-och-tillganglighet', 'kontakt'],
       },
     },
   ]
