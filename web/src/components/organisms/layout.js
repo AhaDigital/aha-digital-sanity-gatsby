@@ -189,7 +189,12 @@ const Layout = ({
 
           return (
             <>
-              <SEO title={ogTitle || fallbackTitle} description={ogDescription || fallbackDescription} image={ogImageUrl || fallbackImageUrl} />
+              <SEO
+                title={ogTitle || fallbackTitle}
+                description={ogDescription || fallbackDescription}
+                image={ogImageUrl || fallbackImageUrl}
+                pathname={path}
+              />
               <Header
                 menu={mainMenuPages}
                 onHideNav={onHideNav}

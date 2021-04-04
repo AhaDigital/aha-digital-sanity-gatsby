@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-function SEO ({description, title, image}) {
+function SEO ({description, title, image, pathname}) {
   return (
     <Helmet
       htmlAttributes={{lang: 'sv'}}
@@ -29,8 +29,15 @@ function SEO ({description, title, image}) {
           property: 'og:image',
           content: image
         },
+        {
+          property: 'robots',
+          content: 'noindex'
+        },
       ]}
     >
+      {pathname && (
+        <link rel="canonical" href={`https://ahadigital.se${pathname === '/' ? '/' : pathname}`} />
+      )}
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link prefetch href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Source+Sans+Pro:ital@0;1&display=swap" rel="stylesheet" />
     </Helmet>
