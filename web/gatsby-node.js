@@ -42,32 +42,10 @@ async function createLandingPages (graphql, actions) {
 
 async function createSitemapPage (graphql, actions) {
   const {createPage} = actions
-  const result = await graphql(`
-    {
-      allSanityPages(
-        filter: { slug: { current: { ne: null } }, _id: {ne: "a78c99c2-4c15-4a29-9bf8-0d46f834422d"}}
-      ) {
-        edges {
-          node {
-            _key
-            title
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) throw result.errors
-
-  const pageEdges = (result.data.allSanityPages || {}).edges || []
   const path = '/webbplatskarta/'
   createPage({
     path,
-    component: require.resolve('./src/pages/sitemapPage.js'),
-    context: {pageEdges}
+    component: require.resolve('./src/pages/webbplatskarta.js'),
   })
 }
 

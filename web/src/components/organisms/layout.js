@@ -213,7 +213,7 @@ const Layout = ({
                 addSpeach={addSpeach}
                 addContrast={addContrast}
               />
-              {path !== 'webbplatskarta' && (
+              {path !== '/webbplatskarta/' && (
                 <Hero hero={hero} addContrast={addContrast} pathname={path} />
               )}
               <main ref={mainRef} tabIndex={-1}>
