@@ -6,7 +6,7 @@ import Heading from '../components/atoms/Heading'
 import App from '../app'
 
 const SitemapPage = props => {
-  const {data, errors, pageContext} = props
+  const {data, errors, pageContext, location} = props
   const pages = get(pageContext, 'pageEdges', []) || []
 
   if (errors) {
@@ -17,10 +17,10 @@ const SitemapPage = props => {
     )
   }
 
-  const pageSEO = { ogTitle: 'Webbplatskarta' }
+  const pageSEO = { ogTitle: 'Webbplatskarta', ogDescription: null, ogImage: {} }
 
   return (
-    <App pageSEO={pageSEO}>
+    <App pageSEO={pageSEO} location={location}>
       <Heading>Webbplatskarta</Heading>
       <nav aria-label="webbplatskarta">
         <ul aria-label="sitemap">

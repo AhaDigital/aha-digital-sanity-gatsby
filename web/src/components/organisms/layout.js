@@ -177,8 +177,14 @@ const Layout = ({
   
           const { ogTitle: fallbackTitle, ogDescription: fallbackDescription, ogImage: fallbackImage } = fallback
   
-          const ogImageUrl = (ogImage && ogImage.asset) ? imageUrlFor(buildImageObj(ogImage)).width(1200).url() : null
-          const fallbackImageUrl = (fallbackImage && fallbackImage.asset) ? imageUrlFor(buildImageObj(fallbackImage)).width(1200).url() : null
+          const ogImageUrl = (ogImage && ogImage.asset) ? {
+            facebook: imageUrlFor(buildImageObj(ogImage)).width(1200).height(627).url(),
+            twitter: imageUrlFor(buildImageObj(ogImage)).width(1200).height(600).url(),
+          } : null
+          const fallbackImageUrl = (fallbackImage && fallbackImage.asset) ? {
+            facebook: imageUrlFor(buildImageObj(fallbackImage)).width(1200).height(627).url(),
+            twitter: imageUrlFor(buildImageObj(fallbackImage)).width(1200).height(600).url(),
+          } : null
   
           const childrenWithProps = React.Children.map(children, child => {
             if (React.isValidElement(child)) {
@@ -207,7 +213,9 @@ const Layout = ({
                 addSpeach={addSpeach}
                 addContrast={addContrast}
               />
-              <Hero hero={hero} addContrast={addContrast} pathname={path} />
+              {path !== 'webbplatskarta' && (
+                <Hero hero={hero} addContrast={addContrast} pathname={path} />
+              )}
               <main ref={mainRef} tabIndex={-1}>
                 {childrenWithProps}
               </main>
