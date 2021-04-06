@@ -5,11 +5,12 @@ import Heading from './Heading'
 import SmallText from './SmallText'
 import SpanBlockText from './SpanBlockText'
 import Text from './Text'
+import List from '../molecules/List'
 
 const BlockRenderer = props => {
   const style = props.node.style || 'normal'
   const type = props.node._type
-  
+
   if(type === 'bodyPortableFeaturedLink') {
     return <FeaturedLink {...props}/>
   }
@@ -40,7 +41,13 @@ const serializers = {
   types: {
     mainImage: Figure,
   },
-  block: BlockRenderer
+  block: BlockRenderer,
+  list: (props) => (
+    <List tagName={props.type === "bullet" ? 'ul' : 'ol'}>{props.children}</List>
+  ),
+  listItem: (props) => (
+    <li>{props.children}</li>
+  ),
 }
 
 export default serializers

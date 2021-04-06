@@ -5,6 +5,7 @@ import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import Heading from '../components/atoms/Heading'
 import FeaturedLink from '../components/atoms/FeaturedLink'
 import Grid from '../components/molecules/Grid'
+import Breadcrumbs from '../components/molecules/Breadcrumbs'
 import App from '../app'
 
 export const query = graphql`
@@ -38,9 +39,24 @@ const Webbplatskarta = props => {
   }
 
   const pageSEO = { ogTitle: 'Webbplatskarta', ogDescription: null, ogImage: {} }
-
+  const breadcrumbsNavigation = [
+    {
+      to: '/',
+      text: 'Startsida',
+    },
+    {
+      to: '/webbplatskarta/',
+      text: 'Webbplatskarta',
+      currentPage: true,
+    }
+  ]
   return (
     <App pageSEO={pageSEO} location={location}>
+      <Grid tagName="section" maxWidth="default" withPadding marginTop="lg">
+        <Grid.Unit withGutter>
+          <Breadcrumbs navigation={breadcrumbsNavigation}/>
+        </Grid.Unit>
+      </Grid>
       <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
         <Grid.Unit withGutter>
           <Heading>Webbplatskarta</Heading>

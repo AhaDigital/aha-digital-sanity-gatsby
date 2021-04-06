@@ -116,14 +116,16 @@ const Header = ({
             styles={`color: ${addContrast ? 'blue' : theme.palette.dark};`}
             addContrast={addContrast}
           />
-          <TransparentButton
-            name="textToSpeach"
-            onClick={() => onAddSpeach()}
-            text="Talande webb"
-            icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
-            styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue)  : theme.palette.dark};`}
-            addContrast={addContrast}
-          />
+          {/*
+            <TransparentButton
+              name="textToSpeach"
+              onClick={() => onAddSpeach()}
+              text="Talande webb"
+              icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
+              styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue)  : theme.palette.dark};`}
+              addContrast={addContrast}
+            />
+          */}
         </TopLevel.Accessibility>
       </TopLevel>
       <NavLevel>
@@ -232,17 +234,19 @@ const Header = ({
                     ariaExpanded={addContrast}
                   />
                 </li>
-                <li>
-                  <TransparentButton
-                    name="textToSpeachMobile"
-                    onClick={() => onAddSpeach()}
-                    text="Talande webb"
-                    icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
-                    styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
-                    ariaLabel="Slå på/av talande webb på webbplatsen"
-                    ariaExpanded={addSpeach}
-                  />
-                </li>
+                {/* 
+                  <li>
+                    <TransparentButton
+                      name="textToSpeachMobile"
+                      onClick={() => onAddSpeach()}
+                      text="Talande webb"
+                      icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
+                      styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                      ariaLabel="Slå på/av talande webb på webbplatsen"
+                      ariaExpanded={addSpeach}
+                    />
+                  </li>
+                 */}
               </ul>
             </>
           )}

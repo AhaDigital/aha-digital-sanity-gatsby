@@ -91,26 +91,6 @@ const StyledHeading = styled.div`
   `}
 `
 
-const Breadcrumbs = styled.ol`
-  display: flex;
-  a {
-    color: ${theme.palette.dark};
-    span {
-      color: ${theme.palette.dark};
-    }
-    &:last-child {
-      text-decoration: none;
-    }
-  }
-`
-
-const BreadcrumbsDivider = styled.span`
-  display: inline-block;
-  margin: 0 ${theme.spacings.md};
-  color: ${theme.palette.dark};
-
-`
-
 const Intro = styled.div`
   max-width: 414px;
   margin: ${theme.spacings.sm} auto;
@@ -120,8 +100,6 @@ const Intro = styled.div`
 `
 
 StyledHero.Heading = StyledHeading
-StyledHero.Breadcrumbs = Breadcrumbs
-StyledHero.BreadcrumbsDivider = BreadcrumbsDivider
 StyledHero.Intro = Intro
 StyledHero.Bubbles = Bubbles
 

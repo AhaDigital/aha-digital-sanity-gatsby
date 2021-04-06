@@ -2,16 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import get from 'lodash.get'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
-import { Link } from 'gatsby'
 import { imageUrlFor } from '../../../lib/image-url';
 import {buildImageObj} from '../../../lib/helpers';
 import Grid from '../Grid'
 import theme from '../../themes'
 import Heading from '../../atoms/Heading'
-import Text from '../../atoms/Text'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
 import BubbleLeft from '../../atoms/BubbleLeft'
 import BubbleRight from '../../atoms/BubbleRight'
+import Breadcrumbs from '../../molecules/Breadcrumbs'
 
 import StyledHero from './styles'
 
@@ -31,6 +30,18 @@ const Hero = ({hero, addContrast, pathname}) => {
     }
   }
 
+  const breadcrumbsNavigation = [
+    {
+      to: '/',
+      text: 'Startsida',
+    },
+    {
+      to: pathname,
+      text: title,
+      currentPage: true,
+    }
+  ]
+
   return (
     <>
     <StyledHero image={finalImage} isLandingPage={isLandingPage}>
@@ -38,21 +49,7 @@ const Hero = ({hero, addContrast, pathname}) => {
         <Grid.Unit withGutter size={12}>
           <StyledHero.Heading isLandingPage={isLandingPage}>
             {isLandingPage ? (
-              <nav aria-label="breakdcrumbs">
-                <StyledHero.Breadcrumbs>
-                  <li>
-                    <Link to="/">
-                      <Text isParagraph={false}>Startsida</Text>
-                    </Link>
-                    <StyledHero.BreadcrumbsDivider>/</StyledHero.BreadcrumbsDivider>
-                  </li>
-                  <li>
-                    <Link to={pathname} aria-current="page">
-                      <Text isParagraph={false}>{title}</Text>
-                    </Link>
-                  </li>
-                </StyledHero.Breadcrumbs>
-              </nav>
+              <Breadcrumbs navigation={breadcrumbsNavigation}/>
             ) : (
               <>
                 {heading.length > 0 && (
