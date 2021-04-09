@@ -16,9 +16,9 @@ const Text = styled.span`
       display: initial;
       ${theme.visually.hidden}
 
-      ${isVisible && `
+      ${isVisible ?`
         ${theme.visually.visible}
-      `}
+      ` : ''}
     `}
   `}
 `
