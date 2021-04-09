@@ -131,6 +131,12 @@ const GlobalStyles = createGlobalStyle`
   main {
     outline: none;
   }
+
+  main.addContrast {
+    a, a:active {
+      color: blue;
+    }
+  }
 `
 
 const Layout = ({
@@ -216,7 +222,7 @@ const Layout = ({
               {hero && (
                 <Hero hero={hero} addContrast={addContrast} pathname={path} />
               )}
-              <main ref={mainRef} tabIndex={-1}>
+              <main ref={mainRef} tabIndex={-1} className={addContrast ? 'addContrast' : ''}>
                 {childrenWithProps}
               </main>
               <Footer data={{footer, ...footerMenu}} addContrast={addContrast} />
