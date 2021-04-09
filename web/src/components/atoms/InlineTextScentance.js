@@ -14,6 +14,7 @@ const Text = styled.span`
       top: 0;
       left: 0;
       display: initial;
+
       ${theme.visually.hidden}
 
       ${isVisible ?`
