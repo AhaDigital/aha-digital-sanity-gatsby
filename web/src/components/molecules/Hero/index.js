@@ -46,7 +46,7 @@ const Hero = ({hero, addContrast, pathname}) => {
     <>
       {finalImage && (
         <StyledHero image={finalImage} isLandingPage={isLandingPage}>
-        <Grid withPadding maxWidth="default" align="center" justify="center">
+          <Grid withPadding maxWidth="default" align="center" justify="center">
             <GridColumn withGutter columnSize={12}>
               <StyledHero.Heading isLandingPage={isLandingPage}>
                 {isLandingPage ? (

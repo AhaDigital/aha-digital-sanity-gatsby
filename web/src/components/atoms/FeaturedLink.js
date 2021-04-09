@@ -21,6 +21,11 @@ const linkStyle = `
 
 const StyledFeaturedLinkBlock = styled.span`
   display: block;
+  ${({linkColour}) => linkColour && css`
+    a {
+      color: ${linkColour};
+    }
+  `}
 `
 
 const StyledIcon = styled.span`
@@ -32,10 +37,6 @@ const StyledIcon = styled.span`
 const StyledFeaturedLink = styled.a`
   ${linkStyle}
 
-  ${({linkColour}) => linkColour && css`
-    color: ${linkColour};
-  `}
-
   &:focus, &:hover {
     ${StyledIcon} {
       transform: translateX(3px);
@@ -45,9 +46,6 @@ const StyledFeaturedLink = styled.a`
 
 const StyledFeaturedGatsbyLink = styled(Link)`
   ${linkStyle}
-  ${({linkColour}) => linkColour && css`
-    color: ${linkColour};
-  `}
 
   &:focus, &:hover {
     ${StyledIcon} {
@@ -61,10 +59,10 @@ export default ({node}) => {
   if(!href || !linkName) return null
 
   return (
-    <StyledFeaturedLinkBlock>
+    <StyledFeaturedLinkBlock linkColour={linkColour}>
       {
         href.indexOf('http') > -1 ? (
-          <StyledFeaturedLink href={href} linkColour={linkColour}>
+          <StyledFeaturedLink href={href}>
             <StyledIcon>
               <Icon symbol="chevronRight" iconColour={linkColour}/>
             </StyledIcon>
@@ -78,7 +76,7 @@ export default ({node}) => {
             }
           </StyledFeaturedLink>
         ) : (
-          <StyledFeaturedGatsbyLink to={href} linkColour={linkColour}>
+          <StyledFeaturedGatsbyLink to={href}>
             <StyledIcon>
               <Icon symbol="chevronRight" iconColour={linkColour}/>
             </StyledIcon>

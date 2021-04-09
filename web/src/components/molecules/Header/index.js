@@ -127,7 +127,6 @@ const Header = ({
           name="menuButton"
           id="menuOpener"
           aria-controls="mainMenu"
-          aria-label="Huvudmeny"
           onClick={showNav ? onHideNav : onShowNav}
           aria-expanded={showNav ? 'true' : 'false'}
         >
@@ -142,13 +141,12 @@ const Header = ({
         <NavLevel.Nav
           id="mainMenu"
           aria-labelledby="menuOpener"
-          aria-label="Huvudmeny"
           showNav={showNav}
         >
           {breakpoints.sm && (
-            <Heading id="navTitle" tagName="span" displayAs="h2" styles={mobileMenuHeadingOverrideStyle}>Webbplatsen</Heading>
+            <Heading tagName="span" displayAs="h2" styles={mobileMenuHeadingOverrideStyle}>Webbplatsen</Heading>
           )}
-          <nav aria-describedby="navTitle">
+          <nav>
             <ul role="menubar" aria-label="Huvudmeny">
               {breakpoints.sm && (
                 <li role="none">
@@ -186,8 +184,8 @@ const Header = ({
           </nav>
           {breakpoints.sm && (
             <>
-              <Heading id="accessibilityTitle" tagName="span" displayAs="h2" styles={mobileMenuHeadingOverrideStyle}>Tillgänglighet</Heading>
-              <ul aria-describedby="accessibilityTitle">
+              <Heading tagName="span" displayAs="h2" styles={mobileMenuHeadingOverrideStyle}>Tillgänglighet</Heading>
+              <ul>
                 <li>
                   <TransparentButton
                     name="highContrastMobile"

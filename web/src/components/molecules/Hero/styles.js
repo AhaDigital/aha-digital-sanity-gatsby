@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components'
 import theme from '../../themes'
 
-const StyledHero = styled.section`
+const StyledHero = styled.div`
   width: 100%;
   height: 303px;
   display: flex;

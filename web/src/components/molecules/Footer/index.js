@@ -27,7 +27,7 @@ const Footer = ({data, addContrast}) => {
   return (
     <StyledFooter>
       <Grid tagName="section" maxWidth="default" withPadding>
-        <GridColumn withGutter size={{sm: 12, lg: 7}} marginTop="lg">
+        <GridColumn withGutter columnSize={{sm: 12, lg: 7}} marginTop="lg">
           <Heading tagName="h3" displayAs="h1" textColour="green" addContrast={addContrast}>
             {
               salesPitchRollingText.length > 0 && salesPitchRollingText.map((part, index) => {
@@ -47,7 +47,7 @@ const Footer = ({data, addContrast}) => {
             }
           </Heading>
         </GridColumn>
-        <GridColumn size={{sm: 12, lg: 5}} marginTop="lg">
+        <GridColumn columnSize={{sm: 12, lg: 5}} marginTop="lg">
           <Grid justify="flex-start" flexWrap="nowrap">
             <GridColumn withGutter>
               {image && image.asset && (
@@ -103,7 +103,7 @@ const Footer = ({data, addContrast}) => {
       </Grid>
       <StyledFooter.Bottom>
         <Grid maxWidth="default" withPadding>
-          <GridColumn withGutter size={{sm: 12, md: 7}} marginTop="lg">
+          <GridColumn withGutter columnSize={{sm: 12, md: 7}} marginTop="lg">
             <Heading tagName="h3" textColour={addContrast ? 'darker' : 'dark'}>
               Om webbplatsen
             </Heading>
@@ -129,7 +129,7 @@ const Footer = ({data, addContrast}) => {
               </ol>
             </nav>
           </GridColumn>
-          <GridColumn withGutter size={{sm: 12, md: 5}} marginTop="lg">
+          <GridColumn withGutter columnSize={{sm: 12, md: 5}} marginTop="lg">
             <Heading tagName="h3" textColour={addContrast || 'dark'}>
               Aha Digital AB
             </Heading>

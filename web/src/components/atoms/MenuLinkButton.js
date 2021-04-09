@@ -22,7 +22,7 @@ const StyledLink = styled(Link)`
   border: none;
   color: ${theme.palette.dark};
   cursor: pointer;
-  line-height: auto;
+  line-height: normal;
   transition-delay: 1s;
   transition: all ${theme.animationTime.default} ease-in-out;
   transform: translateX(-10px);
