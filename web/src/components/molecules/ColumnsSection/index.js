@@ -1,5 +1,5 @@
 import React from 'react'
-import Grid from '../Grid'
+import {Grid, GridColumn} from '../Grid'
 import Heading from '../../atoms/Heading'
 import Figure from '../../atoms/Figure'
 import Columns from './styles'
@@ -26,7 +26,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
           const { columnBlockImage = {}, columnBlockIntro, columnBlockLink, columnBlockTitle1, columnBlockTitle2 } = column
 
           return (
-            <Grid.Unit key={column._key} size={columnWidth()} withGutter marginTop="xl">
+            <GridColumn key={column._key} columnSize={columnWidth()} withGutter marginTop="xl">
               <Columns.ColumnInner>
                 {
                   columnBlockLink && (
@@ -45,7 +45,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
                     )
                   }
                   {columnBlockTitle1 && (
-                    <Heading tagName="h3" displayAs="h2" addContrast={addContrast} color="green">
+                    <Heading tagName="h3" displayAs="h2" addContrast={addContrast} textColour="green">
                       <Columns.ColumnHeadingText>{columnBlockTitle1}</Columns.ColumnHeadingText>
                       {
                         columnBlockTitle2 && (
@@ -61,7 +61,7 @@ const ColumnsSection = ({ column: columns = [], addContrast }) => {
                   )
                 }
               </Columns.ColumnInner>
-            </Grid.Unit>
+            </GridColumn>
           )
         })
       }

@@ -1,6 +1,7 @@
 import React, {forwardRef} from 'react'
 import PropTypes from 'prop-types'
 import styled, {css} from 'styled-components'
+import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { Link } from 'gatsby'
 import Icon from './Icon'
 import theme from '../themes'
@@ -13,45 +14,75 @@ const StyledIcon = styled.span`
 `
 
 const StyledLink = styled(Link)`
-  max-height: 40px;
-  padding: ${theme.spacings.md} ${theme.spacings.lg};
+  font: ${theme.headings.h3Mobile};
+  padding: ${theme.spacings.md} 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   border: none;
   color: ${theme.palette.dark};
   cursor: pointer;
-  font: ${theme.headings.h4};
-  line-height: 25px;
+  line-height: auto;
+  transition-delay: 1s;
   transition: all ${theme.animationTime.default} ease-in-out;
+  transform: translateX(-10px);
+  text-decoration: underline;
+
+  ${({isSmall}) => isSmall ? css`
+    &:before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      display: block;
+      margin: 0 ${theme.spacings.md} 0 0;
+    }
+  ` : css`
+    padding: ${theme.spacings.md};
+    font: ${theme.headings.h3};
+    line-height: 61px;
+    text-decoration: none;
+  `}
+
+  ${({addContrast}) => addContrast && css`
+    color: black;
+  `}
+
+  ${({showNav}) => showNav && css`
+    transition-delay: ${theme.animationTime.default};
+    transform: translateX(0);
+  `}
 
   &:focus, &:hover {
-    text-decoration: underline;
-    background-color: ${theme.palette.pink};
+    background-color: transparent;
+    ${({addContrast}) => addContrast ? css`
+      color: blue;
+    ` : css`
+      color: ${theme.palette.blue};
+    `}
+
     ${StyledIcon} {
       ${({animationDirection}) => animationDirection && css`
         transform: ${iconAnimation(animationDirection)};
       `}
     }
   }
-  ${({overrideStyles}) => overrideStyles && css`
-    ${overrideStyles}
-  `}
 `
 
-const LinkButton = forwardRef((
+
+const MenuLinkButton = forwardRef((
   {
     icon,
     ariaLabel, 
-    overrideStyles,
     to,
     activeClassName,
     role,
-    state,
-    children
+    addContrast,
+    children,
+    showNav
   }, ref) => {
 
   const { symbol, animationDirection } = icon
+  const breakpoints = useBreakpoint()
 
   return (
     <StyledLink
@@ -61,8 +92,9 @@ const LinkButton = forwardRef((
       activeClassName={activeClassName}
       aria-label={ariaLabel}
       animationDirection={animationDirection}
-      overrideStyles={overrideStyles}
-      state={state}
+      addContrast={addContrast}
+      isSmall={breakpoints.sm}
+      showNav={showNav}
     >
       {symbol && (
         <StyledIcon>
@@ -74,20 +106,20 @@ const LinkButton = forwardRef((
   )
 })
 
-LinkButton.defaultProps = {
+MenuLinkButton.defaultProps = {
   ref: null,
   icon: {
     symbol: null,
     animationDirection: null,
   },
   ariaLabel: null,
-  overrideStyles: null,
   role: null,
   activeClassName: null,
-  state: {}
+  addContrast: false,
+  showNav: false
 }
 
-LinkButton.propTypes = {
+MenuLinkButton.propTypes = {
   ref: PropTypes.object,
   to: PropTypes.string.isRequired,
   activeClassName: PropTypes.string,
@@ -97,8 +129,8 @@ LinkButton.propTypes = {
     animationDirection: PropTypes.oneOf(['top', 'right', 'bottom', 'left'])
   }),
   ariaLabel: PropTypes.string,
-  overrideStyles: PropTypes.string,
-  state: PropTypes.object
+  addContrast: PropTypes.bool,
+  showNav: PropTypes.bool
 }
 
-export default LinkButton
+export default MenuLinkButton

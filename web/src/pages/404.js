@@ -1,7 +1,7 @@
 import React from 'react'
 import Text from '../components/atoms/Text'
 import FeaturedLink from '../components/atoms/FeaturedLink'
-import Grid from '../components/molecules/Grid'
+import {Grid, GridColumn} from '../components/molecules/Grid'
 import App from '../app'
 
 const pageSEO = { ogTitle: '404: Sidan finns inte', index: 'noindex'}
@@ -23,10 +23,10 @@ const NotFoundPage = (props) => {
 
     <App pageSEO={pageSEO} location={location} hero={hero}>
       <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
-        <Grid.Unit withGutter size={{sm: 12, md: 6}}>
+        <GridColumn withGutter size={{sm: 12, md: 6}}>
           <Text>Det kan vara så att jag har tagit bort sidan. Kontrollera gärna att det är rättstavat i sökfältet.</Text>
           <FeaturedLink node={{href: "/", linkName: 'Till startsidan'}} />
-        </Grid.Unit>
+        </GridColumn>
       </Grid>
     </App>
   )

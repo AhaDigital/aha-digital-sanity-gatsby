@@ -37,7 +37,9 @@ const StyledButton = styled.button`
       `}
     }
   }
-  ${({styles}) => styles && styles}
+  ${({overrideStyles}) => overrideStyles && css`
+    ${overrideStyles}
+  `}
 `
 
 const TransparentButton = forwardRef((
@@ -51,7 +53,7 @@ const TransparentButton = forwardRef((
     ariaExpanded,
     ariaHaspopup,
     ariaControls,
-    styles,
+    overrideStyles,
     addContrast
   }, ref) => {
 
@@ -70,7 +72,7 @@ const TransparentButton = forwardRef((
       aria-controls={ariaControls}
       animationDirection={animationDirection}
       iconId={symbol}
-      styles={styles}
+      overrideStyles={overrideStyles}
       addContrast={addContrast}
     >
       {symbol && (
@@ -95,7 +97,7 @@ TransparentButton.defaultProps = {
   ariaExpanded: null,
   ariaHaspopup: null,
   ariaControls: null,
-  styles: '',
+  overrideStyles: null,
   addContrast: false,
 }
 
@@ -113,7 +115,7 @@ TransparentButton.propTypes = {
   ariaExpanded: PropTypes.bool,
   ariaHaspopup: PropTypes.bool,
   ariaControls: PropTypes.string,
-  styles: PropTypes.string,
+  overrideStyles: PropTypes.string,
   addContrast: PropTypes.bool,
 }
 

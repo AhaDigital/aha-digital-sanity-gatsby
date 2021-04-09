@@ -3,7 +3,7 @@ import {graphql} from 'gatsby'
 import get from 'lodash.get'
 import GraphQLErrorList from '../components/atoms/graphql-error-list'
 import FeaturedLink from '../components/atoms/FeaturedLink'
-import Grid from '../components/molecules/Grid'
+import {Grid, GridColumn} from '../components/molecules/Grid'
 import App from '../app'
 
 export const query = graphql`
@@ -53,11 +53,11 @@ const Webbplatskarta = props => {
   return (
     <App pageSEO={pageSEO} location={location} hero={hero}>
       <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl">
-        <Grid.Unit withGutter>
+        <GridColumn withGutter>
           <nav aria-label="webbplatskarta">
             <ol aria-label="sitemap">
               <li>
-                <FeaturedLink node={{href: "/", linkName: "Startsida", color: '#000000'}}/>
+                <FeaturedLink node={{href: "/", linkName: "Startsida", linkColour: '#000000'}}/>
               </li>
               {
                 pages.map(page => {
@@ -66,7 +66,7 @@ const Webbplatskarta = props => {
                     const {_key, slug = {}, title = ''} = node
                     return slug.current ? (
                       <li key={_key}>
-                        <FeaturedLink node={{href: `/${slug.current}/`, linkName: title, color: '#000000'}} />
+                        <FeaturedLink node={{href: `/${slug.current}/`, linkName: title, linkColour: '#000000'}} />
                       </li>
                     ) : null
                   }
@@ -74,7 +74,7 @@ const Webbplatskarta = props => {
               }
             </ol>
           </nav>
-        </Grid.Unit>
+        </GridColumn>
       </Grid>
     </App>
   )

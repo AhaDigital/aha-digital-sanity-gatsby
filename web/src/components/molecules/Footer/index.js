@@ -7,7 +7,7 @@ import InlineTextScentance from '../../atoms/InlineTextScentance'
 import Heading from '../../atoms/Heading'
 import Text from '../../atoms/Text'
 import FeaturedLink from '../../atoms/FeaturedLink'
-import Grid from '../Grid'
+import {Grid, GridColumn} from '../Grid'
 import StyledFooter from './styles'
 
 const Footer = ({data, addContrast}) => {
@@ -27,8 +27,8 @@ const Footer = ({data, addContrast}) => {
   return (
     <StyledFooter>
       <Grid tagName="section" maxWidth="default" withPadding>
-        <Grid.Unit withGutter size={{sm: 12, lg: 7}} marginTop="lg">
-          <Heading tagName="h3" displayAs="h1" color="green" addContrast={addContrast}>
+        <GridColumn withGutter size={{sm: 12, lg: 7}} marginTop="lg">
+          <Heading tagName="h3" displayAs="h1" textColour="green" addContrast={addContrast}>
             {
               salesPitchRollingText.length > 0 && salesPitchRollingText.map((part, index) => {
                 if(breakpoints.sm && salesPitchRollingText[index +1] && salesPitchRollingText[index +1]._type !== 'inlineTextListItem') {
@@ -46,10 +46,10 @@ const Footer = ({data, addContrast}) => {
               })
             }
           </Heading>
-        </Grid.Unit>
-        <Grid.Unit size={{sm: 12, lg: 5}} marginTop="lg">
+        </GridColumn>
+        <GridColumn size={{sm: 12, lg: 5}} marginTop="lg">
           <Grid justify="flex-start" flexWrap="nowrap">
-            <Grid.Unit withGutter>
+            <GridColumn withGutter>
               {image && image.asset && (
                 <img
                   src={imageUrlFor(
@@ -65,14 +65,14 @@ const Footer = ({data, addContrast}) => {
                   height="120"
                 />
               )}
-            </Grid.Unit>
-            <Grid.Unit withGutter>
+            </GridColumn>
+            <GridColumn withGutter>
               
               {name && (
-                <Heading tagName="span" displayAs="h3" color="dark" addContrast={addContrast} styles={`display: block; margin: 0 0 5px !important;`}>{name}</Heading>
+                <Heading tagName="span" displayAs="h3" textColour="dark" addContrast={addContrast} styles={`display: block; margin: 0 0 5px !important;`}>{name}</Heading>
               )}
               {title && (
-                <Heading tagName="span" displayAs="h5" color="darker" styles={`display: block; margin: 0 0 10px !important;`}>{title}</Heading>
+                <Heading tagName="span" displayAs="h5" textColour="darker" styles={`display: block; margin: 0 0 10px !important;`}>{title}</Heading>
               )}
               {
                 email && (
@@ -97,20 +97,20 @@ const Footer = ({data, addContrast}) => {
                   </StyledFooter.ContactAlternative>
                 )
               }
-            </Grid.Unit>
+            </GridColumn>
           </Grid>
-        </Grid.Unit>
+        </GridColumn>
       </Grid>
       <StyledFooter.Bottom>
         <Grid maxWidth="default" withPadding>
-          <Grid.Unit withGutter size={{sm: 12, md: 7}} marginTop="lg">
-            <Heading tagName="h3" color={addContrast ? 'darker' : 'dark'}>
+          <GridColumn withGutter size={{sm: 12, md: 7}} marginTop="lg">
+            <Heading tagName="h3" textColour={addContrast ? 'darker' : 'dark'}>
               Om webbplatsen
             </Heading>
             <nav aria-label="Om webbplatsen">
               <ol>
                 <li>
-                  <FeaturedLink node={{href: "/webbplatskarta/", linkName: "Webbplatskarta", color: '#000000'}}/>
+                  <FeaturedLink node={{href: "/webbplatskarta/", linkName: "Webbplatskarta", linkColour: '#000000'}}/>
                 </li>
                 {
                   footerMenu.map(item => (
@@ -119,7 +119,7 @@ const Footer = ({data, addContrast}) => {
                           node={{
                             href: item.page ? `/${item.page.slug.current}/` : item.externalLink,
                             linkName: item.page ? item.page.title : item.externalLinkName,
-                            color: '#000000'
+                            linkColour: '#000000'
                           }}
                         />
                       </li>    
@@ -128,12 +128,12 @@ const Footer = ({data, addContrast}) => {
                 }
               </ol>
             </nav>
-          </Grid.Unit>
-          <Grid.Unit withGutter size={{sm: 12, md: 5}} marginTop="lg">
-            <Heading tagName="h3" color={addContrast || 'dark'}>
+          </GridColumn>
+          <GridColumn withGutter size={{sm: 12, md: 5}} marginTop="lg">
+            <Heading tagName="h3" textColour={addContrast || 'dark'}>
               Aha Digital AB
             </Heading>
-            <Heading tagName="h2" displayAs="text" color="darker">
+            <Heading tagName="h2" displayAs="text" textColour="darker">
               <Text isParagraph={false} withLineBreak>
                 IT-konsult inom digital tillgänglighet,
               </Text>
@@ -155,7 +155,7 @@ const Footer = ({data, addContrast}) => {
                 117 38 Stockholm
               </Text>
             </Text>
-          </Grid.Unit>
+          </GridColumn>
         </Grid>
       </StyledFooter.Bottom>
     </StyledFooter>

@@ -32,8 +32,8 @@ const StyledIcon = styled.span`
 const StyledFeaturedLink = styled.a`
   ${linkStyle}
 
-  ${({color}) => color && css`
-    color: ${color};
+  ${({linkColour}) => linkColour && css`
+    color: ${linkColour};
   `}
 
   &:focus, &:hover {
@@ -45,8 +45,8 @@ const StyledFeaturedLink = styled.a`
 
 const StyledFeaturedGatsbyLink = styled(Link)`
   ${linkStyle}
-  ${({color, theme}) => color && css`
-    color: ${color};
+  ${({linkColour}) => linkColour && css`
+    color: ${linkColour};
   `}
 
   &:focus, &:hover {
@@ -57,16 +57,16 @@ const StyledFeaturedGatsbyLink = styled(Link)`
 `
 
 export default ({node}) => {
-  const { href, linkName, isPdf, color } = node
+  const { href, linkName, isPdf, linkColour } = node
   if(!href || !linkName) return null
 
   return (
     <StyledFeaturedLinkBlock>
       {
         href.indexOf('http') > -1 ? (
-          <StyledFeaturedLink href={href} color={color}>
+          <StyledFeaturedLink href={href} linkColour={linkColour}>
             <StyledIcon>
-              <Icon symbol="chevronRight" color={color}/>
+              <Icon symbol="chevronRight" iconColour={linkColour}/>
             </StyledIcon>
             <span>
               {linkName}
@@ -78,9 +78,9 @@ export default ({node}) => {
             }
           </StyledFeaturedLink>
         ) : (
-          <StyledFeaturedGatsbyLink to={href} color={color}>
+          <StyledFeaturedGatsbyLink to={href} linkColour={linkColour}>
             <StyledIcon>
-              <Icon symbol="chevronRight" color={color}/>
+              <Icon symbol="chevronRight" iconColour={linkColour}/>
             </StyledIcon>
             <span>
               {linkName}

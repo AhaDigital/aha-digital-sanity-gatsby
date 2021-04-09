@@ -4,7 +4,7 @@ import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import Icon from '../../atoms/Icon'
 import AhaDigitalLogo from '../../atoms/ahaDigitalLogo'
 import Button from '../../atoms/Button'
-import LinkButton from '../../atoms/LinkButton'
+import MenuLinkButton from '../../atoms/MenuLinkButton'
 import TransparentButton from '../../atoms/TransparentButton'
 import Heading from '../../atoms/Heading'
 import theme from '../../themes'
@@ -48,36 +48,7 @@ const Header = ({
   `
 
   const menuItemOverrideStyle = `
-    font: ${breakpoints.sm ? theme.headings.h3Mobile : theme.headings.h3};
-    line-height: ${breakpoints.sm ? 'auto' : '60px'};
-    max-height: inherit;
-    ${addContrast ? 'color: black;' : ''}
-
-    &:hover, &:focus {
-      background-color: transparent;
-      color: ${addContrast ? 'blue' : theme.palette.blue};
-    }
-
-    ${breakpoints.sm ?`
-      text-decoration: underline;
-      justify-content: flex-start;
-      padding-left: 0;
-      transition-delay: 1s;
-      transition: transform ${theme.animationTime.default} ease-in-out;
-      transform: translateX(-10px);
-      ${showNav && `
-        transition-delay: ${theme.animationTime.default};
-        transform: translateX(0);
-      `}
-
-      &:before {
-        content: '';
-        width: 28px;
-        height: 2px;
-        display: block;
-        margin: 0 ${theme.spacings.md} 0 0;
-      }
-    ` : 'text-decoration: none;'};
+    
   `
 
   const accessibilityButtonOverrides = `
@@ -113,7 +84,7 @@ const Header = ({
             onClick={() => onAddContrast()}
             text="Öka kontrast"
             icon={{symbol: addContrast ? 'eye' : 'eyeClosed'}}
-            styles={`color: ${addContrast ? 'blue' : theme.palette.dark};`}
+            overrideStyles={`color: ${addContrast ? 'blue' : theme.palette.dark};`}
             addContrast={addContrast}
           />
           {/*
@@ -122,7 +93,7 @@ const Header = ({
               onClick={() => onAddSpeach()}
               text="Talande webb"
               icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
-              styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue)  : theme.palette.dark};`}
+              overrideStyles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue)  : theme.palette.dark};`}
               addContrast={addContrast}
             />
           */}
@@ -181,18 +152,15 @@ const Header = ({
             <ul role="menubar" aria-label="Huvudmeny">
               {breakpoints.sm && (
                 <li role="none">
-                  <LinkButton
+                  <MenuLinkButton
                     to={`/`}
                     activeClassName="navActive"
                     role="menuitem"
-                    styles={menuItemOverrideStyle}
-                    state={{
-                      addContrast: addContrast,
-                      addSpeach: addSpeach
-                    }}
+                    addContrast={addContrast}
+                    showNav={showNav}
                   >
                     Startsida
-                  </LinkButton>
+                  </MenuLinkButton>
                 </li>
               )}
               {
@@ -201,18 +169,15 @@ const Header = ({
                   const link = get(slug, 'current')
                   return link && title && (
                     <li key={id} role="none">
-                      <LinkButton
+                      <MenuLinkButton
                         to={`/${link}/`}
                         activeClassName="navActive"
                         role="menuitem"
-                        styles={menuItemOverrideStyle}
-                        state={{
-                          addContrast: addContrast,
-                          addSpeach: addSpeach
-                        }}
+                        addContrast={addContrast}
+                        showNav={showNav}
                       >
                         {title}
-                      </LinkButton>
+                      </MenuLinkButton>
                     </li>
                   )
                 })
@@ -229,7 +194,7 @@ const Header = ({
                     onClick={() => onAddContrast()}
                     text={addContrast ? 'Ökad kontrast' : 'Öka kontrast'}
                     icon={{symbol: addContrast ? 'eye' : 'eyeClosed'}}
-                    styles={`color: ${addContrast ? 'blue' : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                    overrideStyles={`color: ${addContrast ? 'blue' : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                     ariaLabel="Öka eller återställ kontrast på webbplatsen"
                     ariaExpanded={addContrast}
                   />
@@ -241,7 +206,7 @@ const Header = ({
                       onClick={() => onAddSpeach()}
                       text="Talande webb"
                       icon={{symbol: addSpeach ? 'ear' : 'earClosed'}}
-                      styles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
+                      overrideStyles={`color: ${addSpeach ? (addContrast ? 'blue' : theme.palette.blue) : theme.palette.dark}; ${accessibilityButtonOverrides}`}
                       ariaLabel="Slå på/av talande webb på webbplatsen"
                       ariaExpanded={addSpeach}
                     />

@@ -42,9 +42,9 @@ const Grid = ({
   )
 }
 
-const Unit = ({
+const GridColumn = ({
     tagName,
-    size,
+    columnSize,
     withGutter,
     flexGrow,
     children,
@@ -54,9 +54,9 @@ const Unit = ({
     withClearFix
   }) => {
   return (
-    <StyledGrid.GridUnit
+    <StyledGrid.GridColumn
       as={tagName}
-      size={size}
+      columnSize={columnSize}
       withGutter={withGutter}
       flexGrow={flexGrow}
       alignText={alignText}
@@ -65,13 +65,9 @@ const Unit = ({
       withClearFix={withClearFix}
     >
       {children}
-    </StyledGrid.GridUnit>
+    </StyledGrid.GridColumn>
   )
 }
-
-export { Unit }
-
-Grid.Unit = Unit
 
 Grid.propTypes = {
   // Override div with another html tag.
@@ -101,10 +97,10 @@ Grid.defaultProps = {
   marginTop: null,
 }
 
-Unit.propTypes = {
+GridColumn.propTypes = {
   tagName: PropTypes.string,
   // Size number between 1-12.
-  size: PropTypes.oneOfType([
+  columnSize: PropTypes.oneOfType([
     PropTypes.shape({
       sm: PropTypes.number,
       md: PropTypes.number,
@@ -120,9 +116,9 @@ Unit.propTypes = {
   marginTop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl'])]),
 }
 
-Unit.defaultProps = {
+GridColumn.defaultProps = {
   tagName: 'div',
-  size: null,
+  columnSize: null,
   withGutter: false,
   flexGrow: 0,
   alignText: '',
@@ -131,4 +127,4 @@ Unit.defaultProps = {
   withClearFix: null
 }
 
-export default Grid
+export { Grid, GridColumn }

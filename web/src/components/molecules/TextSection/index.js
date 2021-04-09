@@ -1,6 +1,6 @@
 import React from 'react'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints'
-import Grid from '../Grid'
+import {Grid, GridColumn} from '../Grid'
 import PortableText from '../../atoms/portableText'
 
 const TextSection = ({ bodyPortableText, BlockDirectionLeft, addContrast, pathname }) => {
@@ -24,9 +24,9 @@ const TextSection = ({ bodyPortableText, BlockDirectionLeft, addContrast, pathna
 
   return (
     <Grid tagName="section" maxWidth="default" withPadding marginTop="xxl" justify={justify}>
-      <Grid.Unit withGutter size={{sm: 12, md: 8, lg: 6}}>
+      <GridColumn withGutter columnSize={{sm: 12, md: 8, lg: 6}}>
         <PortableText blocks={bodyPortableText} />
-      </Grid.Unit>
+      </GridColumn>
     </Grid>
   )
 }

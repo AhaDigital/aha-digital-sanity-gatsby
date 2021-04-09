@@ -4,7 +4,7 @@ import get from 'lodash.get'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints';
 import { imageUrlFor } from '../../../lib/image-url';
 import {buildImageObj} from '../../../lib/helpers';
-import Grid from '../Grid'
+import {Grid, GridColumn} from '../Grid'
 import theme from '../../themes'
 import Heading from '../../atoms/Heading'
 import InlineTextScentance from '../../atoms/InlineTextScentance'
@@ -47,7 +47,7 @@ const Hero = ({hero, addContrast, pathname}) => {
       {finalImage && (
         <StyledHero image={finalImage} isLandingPage={isLandingPage}>
         <Grid withPadding maxWidth="default" align="center" justify="center">
-            <Grid.Unit withGutter size={12}>
+            <GridColumn withGutter columnSize={12}>
               <StyledHero.Heading isLandingPage={isLandingPage}>
                 {isLandingPage ? (
                   <Breadcrumbs navigation={breadcrumbsNavigation}/>
@@ -68,7 +68,7 @@ const Hero = ({hero, addContrast, pathname}) => {
                   </>
                 )}
               </StyledHero.Heading>
-            </Grid.Unit>
+            </GridColumn>
           </Grid>
           {!isLandingPage && (
             <StyledHero.Bubbles>
@@ -82,13 +82,13 @@ const Hero = ({hero, addContrast, pathname}) => {
         <>
           {!finalImage && (
             <Grid tagName="section" withPadding maxWidth="default" marginTop="lg">
-              <Grid.Unit withGutter size={12}>
+              <GridColumn withGutter columnSize={12}>
                 <Breadcrumbs navigation={breadcrumbsNavigation}/>
-              </Grid.Unit>  
+              </GridColumn>  
             </Grid>
           )}
           <Grid tagName="section" withPadding maxWidth="default" marginTop={finalImage ? 'md' : 'xl'}>
-            <Grid.Unit tagName="header" withGutter size={12}>
+            <GridColumn tagName="header" withGutter columnSize={12}>
               {heading.length > 0 && (
                   <Heading tagName="h1" displayAs="h1" addContrast={addContrast} styles={`margin: 0 0 10px !important;`}>
                     {
@@ -101,7 +101,7 @@ const Hero = ({hero, addContrast, pathname}) => {
                     <Heading tagName="h2" displayAs="text" styles={`color: ${theme.palette.darker}; margin: 0 !important;`}>{intro}</Heading>
                   </StyledHero.Intro>
                 )}
-            </Grid.Unit>
+            </GridColumn>
           </Grid>
         </>
       )}

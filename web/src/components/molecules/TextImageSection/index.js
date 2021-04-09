@@ -1,7 +1,7 @@
 import React from 'react'
 import { useBreakpoint } from 'gatsby-plugin-breakpoints'
 import get from 'lodash.get'
-import Grid from '../Grid'
+import {Grid, GridColumn} from '../Grid'
 import PortableText from '../../atoms/portableText'
 import Figure from '../../atoms/Figure'
 import Heading from '../../atoms/Heading'
@@ -40,20 +40,20 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
       {
         breakpoints.sm || breakpoints.md ? (
           <>
-            <Grid.Unit withGutter size={breakpoints.sm ? 12 : 8}>
+            <GridColumn withGutter columncolumnSize={breakpoints.sm ? 12 : 8}>
               <HeadingWithImage>
                 <Figure node={mainImage} aspectRatio4to3={is4to3AspectRatio}/>
                 {
                   heading.length > 0 && (
-                    <Heading tagName="h2" addContrast={get(heading[0], 'addContrast')} color="pink">
+                    <Heading tagName="h2" addContrast={get(heading[0], 'addContrast')} textColour="pink">
                       {headingText && headingText.split(' ').map((word, index) => <span key={`heading-word-${word}-${index}`}>{word}</span>)}
                     </Heading>
                   )
                 }
               </HeadingWithImage>
-            </Grid.Unit>
+            </GridColumn>
             {imageHeading && imageHeading.asset && (
-              <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
+              <GridColumn withGutter columnSize={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
                 {imageHeading.alt ? (
                   <HeadingAsImage>
                     <Figure node={imageHeading} />
@@ -61,16 +61,16 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                   </HeadingAsImage>
                 ) : <Figure node={imageHeading} />}
                 
-              </Grid.Unit>
+              </GridColumn>
             )}
-            <Grid.Unit withGutter size={breakpoints.sm ? 12 : 8} marginTop="lg">
+            <GridColumn withGutter columnSize={breakpoints.sm ? 12 : 8} marginTop="lg">
               <PortableText blocks={rest} />
-            </Grid.Unit>
+            </GridColumn>
           </>
         ) : (
           <>
             {imageHeading && imageHeading.asset && (
-              <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
+              <GridColumn withGutter columnSize={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
                 {imageHeading.alt ? (
                   <HeadingAsImage>
                     <Figure node={imageHeading} />
@@ -78,24 +78,24 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                   </HeadingAsImage>
                 ) : <Figure node={imageHeading} />}
                 
-              </Grid.Unit>
+              </GridColumn>
             )}
             {
               heading.length > 0 && (
-                <Grid.Unit withGutter size={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
+                <GridColumn withGutter columnSize={7} withClearFix={{toLeft: blockImageDirectionLeft}}>
                   <TextContainer>
                     {
                       heading.length > 0 && (
-                        <Heading tagName="h2" addContrast={get(heading[0], 'addContrast')} color="pink">
+                        <Heading tagName="h2" addContrast={get(heading[0], 'addContrast')} textColour="pink">
                           {headingText}
                         </Heading>
                       )
                     }
                   </TextContainer>
-                </Grid.Unit>
+                </GridColumn>
               )
             }
-            <Grid.Unit withGutter size={6}>
+            <GridColumn withGutter columnSize={6}>
               <TextContainer>
                 {blockImageDirectionLeft ? (
                   <Figure node={mainImage} aspectRatio4to3={is4to3AspectRatio} />
@@ -103,8 +103,8 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                   <PortableText blocks={rest} />
                 )}
               </TextContainer>
-            </Grid.Unit>
-            <Grid.Unit withGutter size={6}>
+            </GridColumn>
+            <GridColumn withGutter columnSize={6}>
               <TextContainer>
                 {blockImageDirectionLeft ? (
                   <PortableText blocks={rest} />
@@ -112,7 +112,7 @@ const TextImageSection = ({ blockImageDirectionLeft, bodyPortableText, mainImage
                   <Figure node={mainImage} aspectRatio4to3={is4to3AspectRatio} />
                 )}
               </TextContainer>
-            </Grid.Unit>
+            </GridColumn>
           </>
         )
       }

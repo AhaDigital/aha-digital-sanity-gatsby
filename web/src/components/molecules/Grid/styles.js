@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-const unitWidth = (size) => {
+const columnWidth = (size) => {
   switch (size) {
     case 1:
       return '8.33%'
@@ -32,26 +32,26 @@ const unitWidth = (size) => {
   }
 }
 
-const unitSizeMedia = css`
+const columnSizeMedia = css`
   @media (min-width: 0px) {
-    width: ${({size}) => unitWidth(size.sm)};
+    width: ${({columnSize}) => columnWidth(columnSize.sm)};
   }
   @media (min-width: ${({theme}) => theme.breakpoints.md}px) {
-    width: ${({size}) =>
-  size.md ? unitWidth(size.md) : unitWidth(size.md)};
+    width: ${({columnSize}) =>
+  columnSize.md ? columnWidth(columnSize.md) : columnWidth(columnSize.md)};
   }
   @media (min-width: ${({theme}) => theme.breakpoints.lg}px) {
-    width: ${({size}) =>
+    width: ${({columnSize}) =>
   // eslint-disable-next-line no-nested-ternary
-  size.lg
-    ? unitWidth(size.lg)
-    : size.md
-    ? unitWidth(size.md)
-    : unitWidth(size.sm)};
+  columnSize.lg
+    ? columnWidth(columnSize.lg)
+    : columnSize.md
+    ? columnWidth(columnSize.md)
+    : columnWidth(columnSize.sm)};
   }
 `
 
-// Grid outer container wrapping units.
+// Grid outer container wrapping columns.
 const StyledGrid = styled.div`
   width: 100%;
   flex-wrap: ${({ flexWrap }) => flexWrap || 'wrap'};
@@ -110,11 +110,11 @@ const StyledPageWrapper = styled.div`
   
 `
 
-// Grid unit.
+// Grid column.
 // props.size {number | object} 1-12 columns
 // or object {sm: number, md: number: lg: number}
 // withClearFix at the moment only supported on size 6.
-const StyledGridUnit = styled.div`
+const GridColumn = styled.div`
   box-sizing: border-box;
   ${({ marginTop, theme }) => marginTop && css`
     margin-top: ${theme.spacings[marginTop]};
@@ -123,8 +123,8 @@ const StyledGridUnit = styled.div`
     padding: 0 ${theme.grid.columnGutter};
   `}
 
-  ${({size}) => typeof size === 'number' && css`
-    width: ${unitWidth(size)};
+  ${({columnSize}) => typeof columnSize === 'number' && css`
+    width: ${columnWidth(columnSize)};
   `}
 
   ${({withClearFix}) => withClearFix && css`
@@ -139,7 +139,7 @@ const StyledGridUnit = styled.div`
   `}
 
 
-  ${({size}) => size && typeof size === 'object' && unitSizeMedia}
+  ${({columnSize}) => columnSize && typeof columnSize === 'object' && columnSizeMedia}
 
   ${({flexGrow}) => flexGrow && css`
     flex-grow: ${flexGrow};
@@ -147,6 +147,6 @@ const StyledGridUnit = styled.div`
 `
 
 StyledGrid.PageWrapper = StyledPageWrapper
-StyledGrid.GridUnit = StyledGridUnit
+StyledGrid.GridColumn = GridColumn
 
 export default StyledGrid
