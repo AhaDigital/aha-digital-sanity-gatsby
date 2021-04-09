@@ -96,7 +96,7 @@ function SEO ({description, title, image, pathname}) {
         },
         {
           property: 'robots',
-          content: 'noindex'
+          content: 'index, follow'
         },
       ]}
     >
