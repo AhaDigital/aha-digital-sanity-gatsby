@@ -44,40 +44,50 @@ const Hero = ({hero, addContrast, pathname}) => {
 
   return (
     <>
-    <StyledHero image={finalImage} isLandingPage={isLandingPage}>
-     <Grid withPadding maxWidth="default" align="center" justify="center">
-        <Grid.Unit withGutter size={12}>
-          <StyledHero.Heading isLandingPage={isLandingPage}>
-            {isLandingPage ? (
-              <Breadcrumbs navigation={breadcrumbsNavigation}/>
-            ) : (
-              <>
-                {heading.length > 0 && (
-                  <Heading tagName="h1" displayAs="h1" addContrast={addContrast}>
-                    {
-                      heading.map(part => <InlineTextScentance key={part._key} part={part} addContrast={addContrast} />)
-                    }
-                  </Heading>
+      {finalImage && (
+        <StyledHero image={finalImage} isLandingPage={isLandingPage}>
+        <Grid withPadding maxWidth="default" align="center" justify="center">
+            <Grid.Unit withGutter size={12}>
+              <StyledHero.Heading isLandingPage={isLandingPage}>
+                {isLandingPage ? (
+                  <Breadcrumbs navigation={breadcrumbsNavigation}/>
+                ) : (
+                  <>
+                    {heading.length > 0 && (
+                      <Heading tagName="h1" displayAs="h1" addContrast={addContrast}>
+                        {
+                          heading.map(part => <InlineTextScentance key={part._key} part={part} addContrast={addContrast} />)
+                        }
+                      </Heading>
+                    )}
+                    {intro && (
+                      <StyledHero.Intro>
+                        <Heading tagName="h2" displayAs="text" styles={`color: ${theme.palette.darker};`}>{intro}</Heading>
+                      </StyledHero.Intro>
+                    )}
+                  </>
                 )}
-                {intro && (
-                  <StyledHero.Intro>
-                    <Heading tagName="h2" displayAs="text" styles={`color: ${theme.palette.darker};`}>{intro}</Heading>
-                  </StyledHero.Intro>
-                )}
-              </>
-            )}
-          </StyledHero.Heading>
-        </Grid.Unit>
-      </Grid>
-      {!isLandingPage && (
-        <StyledHero.Bubbles>
-          <BubbleLeft/>
-          <BubbleRight/>
-        </StyledHero.Bubbles>
+              </StyledHero.Heading>
+            </Grid.Unit>
+          </Grid>
+          {!isLandingPage && (
+            <StyledHero.Bubbles>
+              <BubbleLeft/>
+              <BubbleRight/>
+            </StyledHero.Bubbles>
+          )}
+        </StyledHero>
       )}
-    </StyledHero>
       {isLandingPage && (
-          <Grid tagName="section" withPadding maxWidth="default" marginTop="md">
+        <>
+          {!finalImage && (
+            <Grid tagName="section" withPadding maxWidth="default" marginTop="lg">
+              <Grid.Unit withGutter size={12}>
+                <Breadcrumbs navigation={breadcrumbsNavigation}/>
+              </Grid.Unit>  
+            </Grid>
+          )}
+          <Grid tagName="section" withPadding maxWidth="default" marginTop={finalImage ? 'md' : 'xl'}>
             <Grid.Unit tagName="header" withGutter size={12}>
               {heading.length > 0 && (
                   <Heading tagName="h1" displayAs="h1" addContrast={addContrast} styles={`margin: 0 0 10px !important;`}>
@@ -93,7 +103,8 @@ const Hero = ({hero, addContrast, pathname}) => {
                 )}
             </Grid.Unit>
           </Grid>
-        )}
+        </>
+      )}
     </>
   )
 }
