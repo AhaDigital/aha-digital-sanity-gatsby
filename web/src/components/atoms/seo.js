@@ -103,6 +103,7 @@ function SEO ({description, title, image, pathname}) {
       {pathname && (
         <link rel="canonical" href={`https://ahadigital.se${pathname === '/' ? '/' : pathname}`} />
       )}
+
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Source+Sans+Pro:ital@0;1&display=swap" rel="stylesheet" />
     </Helmet>
