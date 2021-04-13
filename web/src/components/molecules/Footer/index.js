@@ -61,8 +61,8 @@ const Footer = ({data, addContrast}) => {
                   .auto("format")
                   .url()}
                   alt={image.alt || ''}
-                  width="120"
-                  height="120"
+                  width="180"
+                  height="180"
                 />
               )}
             </GridColumn>

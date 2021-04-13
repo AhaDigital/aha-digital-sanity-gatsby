@@ -22,11 +22,13 @@ const Hero = ({hero, addContrast, pathname}) => {
   const sanityImage = get(image, 'asset')
   let finalImage
   if(sanityImage) {
-    if(breakpoints.sm || breakpoints.md) {
+    if(breakpoints.sm) {
       finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).quality(80).auto("format").url()
     }
-    else {
-      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(355).quality(80).auto("format").url()
+    else if (breakpoints.md) {
+      finalImage = imageUrlFor(buildImageObj(image)).width(1440).height(475).quality(80).auto("format").url()
+    } else {
+      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(475).quality(80).auto("format").url()
     }
   }
 

@@ -60,8 +60,11 @@ const StyledHero = styled.div`
   ${({image}) => image && css`
     background-image: url(${image});
   `}
-  ${({theme}) => theme.media.md`
+  ${({theme, isLandingPage}) => theme.media.md`
     height: 355px;
+    ${isLandingPage && css`
+      height: 475px;
+    `}
   `}
 `
 
