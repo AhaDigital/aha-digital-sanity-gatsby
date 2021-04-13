@@ -16,7 +16,7 @@ function SEO ({description, title, image, pathname}) {
         },
         {
           property: 'og:title',
-          content: `${title} | Aha Digital`
+          content: `${title} - Aha Digital`
         },
         {
           property: 'og:description',
