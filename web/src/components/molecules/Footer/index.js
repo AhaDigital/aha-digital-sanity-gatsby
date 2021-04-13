@@ -49,23 +49,25 @@ const Footer = ({data, addContrast}) => {
         </GridColumn>
         <GridColumn columnSize={{sm: 12, lg: 5}} marginTop="lg">
           <Grid justify="flex-start" flexWrap="nowrap">
-            <GridColumn withGutter>
-              {image && image.asset && (
-                <img
-                  src={imageUrlFor(
-                    buildImageObj(image)
-                  )
-                  .width(360)
-                  .height(360)
-                  .quality(80)
-                  .auto("format")
-                  .url()}
-                  alt={image.alt || ''}
-                  width="180"
-                  height="180"
-                />
-              )}
-            </GridColumn>
+            {!breakpoints.sm && (
+              <GridColumn withGutter>
+                {image && image.asset && (
+                  <img
+                    src={imageUrlFor(
+                      buildImageObj(image)
+                    )
+                    .width(360)
+                    .height(360)
+                    .quality(80)
+                    .auto("format")
+                    .url()}
+                    alt={image.alt || ''}
+                    width="180"
+                    height="180"
+                  />
+                )}
+              </GridColumn>
+            )}
             <GridColumn withGutter>
               
               {name && (
