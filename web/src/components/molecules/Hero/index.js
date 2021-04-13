@@ -23,12 +23,12 @@ const Hero = ({hero, addContrast, pathname}) => {
   let finalImage
   if(sanityImage) {
     if(breakpoints.sm) {
-      finalImage = imageUrlFor(buildImageObj(image)).width(768).height(217).quality(80).auto("format").url()
+      finalImage = imageUrlFor(buildImageObj(image)).width(768).height(475).auto("format").url()
     }
     else if (breakpoints.md) {
-      finalImage = imageUrlFor(buildImageObj(image)).width(1440).height(475).quality(80).auto("format").url()
+      finalImage = imageUrlFor(buildImageObj(image)).width(1440).height(475).auto("format").url()
     } else {
-      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(475).quality(80).auto("format").url()
+      finalImage = imageUrlFor(buildImageObj(image)).width(1920).height(475).auto("format").url()
     }
   }
 
