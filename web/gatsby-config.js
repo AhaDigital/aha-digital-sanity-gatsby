@@ -60,5 +60,13 @@ module.exports = {
         precachePages: [`/tjanster`, `/uppdrag`, '/om-aha', '/universell-utformning-och-tillganglighet', 'kontakt'],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-P192NLV2JR",
+        ],
+      },
+    },
   ]
 }
