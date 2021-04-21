@@ -1,9 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
 async function createLandingPages (graphql, actions) {
   const {createPage} = actions
   const result = await graphql(`
