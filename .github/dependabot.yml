@@ -1,0 +1,123 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@sanity/base"
+    versions:
+    - 2.2.4
+    - 2.2.5
+    - 2.3.0
+    - 2.3.2
+    - 2.3.3
+    - 2.3.4
+    - 2.3.5
+    - 2.3.6
+    - 2.3.7
+    - 2.3.8
+    - 2.4.0
+    - 2.4.1
+    - 2.4.3
+    - 2.5.0
+    - 2.6.0
+    - 2.6.2
+    - 2.6.4
+    - 2.7.0
+    - 2.7.1
+    - 2.7.2
+    - 2.7.4
+    - 2.8.0
+    - 2.8.1
+  - dependency-name: "@sanity/desk-tool"
+    versions:
+    - 2.2.4
+    - 2.3.1
+    - 2.3.2
+    - 2.3.3
+    - 2.3.4
+    - 2.3.5
+    - 2.3.6
+    - 2.3.7
+    - 2.3.8
+    - 2.4.0
+    - 2.4.2
+    - 2.4.3
+    - 2.5.0
+    - 2.6.0
+    - 2.6.1
+    - 2.6.2
+    - 2.6.3
+    - 2.6.4
+    - 2.7.0
+    - 2.7.1
+    - 2.7.2
+    - 2.7.4
+    - 2.8.0
+    - 2.8.1
+  - dependency-name: "@sanity/default-layout"
+    versions:
+    - 2.2.4
+    - 2.3.0
+    - 2.3.2
+    - 2.3.3
+    - 2.3.4
+    - 2.3.5
+    - 2.3.6
+    - 2.3.7
+    - 2.3.8
+    - 2.4.0
+    - 2.4.1
+    - 2.4.3
+    - 2.5.0
+    - 2.6.0
+    - 2.6.2
+    - 2.6.4
+    - 2.7.0
+    - 2.7.1
+    - 2.7.2
+    - 2.7.4
+    - 2.8.0
+    - 2.8.1
+  - dependency-name: "@sanity/core"
+    versions:
+    - 2.2.6
+    - 2.3.3
+    - 2.3.8
+    - 2.4.0
+    - 2.5.0
+    - 2.6.0
+    - 2.6.1
+    - 2.6.2
+    - 2.7.0
+    - 2.7.1
+    - 2.7.2
+    - 2.7.4
+    - 2.8.0
+  - dependency-name: "@sanity/cli"
+    versions:
+    - 2.2.3
+    - 2.2.5
+    - 2.2.6
+    - 2.3.8
+    - 2.4.0
+    - 2.5.0
+    - 2.6.0
+    - 2.7.0
+    - 2.7.1
+    - 2.7.2
+    - 2.7.4
+    - 2.8.0
+  - dependency-name: "@sanity/default-login"
+    versions:
+    - 2.2.6
+    - 2.7.0
+  - dependency-name: "@sanity/studio-hints"
+    versions:
+    - 2.2.6
+    - 2.4.3
+  - dependency-name: "@sanity/dashboard"
+    versions:
+    - 2.2.6
