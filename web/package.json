@@ -28,7 +28,7 @@
     "gatsby-plugin-react-helmet": "^3.2.4",
     "gatsby-source-sanity": "^6.0.4",
     "google-fonts-plugin": "^5.0.2",
-    "prettier-eslint-cli": "^4.7.1",
+    "prettier-eslint-cli": "^5.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0"
