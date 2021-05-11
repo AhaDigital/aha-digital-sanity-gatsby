@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // document schemas
 import pages from './documents/pages'
+import news from './documents/news'
 import siteSettings from './documents/siteSettings'
 
 // Object types
@@ -44,6 +45,7 @@ export default createSchema({
     // in the studio.
     siteSettings,
     pages,
+    news,
     mainImage,
     simpleImage,
     bodyPortableText,
