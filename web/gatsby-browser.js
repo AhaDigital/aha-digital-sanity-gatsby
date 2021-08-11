@@ -6,11 +6,5 @@
 
 // You can delete this file if you're not using it
 export const onServiceWorkerUpdateReady = () => {
-    const answer = window.confirm(
-      `Aha digital har fått en uppdatering. ` +
-        `Vänligen uppdatera sidan för nyaste versionen.`
-    )
-    if (answer === true) {
-      window.location.reload()
-    }
+    window.location.reload()
   }
