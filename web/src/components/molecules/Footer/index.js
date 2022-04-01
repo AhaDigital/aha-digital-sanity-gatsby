@@ -7,10 +7,10 @@ import InlineTextScentance from '../../atoms/InlineTextScentance'
 import Heading from '../../atoms/Heading'
 import Text from '../../atoms/Text'
 import FeaturedLink from '../../atoms/FeaturedLink'
-import {Grid, GridColumn} from '../Grid'
+import { Grid, GridColumn } from '../Grid'
 import StyledFooter from './styles'
 
-const Footer = ({data, addContrast}) => {
+const Footer = ({ data, addContrast }) => {
   const salesPitchRollingText = get(data, 'footer.salesPitch', [])
   const salesPitchTextList = get(data, 'footer.salesPitch.inlineTextList', [])
 
@@ -23,31 +23,31 @@ const Footer = ({data, addContrast}) => {
   const image = get(contactPerson, 'image', {})
 
   const breakpoints = useBreakpoint()
-  
+
   return (
     <StyledFooter>
       <Grid tagName="section" maxWidth="default" withPadding>
-        <GridColumn withGutter columnSize={{sm: 12, lg: 7}} marginTop="lg">
+        <GridColumn withGutter columnSize={{ sm: 12, lg: 7 }} marginTop="lg">
           <Heading tagName="h3" displayAs="h1" textColour="green" addContrast={addContrast}>
             {
               salesPitchRollingText.length > 0 && salesPitchRollingText.map((part, index) => {
-                if(breakpoints.sm && salesPitchRollingText[index +1] && salesPitchRollingText[index +1]._type !== 'inlineTextListItem') {
+                if (breakpoints.sm && salesPitchRollingText[index + 1] && salesPitchRollingText[index + 1]._type !== 'inlineTextListItem') {
                   part.withLineBreak = true
                 }
-                return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
+                return <InlineTextScentance key={part._key} part={part} addContrast={addContrast} />
               })
             }
             {
               salesPitchTextList.length > 0 && salesPitchTextList.map((part, index) => {
-                if(breakpoints.sm && salesPitchTextList[index +1] && salesPitchTextList[index +1]._type !== 'inlineTextListItem') {
+                if (breakpoints.sm && salesPitchTextList[index + 1] && salesPitchTextList[index + 1]._type !== 'inlineTextListItem') {
                   part.withLineBreak = true
                 }
-                return <InlineTextScentance key={part._key} part={part} addContrast={addContrast}/>
+                return <InlineTextScentance key={part._key} part={part} addContrast={addContrast} />
               })
             }
           </Heading>
         </GridColumn>
-        <GridColumn columnSize={{sm: 12, lg: 5}} marginTop="lg">
+        <GridColumn columnSize={{ sm: 12, lg: 5 }} marginTop="lg">
           <Grid justify="flex-start" flexWrap="nowrap">
             {!breakpoints.sm && (
               <GridColumn withGutter>
@@ -56,11 +56,11 @@ const Footer = ({data, addContrast}) => {
                     src={imageUrlFor(
                       buildImageObj(image)
                     )
-                    .width(360)
-                    .height(360)
-                    .quality(80)
-                    .auto("format")
-                    .url()}
+                      .width(360)
+                      .height(360)
+                      .quality(80)
+                      .auto("format")
+                      .url()}
                     alt={image.alt || ''}
                     width="180"
                     height="180"
@@ -69,7 +69,7 @@ const Footer = ({data, addContrast}) => {
               </GridColumn>
             )}
             <GridColumn withGutter>
-              
+
               {name && (
                 <Heading tagName="span" displayAs="h3" textColour="dark" addContrast={addContrast} styles={`display: block; margin: 0 0 5px !important;`}>{name}</Heading>
               )}
@@ -94,7 +94,7 @@ const Footer = ({data, addContrast}) => {
                       <a href={`tel:${phone}`}>
                         <Text isParagraph={false}>{phone.replace('+46', '0')}</Text>
                       </a>
-                      ) : <Text isParagraph={false}>{phone.replace('+46', '0')}</Text>
+                    ) : <Text isParagraph={false}>{phone.replace('+46', '0')}</Text>
                     }
                   </StyledFooter.ContactAlternative>
                 )
@@ -105,33 +105,33 @@ const Footer = ({data, addContrast}) => {
       </Grid>
       <StyledFooter.Bottom>
         <Grid maxWidth="default" withPadding>
-          <GridColumn withGutter columnSize={{sm: 12, md: 7}} marginTop="lg">
+          <GridColumn withGutter columnSize={{ sm: 12, md: 7 }} marginTop="lg">
             <Heading tagName="h3" textColour={addContrast ? 'darker' : 'dark'}>
               Om webbplatsen
             </Heading>
             <nav aria-label="Om webbplatsen">
               <ol>
                 <li>
-                  <FeaturedLink node={{href: "/webbplatskarta/", linkName: "Webbplatskarta", linkColour: '#000000'}}/>
+                  <FeaturedLink node={{ href: "/webbplatskarta/", linkName: "Webbplatskarta", linkColour: '#000000' }} />
                 </li>
                 {
                   footerMenu.map(item => (
-                      <li key={item._key}>
-                        <FeaturedLink
-                          node={{
-                            href: item.page ? `/${item.page.slug.current}/` : item.externalLink,
-                            linkName: item.page ? item.page.title : item.externalLinkName,
-                            linkColour: '#000000'
-                          }}
-                        />
-                      </li>    
-                    )
+                    <li key={item._key}>
+                      <FeaturedLink
+                        node={{
+                          href: item.page ? `/${item.page.slug.current}/` : item.externalLink,
+                          linkName: item.page ? item.page.title : item.externalLinkName,
+                          linkColour: '#000000'
+                        }}
+                      />
+                    </li>
+                  )
                   )
                 }
               </ol>
             </nav>
           </GridColumn>
-          <GridColumn withGutter columnSize={{sm: 12, md: 5}} marginTop="lg">
+          <GridColumn withGutter columnSize={{ sm: 12, md: 5 }} marginTop="lg">
             <Heading tagName="h3" textColour={addContrast || 'dark'}>
               Aha Digital AB
             </Heading>
@@ -151,10 +151,10 @@ const Footer = ({data, addContrast}) => {
                 Aha Digital AB
               </Text>
               <Text isParagraph={false} withLineBreak>
-                Bergsunds Strand 13
+                Wollmar Yxkullsgatan 2b
               </Text>
               <Text isParagraph={false} withLineBreak>
-                117 38 Stockholm
+                118 50 Stockholm
               </Text>
             </Text>
           </GridColumn>
