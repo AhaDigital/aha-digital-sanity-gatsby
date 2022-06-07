@@ -40,7 +40,7 @@
     "gatsby-plugin-google-gtag": "^3.3.0",
     "gatsby-plugin-lodash": "^3.10.0",
     "gatsby-plugin-manifest": "^3.2.0",
-    "gatsby-plugin-offline": "^4.2.0",
+    "gatsby-plugin-offline": "^5.16.0",
     "gatsby-plugin-preload-fonts": "^1.9.0",
     "gatsby-plugin-sitemap": "^3.2.0",
     "gatsby-plugin-styled-components": "^3.7.0",
