@@ -151,10 +151,10 @@ const Footer = ({ data, addContrast }) => {
                 Aha Digital AB
               </Text>
               <Text isParagraph={false} withLineBreak>
-                Wollmar Yxkullsgatan 2b
+                St: Göransgatan 82
               </Text>
               <Text isParagraph={false} withLineBreak>
-                118 50 Stockholm
+                112 38 Stockholm
               </Text>
             </Text>
           </GridColumn>
